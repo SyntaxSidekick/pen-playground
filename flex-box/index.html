@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox Demo - Different Layouts</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Flexbox Layout Demonstrations</h1>
+      <p>Exploring different flexbox properties and positions</p>
+    </header>
+
+    <main class="main-container">
+      <!-- Basic Row Layout -->
+      <section class="demo-section">
+        <h2>Basic Row Layout</h2>
+        <div class="flex-container row-layout">
+          <div class="flex-item item-1">Item 1</div>
+          <div class="flex-item item-2">Item 2</div>
+          <div class="flex-item item-3">Item 3</div>
+          <div class="flex-item item-4">Item 4</div>
+        </div>
+
+        <div class="code-display">
+          <div class="code-section">
+            <h4>HTML</h4>
+            <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-container row-layout"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item item-1"</span><span class="tag">&gt;</span>Item 1<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item item-2"</span><span class="tag">&gt;</span>Item 2<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item item-3"</span><span class="tag">&gt;</span>Item 3<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item item-4"</span><span class="tag">&gt;</span>Item 4<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+          </div>
+          <div class="code-section">
+            <h4>CSS</h4>
+            <pre><code><span class="selector">.flex-container</span> {
+    <span class="property">display</span>: <span class="keyword">flex</span>;
+}
+
+<span class="selector">.row-layout</span> {
+    <span class="property">flex-direction</span>: <span class="value">row</span>;
+    <span class="property">gap</span>: <span class="number">1</span><span class="value">rem</span>;
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Column Layout -->
+      <section class="demo-section">
+        <h2>Column Layout</h2>
+        <div class="flex-container column-layout">
+          <div class="flex-item item-1">Item A</div>
+          <div class="flex-item item-2">Item B</div>
+          <div class="flex-item item-3">Item C</div>
+        </div>
+
+        <div class="code-display">
+          <div class="code-section">
+            <h4>HTML</h4>
+            <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-container column-layout"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item item-1"</span><span class="tag">&gt;</span>Item A<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item item-2"</span><span class="tag">&gt;</span>Item B<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item item-3"</span><span class="tag">&gt;</span>Item C<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+          </div>
+          <div class="code-section">
+            <h4>CSS</h4>
+            <pre><code><span class="selector">.column-layout</span> {
+    <span class="property">flex-direction</span>: <span class="value">column</span>;
+    <span class="property">max-width</span>: <span class="number">300</span><span class="value">px</span>;
+    <span class="property">margin</span>: <span class="number">0</span> <span class="keyword">auto</span>;
+    <span class="property">gap</span>: <span class="number">1</span><span class="value">rem</span>;
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Justify Content Variations -->
+      <section class="demo-section">
+        <h2>Justify Content Variations</h2>
+
+        <div class="justify-demo">
+          <h3>Space Between</h3>
+          <div class="flex-container space-between">
+            <div class="flex-item small">1</div>
+            <div class="flex-item small">2</div>
+            <div class="flex-item small">3</div>
+          </div>
+        </div>
+
+        <div class="justify-demo">
+          <h3>Space Around</h3>
+          <div class="flex-container space-around">
+            <div class="flex-item small">1</div>
+            <div class="flex-item small">2</div>
+            <div class="flex-item small">3</div>
+          </div>
+        </div>
+
+        <div class="justify-demo">
+          <h3>Center</h3>
+          <div class="flex-container center">
+            <div class="flex-item small">1</div>
+            <div class="flex-item small">2</div>
+            <div class="flex-item small">3</div>
+          </div>
+        </div>
+
+        <div class="code-display">
+          <div class="code-section">
+            <h4>HTML</h4>
+            <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-container space-between"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item small"</span><span class="tag">&gt;</span>1<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item small"</span><span class="tag">&gt;</span>2<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item small"</span><span class="tag">&gt;</span>3<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+          </div>
+          <div class="code-section">
+            <h4>CSS</h4>
+            <pre><code><span class="selector">.space-between</span> {
+    <span class="property">justify-content</span>: <span class="value">space-between</span>;
+}
+
+<span class="selector">.space-around</span> {
+    <span class="property">justify-content</span>: <span class="value">space-around</span>;
+}
+
+<span class="selector">.center</span> {
+    <span class="property">justify-content</span>: <span class="value">center</span>;
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Align Items Variations -->
+      <section class="demo-section">
+        <h2>Align Items Variations</h2>
+        <div class="align-container">
+          <div class="align-demo">
+            <h3>Flex Start</h3>
+            <div class="flex-container align-start">
+              <div class="flex-item small">A</div>
+              <div class="flex-item medium">B</div>
+              <div class="flex-item large">C</div>
+            </div>
+          </div>
+
+          <div class="align-demo">
+            <h3>Center</h3>
+            <div class="flex-container align-center">
+              <div class="flex-item small">A</div>
+              <div class="flex-item medium">B</div>
+              <div class="flex-item large">C</div>
+            </div>
+          </div>
+
+          <div class="align-demo">
+            <h3>Flex End</h3>
+            <div class="flex-container align-end">
+              <div class="flex-item small">A</div>
+              <div class="flex-item medium">B</div>
+              <div class="flex-item large">C</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-display">
+          <div class="code-section">
+            <h4>HTML</h4>
+            <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-container align-center"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item small"</span><span class="tag">&gt;</span>A<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item medium"</span><span class="tag">&gt;</span>B<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item large"</span><span class="tag">&gt;</span>C<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+          </div>
+          <div class="code-section">
+            <h4>CSS</h4>
+            <pre><code><span class="selector">.align-start</span> {
+    <span class="property">align-items</span>: <span class="value">flex-start</span>;
+}
+
+<span class="selector">.align-center</span> {
+    <span class="property">align-items</span>: <span class="value">center</span>;
+}
+
+<span class="selector">.align-end</span> {
+    <span class="property">align-items</span>: <span class="value">flex-end</span>;
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Flex Grow, Shrink, Basis -->
+      <section class="demo-section">
+        <h2>Flex Properties</h2>
+        <div class="flex-container flex-properties">
+          <div class="flex-item grow-1">Grow: 1</div>
+          <div class="flex-item grow-2">Grow: 2</div>
+          <div class="flex-item grow-1">Grow: 1</div>
+          <div class="flex-item no-grow">No Grow</div>
+        </div>
+
+        <div class="code-display">
+          <div class="code-section">
+            <h4>HTML</h4>
+            <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-container flex-properties"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item grow-1"</span><span class="tag">&gt;</span>Grow: 1<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item grow-2"</span><span class="tag">&gt;</span>Grow: 2<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item grow-1"</span><span class="tag">&gt;</span>Grow: 1<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item no-grow"</span><span class="tag">&gt;</span>No Grow<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+          </div>
+          <div class="code-section">
+            <h4>CSS</h4>
+            <pre><code><span class="selector">.grow-1</span> {
+    <span class="property">flex-grow</span>: <span class="number">1</span>;
+}
+
+<span class="selector">.grow-2</span> {
+    <span class="property">flex-grow</span>: <span class="number">2</span>;
+}
+
+<span class="selector">.no-grow</span> {
+    <span class="property">flex-grow</span>: <span class="number">0</span>;
+    <span class="property">flex-basis</span>: <span class="number">120</span><span class="value">px</span>;
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nested Flexbox -->
+      <section class="demo-section">
+        <h2>Nested Flexbox Layout</h2>
+        <div class="flex-container nested-parent">
+          <div class="flex-item nested-child">
+            <h4>Nested Container 1</h4>
+            <div class="inner-flex">
+              <div class="inner-item">A</div>
+              <div class="inner-item">B</div>
+              <div class="inner-item">C</div>
+            </div>
+          </div>
+          <div class="flex-item nested-child">
+            <h4>Nested Container 2</h4>
+            <div class="inner-flex column">
+              <div class="inner-item">X</div>
+              <div class="inner-item">Y</div>
+              <div class="inner-item">Z</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-display">
+          <div class="code-section">
+            <h4>HTML</h4>
+            <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-container nested-parent"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"flex-item nested-child"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;h4&gt;</span>Nested Container 1<span class="tag">&lt;/h4&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"inner-flex"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"inner-item"</span><span class="tag">&gt;</span>A<span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"inner-item"</span><span class="tag">&gt;</span>B<span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"inner-item"</span><span class="tag">&gt;</span>C<span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+          </div>
+          <div class="code-section">
+            <h4>CSS</h4>
+            <pre><code><span class="selector">.nested-parent</span> {
+    <span class="property">gap</span>: <span class="number">2</span><span class="value">rem</span>;
+}
+
+<span class="selector">.nested-child</span> {
+    <span class="property">flex</span>: <span class="number">1</span>;
+    <span class="property">padding</span>: <span class="number">1</span><span class="value">rem</span>;
+}
+
+<span class="selector">.inner-flex</span> {
+    <span class="property">display</span>: <span class="keyword">flex</span>;
+    <span class="property">gap</span>: <span class="number">0.5</span><span class="value">rem</span>;
+    
+    <span class="selector">&.column</span> {
+        <span class="property">flex-direction</span>: <span class="value">column</span>;
+    }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Complex Card Layout -->
+      <section class="demo-section">
+        <h2>Card Layout Example</h2>
+        <div class="card-container">
+          <div class="card">
+            <div class="card-header">
+              <h3>Card Title 1</h3>
+              <span class="card-badge">New</span>
+            </div>
+            <div class="card-content">
+              <p>This is some content for the first card.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn">Action</button>
+              <span class="card-meta">2 hours ago</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Card Title 2</h3>
+              <span class="card-badge featured">Featured</span>
+            </div>
+            <div class="card-content">
+              <p>
+                This is content for the second card with more text to show
+                flexibility.
+              </p>
+            </div>
+            <div class="card-footer">
+              <button class="btn">Action</button>
+              <span class="card-meta">5 hours ago</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Card Title 3</h3>
+            </div>
+            <div class="card-content">
+              <p>Third card content.</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn">Action</button>
+              <span class="card-meta">1 day ago</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-display">
+          <div class="code-section">
+            <h4>HTML</h4>
+            <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"card-container"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"card"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"card-header"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;h3&gt;</span>Card Title 1<span class="tag">&lt;/h3&gt;</span>
+            <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="string">"card-badge"</span><span class="tag">&gt;</span>New<span class="tag">&lt;/span&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"card-content"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;p&gt;</span>This is some content for the first card.<span class="tag">&lt;/p&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"card-footer"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;button</span> <span class="attr">class</span>=<span class="string">"btn"</span><span class="tag">&gt;</span>Action<span class="tag">&lt;/button&gt;</span>
+            <span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="string">"card-meta"</span><span class="tag">&gt;</span>2 hours ago<span class="tag">&lt;/span&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+          </div>
+          <div class="code-section">
+            <h4>CSS</h4>
+            <pre><code><span class="selector">.card-container</span> {
+    <span class="property">display</span>: <span class="keyword">flex</span>;
+    <span class="property">gap</span>: <span class="number">1.5</span><span class="value">rem</span>;
+    <span class="property">flex-wrap</span>: <span class="value">wrap</span>;
+}
+
+<span class="selector">.card</span> {
+    <span class="property">display</span>: <span class="keyword">flex</span>;
+    <span class="property">flex-direction</span>: <span class="value">column</span>;
+    <span class="property">flex</span>: <span class="number">1</span>;
+    <span class="property">min-width</span>: <span class="number">280</span><span class="value">px</span>;
+    
+    <span class="selector">.card-header</span> {
+        <span class="property">display</span>: <span class="keyword">flex</span>;
+        <span class="property">justify-content</span>: <span class="value">space-between</span>;
+        <span class="property">align-items</span>: <span class="value">center</span>;
+    }
+    
+    <span class="selector">.card-footer</span> {
+        <span class="property">display</span>: <span class="keyword">flex</span>;
+        <span class="property">justify-content</span>: <span class="value">space-between</span>;
+        <span class="property">align-items</span>: <span class="value">center</span>;
+        <span class="property">margin-top</span>: <span class="keyword">auto</span>;
+    }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

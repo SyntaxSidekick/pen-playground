@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Layout Examples</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>CSS Grid Layout Demonstrations</h1>
+        <p>Comprehensive examples showing various CSS Grid techniques with code explanations</p>
+    </header>
+
+    <main class="main-container">
+        <!-- Basic Grid -->
+        <section class="demo-section">
+            <h2>Basic Grid Layout</h2>
+            <div class="grid-container basic-grid">
+                <div class="grid-item item-1">Item 1</div>
+                <div class="grid-item item-2">Item 2</div>
+                <div class="grid-item item-3">Item 3</div>
+                <div class="grid-item item-4">Item 4</div>
+                <div class="grid-item item-5">Item 5</div>
+                <div class="grid-item item-6">Item 6</div>
+            </div>
+            
+            <div class="code-display">
+                <div class="code-section">
+                    <h4>HTML</h4>
+                    <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-container basic-grid"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item item-1"</span><span class="tag">&gt;</span>Item 1<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item item-2"</span><span class="tag">&gt;</span>Item 2<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item item-3"</span><span class="tag">&gt;</span>Item 3<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item item-4"</span><span class="tag">&gt;</span>Item 4<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item item-5"</span><span class="tag">&gt;</span>Item 5<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item item-6"</span><span class="tag">&gt;</span>Item 6<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+                </div>
+                <div class="code-section">
+                    <h4>CSS</h4>
+                    <pre><code><span class="selector">.basic-grid</span> {
+    <span class="property">display</span>: <span class="keyword">grid</span>;
+    <span class="property">grid-template-columns</span>: <span class="keyword">repeat</span>(<span class="number">3</span>, <span class="number">1</span><span class="value">fr</span>);
+    <span class="property">grid-template-rows</span>: <span class="keyword">repeat</span>(<span class="number">2</span>, <span class="number">100</span><span class="value">px</span>);
+    <span class="property">gap</span>: <span class="number">1</span><span class="value">rem</span>;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid Template Areas -->
+        <section class="demo-section">
+            <h2>Grid Template Areas</h2>
+            <div class="grid-container template-areas">
+                <div class="grid-item header">Header</div>
+                <div class="grid-item sidebar">Sidebar</div>
+                <div class="grid-item content">Main Content</div>
+                <div class="grid-item footer">Footer</div>
+            </div>
+            
+            <div class="code-display">
+                <div class="code-section">
+                    <h4>HTML</h4>
+                    <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-container template-areas"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item header"</span><span class="tag">&gt;</span>Header<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item sidebar"</span><span class="tag">&gt;</span>Sidebar<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item content"</span><span class="tag">&gt;</span>Main Content<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item footer"</span><span class="tag">&gt;</span>Footer<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+                </div>
+                <div class="code-section">
+                    <h4>CSS</h4>
+                    <pre><code><span class="selector">.template-areas</span> {
+    <span class="property">display</span>: <span class="keyword">grid</span>;
+    <span class="property">grid-template-areas</span>: 
+        <span class="string">"header header"</span>
+        <span class="string">"sidebar content"</span>
+        <span class="string">"footer footer"</span>;
+    <span class="property">grid-template-columns</span>: <span class="number">200</span><span class="value">px</span> <span class="number">1</span><span class="value">fr</span>;
+    <span class="property">gap</span>: <span class="number">1</span><span class="value">rem</span>;
+}
+
+<span class="selector">.header</span> { <span class="property">grid-area</span>: <span class="value">header</span>; }
+<span class="selector">.sidebar</span> { <span class="property">grid-area</span>: <span class="value">sidebar</span>; }
+<span class="selector">.content</span> { <span class="property">grid-area</span>: <span class="value">content</span>; }
+<span class="selector">.footer</span> { <span class="property">grid-area</span>: <span class="value">footer</span>; }</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid Lines and Spanning -->
+        <section class="demo-section">
+            <h2>Grid Lines and Spanning</h2>
+            <div class="grid-container spanning-grid">
+                <div class="grid-item span-item-1">Spans 2 Columns</div>
+                <div class="grid-item span-item-2">Item 2</div>
+                <div class="grid-item span-item-3">Item 3</div>
+                <div class="grid-item span-item-4">Spans 2 Rows</div>
+                <div class="grid-item span-item-5">Item 5</div>
+            </div>
+            
+            <div class="code-display">
+                <div class="code-section">
+                    <h4>HTML</h4>
+                    <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-container spanning-grid"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item span-item-1"</span><span class="tag">&gt;</span>Spans 2 Columns<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item span-item-2"</span><span class="tag">&gt;</span>Item 2<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item span-item-3"</span><span class="tag">&gt;</span>Item 3<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item span-item-4"</span><span class="tag">&gt;</span>Spans 2 Rows<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item span-item-5"</span><span class="tag">&gt;</span>Item 5<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+                </div>
+                <div class="code-section">
+                    <h4>CSS</h4>
+                    <pre><code><span class="selector">.spanning-grid</span> {
+    <span class="property">display</span>: <span class="keyword">grid</span>;
+    <span class="property">grid-template-columns</span>: <span class="keyword">repeat</span>(<span class="number">3</span>, <span class="number">1</span><span class="value">fr</span>);
+    <span class="property">gap</span>: <span class="number">1</span><span class="value">rem</span>;
+}
+
+<span class="selector">.span-item-1</span> {
+    <span class="property">grid-column</span>: <span class="number">1</span> / <span class="number">3</span>; <span class="comment">/* Spans 2 columns */</span>
+}
+
+<span class="selector">.span-item-4</span> {
+    <span class="property">grid-row</span>: <span class="number">2</span> / <span class="number">4</span>; <span class="comment">/* Spans 2 rows */</span>
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Auto-fit and Auto-fill -->
+        <section class="demo-section">
+            <h2>Auto-fit vs Auto-fill</h2>
+            <div class="auto-examples">
+                <div class="auto-example">
+                    <h3>auto-fit</h3>
+                    <div class="grid-container auto-fit">
+                        <div class="grid-item">Item 1</div>
+                        <div class="grid-item">Item 2</div>
+                        <div class="grid-item">Item 3</div>
+                    </div>
+                </div>
+                
+                <div class="auto-example">
+                    <h3>auto-fill</h3>
+                    <div class="grid-container auto-fill">
+                        <div class="grid-item">Item 1</div>
+                        <div class="grid-item">Item 2</div>
+                        <div class="grid-item">Item 3</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code-display">
+                <div class="code-section">
+                    <h4>HTML</h4>
+                    <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-container auto-fit"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item"</span><span class="tag">&gt;</span>Item 1<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item"</span><span class="tag">&gt;</span>Item 2<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item"</span><span class="tag">&gt;</span>Item 3<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+                </div>
+                <div class="code-section">
+                    <h4>CSS</h4>
+                    <pre><code><span class="selector">.auto-fit</span> {
+    <span class="property">grid-template-columns</span>: <span class="keyword">repeat</span>(<span class="value">auto-fit</span>, <span class="keyword">minmax</span>(<span class="number">200</span><span class="value">px</span>, <span class="number">1</span><span class="value">fr</span>));
+}
+
+<span class="selector">.auto-fill</span> {
+    <span class="property">grid-template-columns</span>: <span class="keyword">repeat</span>(<span class="value">auto-fill</span>, <span class="keyword">minmax</span>(<span class="number">200</span><span class="value">px</span>, <span class="number">1</span><span class="value">fr</span>));
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alignment -->
+        <section class="demo-section">
+            <h2>Grid Alignment</h2>
+            <div class="alignment-examples">
+                <div class="alignment-demo">
+                    <h3>justify-items: center</h3>
+                    <div class="grid-container justify-center">
+                        <div class="grid-item small">A</div>
+                        <div class="grid-item small">B</div>
+                        <div class="grid-item small">C</div>
+                        <div class="grid-item small">D</div>
+                    </div>
+                </div>
+                
+                <div class="alignment-demo">
+                    <h3>align-items: center</h3>
+                    <div class="grid-container align-center">
+                        <div class="grid-item small">A</div>
+                        <div class="grid-item small">B</div>
+                        <div class="grid-item small">C</div>
+                        <div class="grid-item small">D</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code-display">
+                <div class="code-section">
+                    <h4>HTML</h4>
+                    <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-container justify-center"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item small"</span><span class="tag">&gt;</span>A<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item small"</span><span class="tag">&gt;</span>B<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item small"</span><span class="tag">&gt;</span>C<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item small"</span><span class="tag">&gt;</span>D<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+                </div>
+                <div class="code-section">
+                    <h4>CSS</h4>
+                    <pre><code><span class="selector">.justify-center</span> {
+    <span class="property">justify-items</span>: <span class="value">center</span>;
+    <span class="property">grid-template-rows</span>: <span class="keyword">repeat</span>(<span class="number">2</span>, <span class="number">80</span><span class="value">px</span>);
+}
+
+<span class="selector">.align-center</span> {
+    <span class="property">align-items</span>: <span class="value">center</span>;
+    <span class="property">grid-template-rows</span>: <span class="keyword">repeat</span>(<span class="number">2</span>, <span class="number">80</span><span class="value">px</span>);
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nested Grid -->
+        <section class="demo-section">
+            <h2>Nested Grid Layout</h2>
+            <div class="grid-container nested-grid">
+                <div class="grid-item nested-parent">
+                    <h4>Nested Grid 1</h4>
+                    <div class="inner-grid">
+                        <div class="inner-item">A</div>
+                        <div class="inner-item">B</div>
+                        <div class="inner-item">C</div>
+                        <div class="inner-item">D</div>
+                    </div>
+                </div>
+                <div class="grid-item nested-parent">
+                    <h4>Nested Grid 2</h4>
+                    <div class="inner-grid column-grid">
+                        <div class="inner-item">X</div>
+                        <div class="inner-item">Y</div>
+                        <div class="inner-item">Z</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code-display">
+                <div class="code-section">
+                    <h4>HTML</h4>
+                    <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-container nested-grid"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"grid-item nested-parent"</span><span class="tag">&gt;</span>
+        <span class="tag">&lt;h4&gt;</span>Nested Grid 1<span class="tag">&lt;/h4&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"inner-grid"</span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"inner-item"</span><span class="tag">&gt;</span>A<span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"inner-item"</span><span class="tag">&gt;</span>B<span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"inner-item"</span><span class="tag">&gt;</span>C<span class="tag">&lt;/div&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"inner-item"</span><span class="tag">&gt;</span>D<span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+                </div>
+                <div class="code-section">
+                    <h4>CSS</h4>
+                    <pre><code><span class="selector">.nested-grid</span> {
+    <span class="property">grid-template-columns</span>: <span class="keyword">repeat</span>(<span class="number">2</span>, <span class="number">1</span><span class="value">fr</span>);
+    <span class="property">gap</span>: <span class="number">2</span><span class="value">rem</span>;
+}
+
+<span class="selector">.inner-grid</span> {
+    <span class="property">display</span>: <span class="keyword">grid</span>;
+    <span class="property">grid-template-columns</span>: <span class="keyword">repeat</span>(<span class="number">2</span>, <span class="number">1</span><span class="value">fr</span>);
+    <span class="property">gap</span>: <span class="number">0.5</span><span class="value">rem</span>;
+    <span class="property">margin-top</span>: <span class="number">1</span><span class="value">rem</span>;
+    
+    <span class="selector">&.column-grid</span> {
+        <span class="property">grid-template-columns</span>: <span class="number">1</span><span class="value">fr</span>;
+    }
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Complex Dashboard Layout -->
+        <section class="demo-section">
+            <h2>Dashboard Layout Example</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-item nav">Navigation</div>
+                <div class="dashboard-item main-chart">Main Chart</div>
+                <div class="dashboard-item sidebar-stats">Stats</div>
+                <div class="dashboard-item widget-1">Widget 1</div>
+                <div class="dashboard-item widget-2">Widget 2</div>
+                <div class="dashboard-item widget-3">Widget 3</div>
+                <div class="dashboard-item footer-info">Footer Info</div>
+            </div>
+            
+            <div class="code-display">
+                <div class="code-section">
+                    <h4>HTML</h4>
+                    <pre><code><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"dashboard-grid"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"dashboard-item nav"</span><span class="tag">&gt;</span>Navigation<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"dashboard-item main-chart"</span><span class="tag">&gt;</span>Main Chart<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"dashboard-item sidebar-stats"</span><span class="tag">&gt;</span>Stats<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"dashboard-item widget-1"</span><span class="tag">&gt;</span>Widget 1<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"dashboard-item widget-2"</span><span class="tag">&gt;</span>Widget 2<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"dashboard-item widget-3"</span><span class="tag">&gt;</span>Widget 3<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="string">"dashboard-item footer-info"</span><span class="tag">&gt;</span>Footer Info<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+                </div>
+                <div class="code-section">
+                    <h4>CSS</h4>
+                    <pre><code><span class="selector">.dashboard-grid</span> {
+    <span class="property">display</span>: <span class="keyword">grid</span>;
+    <span class="property">grid-template-areas</span>: 
+        <span class="string">"nav nav nav sidebar"</span>
+        <span class="string">"main main main sidebar"</span>
+        <span class="string">"widget1 widget2 widget3 sidebar"</span>
+        <span class="string">"footer footer footer footer"</span>;
+    <span class="property">grid-template-columns</span>: <span class="keyword">repeat</span>(<span class="number">3</span>, <span class="number">1</span><span class="value">fr</span>) <span class="number">200</span><span class="value">px</span>;
+    <span class="property">grid-template-rows</span>: <span class="number">60</span><span class="value">px</span> <span class="number">200</span><span class="value">px</span> <span class="number">120</span><span class="value">px</span> <span class="number">60</span><span class="value">px</span>;
+}
+
+<span class="selector">.nav</span> { <span class="property">grid-area</span>: <span class="value">nav</span>; }
+<span class="selector">.main-chart</span> { <span class="property">grid-area</span>: <span class="value">main</span>; }
+<span class="selector">.sidebar-stats</span> { <span class="property">grid-area</span>: <span class="value">sidebar</span>; }
+<span class="selector">.widget-1</span> { <span class="property">grid-area</span>: <span class="value">widget1</span>; }
+<span class="selector">.widget-2</span> { <span class="property">grid-area</span>: <span class="value">widget2</span>; }
+<span class="selector">.widget-3</span> { <span class="property">grid-area</span>: <span class="value">widget3</span>; }
+<span class="selector">.footer-info</span> { <span class="property">grid-area</span>: <span class="value">footer</span>; }</code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Map Intro — CSS + SVG</title>
+<style>
+  :root{
+    --bg:#05060a;
+    --map-accent:#7be1ff;
+    --map-road:#16324a;
+    --glow: rgba(123,225,255,0.12);
+    --node:#90ffb8;
+    --node-2:#ffd56b;
+    --duration:6s;
+  }
+
+  html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg) 0%, #071224 60%);font-family: Inter, system-ui, Arial;}
+  .stage{
+    width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;
+    perspective:1000px; overflow:hidden;
+  }
+
+  /* container with gentle tilt and zoom */
+  .card{
+    width:min(1200px,92vw);height:min(700px,86vh);
+    transform-origin:center center;
+    transform: rotateX(12deg) rotateZ(-6deg) scale(1);
+    transition:transform .6s ease;
+    filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6));
+  }
+  .card:hover{ transform: rotateX(8deg) rotateZ(-4deg) scale(1.02); }
+
+  svg{display:block;width:100%;height:100%;overflow:visible}
+
+  /* background grid */
+  .grid line { stroke: rgba(255,255,255,0.02); stroke-width:1; }
+
+  /* roads styling */
+  .road {
+    fill:none;
+    stroke:var(--map-road);
+    stroke-linecap:round;
+    stroke-width:20;
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.6));
+  }
+  .road.inner {
+    stroke-width:10;
+  }
+
+  /* road highlight (draw animation) */
+  .road-highlight {
+    stroke:var(--map-accent);
+    stroke-width:2;
+    stroke-dasharray: 6 6;
+    stroke-linecap:round;
+    mix-blend-mode:screen;
+    filter: blur(0.4px) drop-shadow(0 0 12px rgba(123,225,255,0.22));
+    animation: dash  var(--duration) linear infinite;
+  }
+
+  /* animation to make highlight dash move */
+  @keyframes dash{
+    to { stroke-dashoffset: -200; }
+  }
+
+  /* draw main roads (stroke-dashoffset) */
+  .road.draw {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawRoad 4s linear forwards;
+  }
+  .road.draw.delay { animation-delay: .5s; }
+  .road.draw.delay-2 { animation-delay: 1.1s; }
+
+  @keyframes drawRoad{
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* nodes (cities) */
+  .node {
+    transform-origin:center;
+    transform-box:fill-box;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
+  }
+
+  .node .dot {
+    r:8;
+    fill:var(--node);
+    stroke:rgba(255,255,255,0.06);
+    stroke-width:1;
+    transform-origin:center;
+    transform-box:fill-box;
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+  .node .halo {
+    r:18;
+    fill:none;
+    stroke:var(--glow);
+    stroke-width:6;
+    opacity:0.7;
+    animation: halo 2.6s ease-in-out infinite;
+  }
+  .node.alt .dot { fill: var(--node-2); animation-duration:3s; }
+  .node.alt .halo { stroke: rgba(255,213,107,0.12); animation-duration:3s; }
+
+  @keyframes pulse{
+    0%,100% { transform: scale(1); opacity:1; }
+    50% { transform: scale(1.6); opacity:0.7; }
+  }
+  @keyframes halo{
+    0% { stroke-width:6; opacity:0.6; transform:scale(1); }
+    50% { stroke-width:38; opacity:0.03; transform:scale(1.05); }
+    100% { stroke-width:6; opacity:0.6; transform:scale(1); }
+  }
+
+  /* small city labels */
+  .label { font-size:13px; fill:rgba(255,255,255,0.9); font-weight:600; letter-spacing:0.4px; }
+  .sublabel { font-size:11px; fill:rgba(255,255,255,0.55); }
+
+  /* marker (car) that will move along paths using offset-path */
+  .marker {
+    width:14px;height:8px;border-radius:3px;
+    position:absolute;
+    transform: translate(-50%,-50%) rotate(90deg);
+    display:flex;align-items:center;justify-content:center;
+  }
+  /* we'll render the marker as an SVG in a foreignObject wrapper inside HTML overlay */
+  .marker svg { width:100%;height:100%; display:block; }
+
+  /* marker animation using CSS offset-path (set by JS to the exact SVG path d) */
+  .move {
+    position:absolute;
+    left:0; top:0;
+    offset-rotate:auto; /* rotate along path */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  /* sample durations for different markers */
+  .move.slow { animation-duration: 9s; animation-name: moveAlong; }
+  .move.fast { animation-duration: 5s; animation-name: moveAlong; animation-delay: 0.8s; }
+
+  /* keyframe is a placeholder — actual path movement uses offset-path */
+  @keyframes moveAlong { to { offset-distance: 100%; } }
+
+  /* subtle vignette and scanline */
+  .vignette { pointer-events:none; position:absolute; inset:0; mix-blend-mode:multiply; background: radial-gradient(60% 40% at 30% 20%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.6) 100%); }
+  .scan { position:absolute; inset:0; background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.00) 50%, rgba(255,255,255,0.02) 100%); mix-blend-mode:overlay; opacity:0.6; pointer-events:none; transform: translateY(-10%); animation: scan 12s linear infinite; }
+  @keyframes scan { to { transform: translateY(10%); } }
+
+  /* tiny legend top-left */
+  .legend { position:absolute; left:18px; top:18px; color:rgba(255,255,255,0.9); font-size:13px; display:flex; gap:10px; align-items:center; font-weight:600; }
+  .legend .dot { width:10px;height:10px;border-radius:50%;background:var(--map-accent);box-shadow:0 6px 14px rgba(123,225,255,0.12); }
+
+  /* responsive tweaks */
+  @media (max-width:900px){
+    .card{ transform: rotateX(6deg) rotateZ(-4deg) scale(.95); }
+    .label{ font-size:11px; }
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="card" id="card">
+      <!-- legend -->
+      <div class="legend"><div class="dot"></div><div>Network</div></div>
+
+      <!-- SVG map -->
+      <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Animated map">
+        <!-- subtle grid -->
+        <g class="grid" opacity="0.9">
+          <defs>
+            <pattern id="p" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0 L0 0 0 40" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="1200" height="700" fill="url(#p)"></rect>
+        </g>
+
+        <!-- roads (main curved paths) -->
+        <!-- path A -->
+        <path id="pathA" class="road draw" d="M140 520 C220 460, 320 440, 420 380 C520 320, 620 300, 740 320 C860 340, 940 380, 1040 330" />
+        <path class="road-highlight" d="M140 520 C220 460, 320 440, 420 380 C520 320, 620 300, 740 320 C860 340, 940 380, 1040 330" />
+
+        <!-- path B -->
+        <path id="pathB" class="road draw delay" d="M130 240 C220 260, 360 270, 430 320 C500 370, 640 380, 760 360 C880 340, 980 300, 1080 250" />
+        <path class="road-highlight" d="M130 240 C220 260, 360 270, 430 320 C500 370, 640 380, 760 360 C880 340, 980 300, 1080 250" />
+
+        <!-- inner connector -->
+        <path id="pathC" class="road inner draw delay-2" d="M470 120 C510 160, 560 200, 630 210 C700 220, 760 200, 820 225" />
+        <path class="road-highlight inner" d="M470 120 C510 160, 560 200, 630 210 C700 220, 760 200, 820 225" />
+
+        <!-- nodes -->
+        <g class="node" transform="translate(140,520)">
+          <circle class="halo" cx="0" cy="0"></circle>
+          <circle class="dot" cx="0" cy="0"></circle>
+          <text class="label" x="22" y="6">Palo Alto</text>
+          <text class="sublabel" x="22" y="22">Innovation</text>
+        </g>
+
+        <g class="node alt" transform="translate(420,380)">
+          <circle class="halo" cx="0" cy="0"></circle>
+          <circle class="dot" cx="0" cy="0"></circle>
+          <text class="label" x="26" y="6">Hacker Sq.</text>
+          <text class="sublabel" x="26" y="22">Startups</text>
+        </g>
+
+        <g class="node" transform="translate(740,320)">
+          <circle class="halo" cx="0" cy="0"></circle>
+          <circle class="dot" cx="0" cy="0"></circle>
+          <text class="label" x="22" y="6">Data Park</text>
+        </g>
+
+        <g class="node alt" transform="translate(1080,250)">
+          <circle class="halo" cx="0" cy="0"></circle>
+          <circle class="dot" cx="0" cy="0"></circle>
+          <text class="label" x="-130" y="6">Cloud Ridge</text>
+          <text class="sublabel" x="-130" y="22">Scale & Ops</text>
+        </g>
+
+        <g class="node" transform="translate(630,210)">
+          <circle class="halo" cx="0" cy="0"></circle>
+          <circle class="dot" cx="0" cy="0"></circle>
+          <text class="label" x="22" y="6">Node Central</text>
+          <text class="sublabel" x="22" y="22">Backbone</text>
+        </g>
+
+        <!-- optional subtle network connections -->
+        <g opacity="0.12" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round">
+          <path d="M420 380 L470 320 L630 210" />
+          <path d="M740 320 L760 360 L1080 250" />
+        </g>
+      </svg>
+
+      <!-- overlay markers as HTML so we can easily use CSS offset-path -->
+      <!-- marker 1 follows pathA -->
+      <div class="move slow" id="markerA" style="offset-distance:0%;">
+        <svg viewBox="0 0 24 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="2" rx="3" ry="3" width="18" height="8" fill="#7be1ff" />
+          <circle cx="4" cy="10" r="1.4" fill="#071224" />
+          <circle cx="12" cy="10" r="1.4" fill="#071224" />
+        </svg>
+      </div>
+
+      <!-- marker 2 follows pathB -->
+      <div class="move fast" id="markerB" style="offset-distance:10%;">
+        <svg viewBox="0 0 24 12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="2" rx="3" ry="3" width="18" height="8" fill="#ffd56b" />
+          <circle cx="4" cy="10" r="1.4" fill="#071224" />
+          <circle cx="12" cy="10" r="1.4" fill="#071224" />
+        </svg>
+      </div>
+
+      <!-- vignettes & scanlines -->
+      <div class="vignette"></div>
+      <div class="scan"></div>
+    </div>
+  </div>
+
+<script>
+/*
+  Tiny script: copy SVG path "d" into CSS offset-path for each marker.
+  This keeps marker path and drawn path identical without duplicating the d string manually.
+*/
+(function(){
+  const svg = document.querySelector('svg');
+  const getAbsolutePath = (path) => {
+    // use getPathData if supported? Fallback to attr.
+    return path.getAttribute('d');
+  };
+
+  // map markers to svg paths by id
+  const mapping = [
+    { markerId: 'markerA', pathId: 'pathA' },
+    { markerId: 'markerB', pathId: 'pathB' },
+    // you can add more marker/path pairs
+  ];
+
+  // convert SVG coordinates to CSS offset-path path string
+  // offset-path expects a path string similar to SVG; we can use the same 'd' as browsers accept it
+  // But CSS offset-path uses user coordinate system of the element's containing block.
+  // We'll position markers using SVG client bounding box transform.
+  mapping.forEach(({markerId,pathId})=>{
+    const marker = document.getElementById(markerId);
+    const pathEl = document.getElementById(pathId);
+    if(!marker || !pathEl) return;
+    const d = pathEl.getAttribute('d');
+
+    // compute bounding box of svg to convert coordinates to page px
+    const svgRect = svg.getBoundingClientRect();
+
+    // create an SVGPathElement to compute points along path and to build a translated path for offset-path
+    // We'll transform path coords into absolute pixels relative to the page.
+    // Create a temporary SVG in DOM to use getPointAtLength (works with original coords)
+    const tempPath = pathEl.cloneNode();
+    // To compute real positions relative to the page we use getBoundingClientRect differences.
+    // Simpler approach: use path as-is and use offset-path with path('M...') — modern browsers interpret coordinates in CSS pixels matching the element's container.
+    // So we'll set offset-path directly to the same 'd' but prefixed as path('...').
+    try{
+      // set offset-path CSS
+      marker.style.offsetPath = `path("${d}")`;
+      marker.style.webkitOffsetPath = `path("${d}")`;
+    }catch(e){
+      // fallback: do nothing if the browser can't set offset-path that way
+      console.warn('offset-path assignment failed', e);
+    }
+  });
+
+  // small tweak: animate initial offset-distance for visual variety
+  document.querySelectorAll('.move').forEach((m, i)=>{
+    m.style.offsetDistance = (i%2===0? '0%':'10%');
+  });
+})();
+</script>
+</body>
+</html>

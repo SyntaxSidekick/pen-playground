@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="alert alert-info" role="alert">
+  <i class="fa-solid fa-circle-info"></i> This is still in dev progress. I have it up here for others who may want to mess around with it.
+</div>
+
+<div id="app" class="container py-5">
+  <h1 class="text-center mb-4">
+    <i class="fa-solid fa-palette"></i> Interactive Color Palette Generator
+  </h1>
+
+  <div class="card p-4 mb-4 shadow-sm">
+    <div class="input-group mb-3">
+      <input v-model="keyword" @keyup.enter="generatePalette" type="text" class="form-control form-control-lg" placeholder="Enter a keyword or color (e.g. ocean, #3498db, blue)" />
+      <!-- Generate button with magic wand icon -->
+      <button @click="generatePalette" class="btn btn-success btn-lg">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate
+      </button>
+      <!-- Randomize button with shuffle icon -->
+      <button @click="randomizePalette" class="btn btn-primary btn-lg">
+        <i class="fa-solid fa-shuffle"></i> Randomize
+      </button>
+    </div>
+  </div>
+
+  <div v-if="palette.length" class="row g-3 mb-4">
+    <div v-for="(color, index) in palette" :key="index" class="col-6 col-sm-4 col-md-3 col-lg-2">
+      <div class="card text-center shadow-sm" :style="{ background: color, color: getContrast(color) }">
+        <div class="card-body py-4">
+          <p class="mb-2">{{ color }}</p>
+          <!-- Copy button with Font Awesome copy icon -->
+          <button @click="copyColor(color)" class="btn btn-light btn-sm">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div v-if="gradients.length" class="mb-4">
+    <h3>Suggested Gradients</h3>
+    <div class="row g-3">
+      <div v-for="(grad, i) in gradients" :key="i" class="col-12 col-sm-6 col-md-4">
+        <div class="card text-center shadow-sm" :style="{ background: grad, color: getContrast(grad.split(',')[0].replace('linear-gradient(45deg,','').trim()) }">
+          <div class="card-body py-4">
+            <p class="mb-0">{{ grad }}</p>
+            <button @click="copyColor(grad)" class="btn btn-light btn-sm mt-2">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div v-if="palette.length" class="mb-4">
+    <h3>Preview UI</h3>
+    <div class="card p-4 shadow" :style="{ background: palette[0], color: palette[2] }">
+      <h4>Card Title</h4>
+      <p>This is a sample UI preview using your palette.</p>
+      <button class="btn btn-primary" :style="{ background: palette[1], color: palette[3] }">
+        <i class="fa-solid fa-bolt"></i> Action
+      </button>
+    </div>
+    <button class="btn btn-outline-light mt-3" @click="exportJSON">
+      <i class="fa-solid fa-file-export"></i> Export JSON
+    </button>
+  </div>
+</div>
+    <script src="scripts.js"></script>
+</body>
+</html>

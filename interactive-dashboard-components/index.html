@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dashboard Components | Pure CSS Data Visualization</title>
+    <meta name="description" content="Learn to create interactive dashboard components using pure CSS - charts, metrics cards, data visualization, and theme switching">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Interactive Dashboard Components</h1>
+            <p>Pure CSS Data Visualization & Interactive Elements</p>
+            <div class="theme-toggle">
+                <input type="checkbox" id="theme-switch" class="theme-switch">
+                <label for="theme-switch" class="theme-label">
+                    <span class="theme-text">🌙 Dark Mode</span>
+                </label>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- CSS-Only Charts Section -->
+        <section class="section">
+            <h2>📊 CSS-Only Charts</h2>
+            <p class="section-description">Create interactive charts and graphs using pure CSS without JavaScript libraries.</p>
+            
+            <!-- Charts Demo -->
+            <div class="demo-grid">
+                <div class="chart-container">
+                    <h3>Bar Chart</h3>
+                    <div class="bar-chart">
+                        <div class="bar-item">
+                            <div class="bar" data-value="85" style="--bar-height: 136px;">
+                                <span class="bar-value">85%</span>
+                            </div>
+                            <span class="bar-label">Q1</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" data-value="92" style="--bar-height: 147px;">
+                                <span class="bar-value">92%</span>
+                            </div>
+                            <span class="bar-label">Q2</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" data-value="78" style="--bar-height: 125px;">
+                                <span class="bar-value">78%</span>
+                            </div>
+                            <span class="bar-label">Q3</span>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" data-value="96" style="--bar-height: 154px;">
+                                <span class="bar-value">96%</span>
+                            </div>
+                            <span class="bar-label">Q4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Progress Ring</h3>
+                    <div class="progress-ring">
+                        <svg class="progress-svg" viewBox="0 0 120 120">
+                            <circle class="progress-bg" cx="60" cy="60" r="50"></circle>
+                            <circle class="progress-fill" cx="60" cy="60" r="50" style="--progress: 75;"></circle>
+                        </svg>
+                        <div class="progress-text">
+                            <span class="progress-value">75%</span>
+                            <span class="progress-label">Completion</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Code Display -->
+            <div class="code-section">
+                <h3>💻 Bar Chart Code</h3>
+                <div class="code-tabs">
+                    <button class="code-tab active" data-target="charts-html">HTML</button>
+                    <button class="code-tab" data-target="charts-css">CSS</button>
+                </div>
+                
+                <div class="code-content active" id="charts-html">
+                    <pre><code class="language-html">&lt;!-- Animated Bar Chart --&gt;
+&lt;div class="bar-chart"&gt;
+    &lt;div class="bar-item"&gt;
+        &lt;div class="bar" style="--bar-height: 136px;"&gt;
+            &lt;span class="bar-value"&gt;85%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;span class="bar-label"&gt;Q1&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="bar-item"&gt;
+        &lt;div class="bar" style="--bar-height: 147px;"&gt;
+            &lt;span class="bar-value"&gt;92%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;span class="bar-label"&gt;Q2&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;!-- More bars... --&gt;
+&lt;/div&gt;
+
+&lt;!-- Progress Ring Chart --&gt;
+&lt;div class="progress-ring"&gt;
+    &lt;svg class="progress-svg" viewBox="0 0 120 120"&gt;
+        &lt;circle class="progress-bg" cx="60" cy="60" r="50"&gt;&lt;/circle&gt;
+        &lt;circle class="progress-fill" cx="60" cy="60" r="50" style="--progress: 75;"&gt;&lt;/circle&gt;
+    &lt;/svg&gt;
+    &lt;div class="progress-text"&gt;
+        &lt;span class="progress-value"&gt;75%&lt;/span&gt;
+        &lt;span class="progress-label"&gt;Completion&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div class="code-content" id="charts-css">
+                    <pre><code class="language-css">/* Bar Chart Styles */
+.bar-chart {
+    display: flex;
+    align-items: end;
+    gap: 1rem;
+    height: 220px;
+    padding: 2rem 1rem;
+    background: var(--hover-bg);
+    border-radius: 12px;
+}
+
+.bar-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 100%;
+}
+
+.bar {
+    width: 100%;
+    max-width: 40px;
+    height: var(--bar-height);
+    background: linear-gradient(to top, var(--primary), var(--primary-light));
+    border-radius: 6px 6px 0 0;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: barGrow 1.5s ease-out;
+    margin-bottom: auto;
+}
+
+.bar:hover {
+    transform: scale(1.05);
+    filter: brightness(1.15);
+}
+
+.bar-label {
+    margin-top: 0.5rem;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.bar-value {
+    position: absolute;
+    top: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--primary);
+    background: var(--card-bg);
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bar:hover .bar-value {
+    opacity: 1;
+}
+
+@keyframes barGrow {
+    from { height: 0; }
+    to { height: var(--bar-height); }
+}
+
+/* Progress Ring Styles */
+.progress-ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.progress-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progress-fill {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 314;
+    stroke-dashoffset: calc(314 - (314 * var(--progress)) / 100);
+    transition: stroke-dashoffset 2s ease;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metric Cards Section -->
+        <section class="section">
+            <h2>📈 Interactive Metric Cards</h2>
+            <p class="section-description">Dashboard cards with hover effects, animations, and real-time data visualization.</p>
+            
+            <!-- Metrics Demo -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">👥</div>
+                    <div class="metric-content">
+                        <h3 class="metric-title">Total Users</h3>
+                        <div class="metric-value">
+                            <span class="metric-number">12,450</span>
+                            <span class="metric-change positive">+12%</span>
+                        </div>
+                        <div class="metric-chart">
+                            <div class="mini-chart">
+                                <div class="chart-bar" style="--height: 60%;"></div>
+                                <div class="chart-bar" style="--height: 80%;"></div>
+                                <div class="chart-bar" style="--height: 45%;"></div>
+                                <div class="chart-bar" style="--height: 90%;"></div>
+                                <div class="chart-bar" style="--height: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">💰</div>
+                    <div class="metric-content">
+                        <h3 class="metric-title">Revenue</h3>
+                        <div class="metric-value">
+                            <span class="metric-number">$54,280</span>
+                            <span class="metric-change positive">+8%</span>
+                        </div>
+                        <div class="metric-progress">
+                            <div class="progress-bar" style="--progress: 68%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">📊</div>
+                    <div class="metric-content">
+                        <h3 class="metric-title">Conversion Rate</h3>
+                        <div class="metric-value">
+                            <span class="metric-number">3.24%</span>
+                            <span class="metric-change negative">-2%</span>
+                        </div>
+                        <div class="metric-donut">
+                            <svg viewBox="0 0 42 42">
+                                <circle class="donut-hole" cx="21" cy="21" r="15.9"></circle>
+                                <circle class="donut-ring" cx="21" cy="21" r="15.9"></circle>
+                                <circle class="donut-segment" cx="21" cy="21" r="15.9" style="--percentage: 68;"></circle>
+                            </svg>
+                            <div class="donut-text">68%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">⚡</div>
+                    <div class="metric-content">
+                        <h3 class="metric-title">Performance</h3>
+                        <div class="metric-value">
+                            <span class="metric-number">98.5%</span>
+                            <span class="metric-change positive">+5%</span>
+                        </div>
+                        <div class="metric-gauge">
+                            <div class="gauge-container">
+                                <div class="gauge-fill" style="--gauge-fill: 98.5%;"></div>
+                                <div class="gauge-pointer"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metrics Code Display -->
+            <div class="code-section">
+                <h3>💻 Metric Cards Code</h3>
+                <div class="code-tabs">
+                    <button class="code-tab active" data-target="metrics-html">HTML</button>
+                    <button class="code-tab" data-target="metrics-css">CSS</button>
+                </div>
+                
+                <div class="code-content active" id="metrics-html">
+                    <pre><code class="language-html">&lt;!-- Interactive Metric Card --&gt;
+&lt;div class="metric-card"&gt;
+    &lt;div class="metric-icon"&gt;👥&lt;/div&gt;
+    &lt;div class="metric-content"&gt;
+        &lt;h3 class="metric-title"&gt;Total Users&lt;/h3&gt;
+        &lt;div class="metric-value"&gt;
+            &lt;span class="metric-number"&gt;12,450&lt;/span&gt;
+            &lt;span class="metric-change positive"&gt;+12%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="metric-chart"&gt;
+            &lt;div class="mini-chart"&gt;
+                &lt;div class="chart-bar" style="--height: 60%;"&gt;&lt;/div&gt;
+                &lt;div class="chart-bar" style="--height: 80%;"&gt;&lt;/div&gt;
+                &lt;div class="chart-bar" style="--height: 45%;"&gt;&lt;/div&gt;
+                &lt;div class="chart-bar" style="--height: 90%;"&gt;&lt;/div&gt;
+                &lt;div class="chart-bar" style="--height: 75%;"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Revenue Card with Progress --&gt;
+&lt;div class="metric-card"&gt;
+    &lt;div class="metric-icon"&gt;💰&lt;/div&gt;
+    &lt;div class="metric-content"&gt;
+        &lt;h3 class="metric-title"&gt;Revenue&lt;/h3&gt;
+        &lt;div class="metric-value"&gt;
+            &lt;span class="metric-number"&gt;$54,280&lt;/span&gt;
+            &lt;span class="metric-change positive"&gt;+8%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="metric-progress"&gt;
+            &lt;div class="progress-bar" style="--progress: 68%;"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div class="code-content" id="metrics-css">
+                    <pre><code class="language-css">/* Metric Card Styles */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.metric-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid var(--card-border);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px var(--shadow);
+    border-color: var(--primary);
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.metric-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Mini Chart Animation */
+.mini-chart {
+    display: flex;
+    align-items: end;
+    gap: 2px;
+    height: 40px;
+    margin-top: 1rem;
+}
+
+.chart-bar {
+    flex: 1;
+    height: var(--height);
+    background: linear-gradient(to top, var(--primary), var(--primary-light));
+    border-radius: 2px;
+    animation: chartGrow 1s ease-out;
+    transition: all 0.2s ease;
+}
+
+.chart-bar:hover {
+    background: var(--accent);
+    transform: scaleY(1.1);
+}
+
+@keyframes chartGrow {
+    from { height: 0; }
+    to { height: var(--height); }
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Visualization Section -->
+        <section class="section">
+            <h2>📋 Data Visualization Components</h2>
+            <p class="section-description">Advanced data visualization components including tables, timelines, and comparison charts.</p>
+            
+            <!-- Data Viz Demo -->
+            <div class="data-viz-grid">
+                <div class="comparison-table">
+                    <h3>Feature Comparison</h3>
+                    <table class="comparison">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Basic</th>
+                                <th>Pro</th>
+                                <th>Enterprise</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Users</td>
+                                <td><span class="value">5</span></td>
+                                <td><span class="value">25</span></td>
+                                <td><span class="value unlimited">Unlimited</span></td>
+                            </tr>
+                            <tr>
+                                <td>Storage</td>
+                                <td><span class="value">10GB</span></td>
+                                <td><span class="value">100GB</span></td>
+                                <td><span class="value unlimited">1TB</span></td>
+                            </tr>
+                            <tr>
+                                <td>API Calls</td>
+                                <td><span class="value">1,000</span></td>
+                                <td><span class="value">10,000</span></td>
+                                <td><span class="value unlimited">Unlimited</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="timeline-component">
+                    <h3>Project Timeline</h3>
+                    <div class="timeline">
+                        <div class="timeline-item completed">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>Planning Phase</h4>
+                                <p>Project requirements and design</p>
+                                <span class="timeline-date">Week 1-2</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item active">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>Development</h4>
+                                <p>Core features implementation</p>
+                                <span class="timeline-date">Week 3-6</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>Testing</h4>
+                                <p>Quality assurance and bug fixes</p>
+                                <span class="timeline-date">Week 7-8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Viz Code Display -->
+            <div class="code-section">
+                <h3>💻 Data Visualization Code</h3>
+                <div class="code-tabs">
+                    <button class="code-tab active" data-target="dataviz-html">HTML</button>
+                    <button class="code-tab" data-target="dataviz-css">CSS</button>
+                </div>
+                
+                <div class="code-content active" id="dataviz-html">
+                    <pre><code class="language-html">&lt;!-- Comparison Table --&gt;
+&lt;div class="comparison-table"&gt;
+    &lt;h3&gt;Feature Comparison&lt;/h3&gt;
+    &lt;table class="comparison"&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Feature&lt;/th&gt;
+                &lt;th&gt;Basic&lt;/th&gt;
+                &lt;th&gt;Pro&lt;/th&gt;
+                &lt;th&gt;Enterprise&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Users&lt;/td&gt;
+                &lt;td&gt;&lt;span class="value"&gt;5&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class="value"&gt;25&lt;/span&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;span class="value unlimited"&gt;Unlimited&lt;/span&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;!-- Project Timeline --&gt;
+&lt;div class="timeline"&gt;
+    &lt;div class="timeline-item completed"&gt;
+        &lt;div class="timeline-marker"&gt;&lt;/div&gt;
+        &lt;div class="timeline-content"&gt;
+            &lt;h4&gt;Planning Phase&lt;/h4&gt;
+            &lt;p&gt;Project requirements and design&lt;/p&gt;
+            &lt;span class="timeline-date"&gt;Week 1-2&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="timeline-item active"&gt;
+        &lt;div class="timeline-marker"&gt;&lt;/div&gt;
+        &lt;div class="timeline-content"&gt;
+            &lt;h4&gt;Development&lt;/h4&gt;
+            &lt;p&gt;Core features implementation&lt;/p&gt;
+            &lt;span class="timeline-date"&gt;Week 3-6&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div class="code-content" id="dataviz-css">
+                    <pre><code class="language-css">/* Comparison Table Styles */
+.comparison {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px var(--shadow);
+}
+
+.comparison th {
+    background: var(--primary);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.comparison td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.2s ease;
+}
+
+.comparison tr:hover td {
+    background: var(--hover-bg);
+}
+
+.value.unlimited {
+    color: var(--success);
+    font-weight: 600;
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -2rem;
+    top: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--border);
+    border: 3px solid var(--bg);
+    transition: all 0.3s ease;
+}
+
+.timeline-item.completed .timeline-marker {
+    background: var(--success);
+}
+
+.timeline-item.active .timeline-marker {
+    background: var(--primary);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Theme Toggle Section -->
+        <section class="section">
+            <h2>🎨 Theme System</h2>
+            <p class="section-description">Dynamic theme switching with CSS custom properties and smooth transitions.</p>
+            
+            <!-- Theme Demo -->
+            <div class="theme-demo">
+                <div class="theme-preview">
+                    <h3>Theme Preview</h3>
+                    <p>Toggle between light and dark themes using the switch in the header. The entire dashboard adapts with smooth transitions.</p>
+                    <div class="theme-samples">
+                        <div class="color-sample" style="background: var(--primary);">Primary</div>
+                        <div class="color-sample" style="background: var(--secondary);">Secondary</div>
+                        <div class="color-sample" style="background: var(--accent);">Accent</div>
+                        <div class="color-sample" style="background: var(--success);">Success</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme Code Display -->
+            <div class="code-section">
+                <h3>💻 Theme System Code</h3>
+                <div class="code-tabs">
+                    <button class="code-tab active" data-target="theme-html">HTML</button>
+                    <button class="code-tab" data-target="theme-css">CSS</button>
+                </div>
+                
+                <div class="code-content active" id="theme-html">
+                    <pre><code class="language-html">&lt;!-- Theme Toggle Switch --&gt;
+&lt;div class="theme-toggle"&gt;
+    &lt;input type="checkbox" id="theme-switch" class="theme-switch"&gt;
+    &lt;label for="theme-switch" class="theme-label"&gt;
+        &lt;span class="theme-text"&gt;🌙 Dark Mode&lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- Theme Preview Colors --&gt;
+&lt;div class="theme-samples"&gt;
+    &lt;div class="color-sample" style="background: var(--primary);"&gt;Primary&lt;/div&gt;
+    &lt;div class="color-sample" style="background: var(--secondary);"&gt;Secondary&lt;/div&gt;
+    &lt;div class="color-sample" style="background: var(--accent);"&gt;Accent&lt;/div&gt;
+    &lt;div class="color-sample" style="background: var(--success);"&gt;Success&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div class="code-content" id="theme-css">
+                    <pre><code class="language-css">/* CSS Custom Properties for Theming */
+:root {
+    /* Light Theme Colors */
+    --primary: #3b82f6;
+    --primary-light: #60a5fa;
+    --secondary: #6366f1;
+    --accent: #f59e0b;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    
+    --bg: #ffffff;
+    --card-bg: #ffffff;
+    --text: #111827;
+    --text-secondary: #6b7280;
+    --border: #e5e7eb;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Theme Colors */
+[data-theme="dark"] {
+    --primary: #60a5fa;
+    --primary-light: #93c5fd;
+    --secondary: #818cf8;
+    --accent: #fbbf24;
+    --success: #34d399;
+    --warning: #fbbf24;
+    --error: #f87171;
+    
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border: #334155;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Theme Toggle Switch */
+.theme-switch {
+    display: none;
+}
+
+.theme-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.theme-label:hover {
+    background: var(--hover-bg);
+    transform: translateY(-1px);
+}
+
+/* Apply theme transitions to all elements */
+* {
+    transition: background-color 0.3s ease, 
+                border-color 0.3s ease, 
+                color 0.3s ease;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Interactive Dashboard Components. Built with pure CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeSwitch = document.getElementById('theme-switch');
+        const body = document.body;
+        
+        // Check for saved theme or default to light
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', savedTheme);
+        themeSwitch.checked = savedTheme === 'dark';
+        
+        themeSwitch.addEventListener('change', () => {
+            const theme = themeSwitch.checked ? 'dark' : 'light';
+            body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        });
+        
+        // Code Tab Functionality
+        document.querySelectorAll('.code-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-target');
+                const section = tab.closest('.code-section');
+                
+                // Remove active from all tabs and content in this section
+                section.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+                section.querySelectorAll('.code-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

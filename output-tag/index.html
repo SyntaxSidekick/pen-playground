@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Output Tag Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>HTML Output Tag Demo</h1>
+        <p>Interactive calculator showcasing the <code>&lt;output&gt;</code> element</p>
+      </header>
+
+      <main class="main-content">
+        <div class="calculator-card">
+          <h2>Simple Addition Calculator</h2>
+          <form 
+            class="calculator-form"
+            onInput="result.value = parseInt(a.value || 0) + parseInt(b.value || 0)"
+          >
+            <div class="input-group">
+              <label for="a">First Number</label>
+              <input 
+                type="number" 
+                name="a" 
+                id="a" 
+                placeholder="Enter first number"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="b">Second Number</label>
+              <input 
+                type="number" 
+                name="b" 
+                id="b" 
+                placeholder="Enter second number"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="result-group">
+              <label for="result">Result</label>
+              <output name="result" for="a b" class="result-display">0</output>
+            </div>
+          </form>
+
+          <div class="info-section">
+            <h3>About the <code>&lt;output&gt;</code> Tag</h3>
+            <p>
+              The <code>&lt;output&gt;</code> element represents the result of a calculation 
+              or user action. It's semantically meaningful and automatically updates 
+              based on form inputs referenced in the <code>for</code> attribute.
+            </p>
+            <ul class="features-list">
+              <li><i class="fa-brands fa-html5"></i> Semantic HTML element for calculation results</li>
+              <li><i class="fas fa-sync-alt"></i> Automatically updates with form input changes</li>
+              <li><i class="fas fa-universal-access"></i> Accessible and screen reader friendly</li>
+              <li><i class="fas fa-bullseye"></i> Perfect for real-time calculations</li>
+            </ul>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <p>Built with HTML5 &lt;output&gt; tag • No JavaScript required for basic functionality</p>
+      </footer>
+    </div>
+  </body>
+</html>
