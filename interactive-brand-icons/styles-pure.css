@@ -1,0 +1,158 @@
+/* ==============================
+   Brand Icon CSS Styles
+   ============================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(120deg, #1f1f1f, #0f0f0f);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: #fff;
+}
+
+.wrapper {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+  text-align: center;
+  text-shadow: 0 0 10px #fff;
+}
+
+p {
+  margin-bottom: 40px;
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.icon {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #2a2a2a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  color: #fff;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  z-index: 0;
+}
+
+.icon::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: var(--glow, #999);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  filter: blur(15px);
+  z-index: -1;
+}
+
+.icon:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 30px var(--glow, #fff);
+  color: var(--glow);
+  z-index: 10;
+}
+
+.icon:hover::before {
+  opacity: 1;
+}
+
+/* Brand Color Variables */
+.facebook { --glow: #1877f2; }
+.twitter { --glow: #1da1f2; }
+.instagram { --glow: #e1306c; }
+.linkedin { --glow: #0a66c2; }
+.github { --glow: #181717; }
+.gitlab { --glow: #fca121; }
+.youtube { --glow: #ff0000; }
+.reddit { --glow: #ff4500; }
+.snapchat { --glow: #fffc00; }
+.pinterest { --glow: #e60023; }
+.whatsapp { --glow: #25d366; }
+.telegram { --glow: #0088cc; }
+.tiktok { --glow: #69c9d0; }
+.discord { --glow: #7289da; }
+.slack { --glow: #4a154b; }
+.skype { --glow: #00aff0; }
+.tumblr { --glow: #35465c; }
+.behance { --glow: #1769ff; }
+.dribbble { --glow: #ea4c89; }
+.vimeo { --glow: #1ab7ea; }
+.spotify { --glow: #1db954; }
+.html5 { --glow: #e34f26; }
+.css3 { --glow: #1572b6; }
+.js { --glow: #f7df1e; }
+.react { --glow: #61dafb; }
+.vuejs { --glow: #42b883; }
+.sass { --glow: #cc6699; }
+.bootstrap { --glow: #563d7c; }
+.npm { --glow: #cb3837; }
+.node-js { --glow: #339933; }
+.php { --glow: #777bb4; }
+.laravel { --glow: #ff2d20; }
+.python { --glow: #3776ab; }
+.java { --glow: #007396; }
+.docker { --glow: #2496ed; }
+.figma { --glow: #f24e1e; }
+.wordpress { --glow: #21759b; }
+.android { --glow: #3ddc84; }
+.apple { --glow: #a2aaad; }
+.windows { --glow: #00a4ef; }
+.digital-ocean { --glow: #0080ff; }
+.google { --glow: #4285f4; }
+.google-drive { --glow: #34a853; }
+.dropbox { --glow: #0061f2; }
+.trello { --glow: #0079bf; }
+.jira { --glow: #0052cc; }
+.jenkins { --glow: #d24939; }
+.git { --glow: #f05032; }
+.bitbucket { --glow: #0052cc; }
+.yarn { --glow: #2c8ebb; }
+.codepen { --glow: #000000; }
+.portfolio { --glow: #e8c81a; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .wrapper {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  
+  .icon-grid {
+    grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+  }
+  
+  .icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.4rem;
+  }
+}
