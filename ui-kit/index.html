@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete Material Design 3 UI Kit - Components that Google would be proud of">
+  <title>Material Design 3 UI Kit</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,500;8..144,600;8..144,700&display=swap" rel="stylesheet">
+  
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&family=Material+Icons+Outlined&family=Material+Icons+Round&family=Material+Icons+Sharp&family=Material+Icons+Two+Tone" rel="stylesheet">
+  <!-- Font Awesome for additional icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <h1 class="header-title">Material Design 3 UI Kit</h1>
+        <p class="header-subtitle">Complete component library by <span style="color: #e8c81a; font-weight: bold;">{Syntax}</span>Sidekick</p>
+      </div>
+      <div class="dark-mode-toggle">
+        <span class="toggle-label">
+          <span class="material-icons light-icon">light_mode</span>
+        </span>
+        <label class="toggle-switch" for="darkModeToggle" aria-label="Toggle dark mode">
+          <input type="checkbox" id="darkModeToggle" class="toggle-input">
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label">
+          <span class="material-icons dark-icon">dark_mode</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navigation">
+    <div class="container">
+      <div class="nav-tabs">
+        <button class="nav-tab active" data-section="buttons">Buttons</button>
+        <button class="nav-tab" data-section="inputs">Form Controls</button>
+        <button class="nav-tab" data-section="cards">Cards</button>
+        <button class="nav-tab" data-section="navigation">Navigation</button>
+        <button class="nav-tab" data-section="feedback">Feedback</button>
+        <button class="nav-tab" data-section="layout">Layout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="container">
+
+      <!-- Buttons Section -->
+      <section id="buttons" class="component-section active">
+        <h2 class="section-title">
+          <span class="material-icons">smart_button</span>
+          Buttons
+        </h2>
+        
+        <!-- Common Buttons -->
+        <div class="component-group">
+          <h3 class="group-title">Common Buttons</h3>
+          <div class="components-grid">
+            <div class="component-card">
+              <div class="component-preview">
+                <button class="md-btn md-btn-filled">Filled</button>
+                <button class="md-btn md-btn-outlined">Outlined</button>
+                <button class="md-btn md-btn-text">Text</button>
+                <button class="md-btn md-btn-elevated">Elevated</button>
+                <button class="md-btn md-btn-tonal">Tonal</button>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;button class="md-btn md-btn-filled"&gt;Filled&lt;/button&gt;
+&lt;button class="md-btn md-btn-outlined"&gt;Outlined&lt;/button&gt;
+&lt;button class="md-btn md-btn-text"&gt;Text&lt;/button&gt;
+&lt;button class="md-btn md-btn-elevated"&gt;Elevated&lt;/button&gt;
+&lt;button class="md-btn md-btn-tonal"&gt;Tonal&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="component-card">
+              <div class="component-preview">
+                <button class="md-btn md-btn-filled" disabled>Disabled</button>
+                <button class="md-btn md-btn-filled md-btn-loading">
+                  <span class="md-btn-spinner"></span>
+                  Loading
+                </button>
+                <button class="md-btn md-btn-filled md-btn-icon">
+                  <span class="material-icons">add</span>
+                  With Icon
+                </button>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;button class="md-btn md-btn-filled" disabled&gt;Disabled&lt;/button&gt;
+&lt;button class="md-btn md-btn-filled md-btn-loading"&gt;
+  &lt;span class="md-btn-spinner"&gt;&lt;/span&gt;
+  Loading
+&lt;/button&gt;
+&lt;button class="md-btn md-btn-filled md-btn-icon"&gt;
+  &lt;span class="material-icons"&gt;add&lt;/span&gt;
+  With Icon
+&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAB Buttons -->
+        <div class="component-group">
+          <h3 class="group-title">Floating Action Buttons</h3>
+          <div class="components-grid">
+            <div class="component-card">
+              <div class="component-preview">
+                <button class="md-fab md-fab-primary">
+                  <span class="material-icons">add</span>
+                </button>
+                <button class="md-fab md-fab-secondary">
+                  <span class="material-icons">edit</span>
+                </button>
+                <button class="md-fab md-fab-surface">
+                  <span class="material-icons">favorite</span>
+                </button>
+                <button class="md-fab md-fab-small">
+                  <span class="material-icons">share</span>
+                </button>
+                <button class="md-fab md-fab-large">
+                  <span class="material-icons">photo_camera</span>
+                </button>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;button class="md-fab md-fab-primary"&gt;
+  &lt;span class="material-icons"&gt;add&lt;/span&gt;
+&lt;/button&gt;
+&lt;button class="md-fab md-fab-secondary"&gt;
+  &lt;span class="material-icons"&gt;edit&lt;/span&gt;
+&lt;/button&gt;
+&lt;button class="md-fab md-fab-surface"&gt;
+  &lt;span class="material-icons"&gt;favorite&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="component-card">
+              <div class="component-preview">
+                <button class="md-fab md-fab-extended">
+                  <span class="material-icons">add</span>
+                  Create New
+                </button>
+                <button class="md-fab md-fab-extended md-fab-secondary">
+                  <span class="material-icons">upload</span>
+                  Upload File
+                </button>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;button class="md-fab md-fab-extended"&gt;
+  &lt;span class="material-icons"&gt;add&lt;/span&gt;
+  Create New
+&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Icon Buttons -->
+        <div class="component-group">
+          <h3 class="group-title">Icon Buttons</h3>
+          <div class="components-grid">
+            <div class="component-card">
+              <div class="component-preview">
+                <button class="md-icon-btn">
+                  <span class="material-icons">favorite_border</span>
+                </button>
+                <button class="md-icon-btn md-icon-btn-filled">
+                  <span class="material-icons">favorite</span>
+                </button>
+                <button class="md-icon-btn md-icon-btn-outlined">
+                  <span class="material-icons">bookmark_border</span>
+                </button>
+                <button class="md-icon-btn md-icon-btn-tonal">
+                  <span class="material-icons">share</span>
+                </button>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;button class="md-icon-btn"&gt;
+  &lt;span class="material-icons"&gt;favorite_border&lt;/span&gt;
+&lt;/button&gt;
+&lt;button class="md-icon-btn md-icon-btn-filled"&gt;
+  &lt;span class="material-icons"&gt;favorite&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="component-card">
+              <div class="component-preview">
+                <button class="md-icon-btn md-icon-btn-toggle" data-state="false">
+                  <span class="material-icons">visibility_off</span>
+                </button>
+                <button class="md-icon-btn md-icon-btn-toggle" data-state="true">
+                  <span class="material-icons">notifications</span>
+                </button>
+                <button class="md-icon-btn md-icon-btn-toggle" data-state="false">
+                  <span class="material-icons">bookmark_border</span>
+                </button>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;button class="md-icon-btn md-icon-btn-toggle" data-state="false"&gt;
+  &lt;span class="material-icons"&gt;visibility_off&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Form Controls Section -->
+      <section id="inputs" class="component-section">
+        <h2 class="section-title">
+          <span class="material-icons">input</span>
+          Form Controls
+        </h2>
+
+        <!-- Text Fields -->
+        <div class="component-group">
+          <h3 class="group-title">Text Fields</h3>
+          <div class="components-grid">
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-text-field md-text-field-filled">
+                  <input type="text" id="filled-input" class="md-input" placeholder=" ">
+                  <label for="filled-input" class="md-label">Filled Text Field</label>
+                </div>
+                <div class="md-text-field md-text-field-outlined">
+                  <input type="text" id="outlined-input" class="md-input" placeholder=" ">
+                  <label for="outlined-input" class="md-label">Outlined Text Field</label>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-text-field md-text-field-filled"&gt;
+  &lt;input type="text" id="filled-input" class="md-input" placeholder=" "&gt;
+  &lt;label for="filled-input" class="md-label"&gt;Filled Text Field&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-text-field md-text-field-outlined md-text-field-error">
+                  <input type="email" id="error-input" class="md-input" placeholder=" " value="invalid-email">
+                  <label for="error-input" class="md-label">Email</label>
+                  <span class="md-helper-text">Please enter a valid email address</span>
+                </div>
+                <div class="md-text-field md-text-field-filled md-text-field-icon">
+                  <span class="material-icons md-leading-icon">search</span>
+                  <input type="text" id="search-input" class="md-input" placeholder=" ">
+                  <label for="search-input" class="md-label">Search</label>
+                  <button class="md-trailing-icon">
+                    <span class="material-icons">clear</span>
+                  </button>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-text-field md-text-field-outlined md-text-field-error"&gt;
+  &lt;input type="email" class="md-input" placeholder=" " value="invalid-email"&gt;
+  &lt;label class="md-label"&gt;Email&lt;/label&gt;
+  &lt;span class="md-helper-text"&gt;Please enter a valid email address&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Switches -->
+        <div class="component-group">
+          <h3 class="group-title">Switches</h3>
+          <div class="components-grid">
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-switch">
+                  <input type="checkbox" id="switch1" class="md-switch-input">
+                  <label for="switch1" class="md-switch-label">
+                    <span class="md-switch-track">
+                      <span class="md-switch-thumb">
+                        <span class="material-icons md-switch-icon">check</span>
+                      </span>
+                    </span>
+                    Enable notifications
+                  </label>
+                </div>
+                <div class="md-switch">
+                  <input type="checkbox" id="switch2" class="md-switch-input" checked>
+                  <label for="switch2" class="md-switch-label">
+                    <span class="md-switch-track">
+                      <span class="md-switch-thumb">
+                        <span class="material-icons md-switch-icon">check</span>
+                      </span>
+                    </span>
+                    Dark mode
+                  </label>
+                </div>
+                <div class="md-switch">
+                  <input type="checkbox" id="switch3" class="md-switch-input" disabled>
+                  <label for="switch3" class="md-switch-label">
+                    <span class="md-switch-track">
+                      <span class="md-switch-thumb">
+                        <span class="material-icons md-switch-icon">check</span>
+                      </span>
+                    </span>
+                    Disabled option
+                  </label>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-switch"&gt;
+  &lt;input type="checkbox" id="switch1" class="md-switch-input"&gt;
+  &lt;label for="switch1" class="md-switch-label"&gt;
+    &lt;span class="md-switch-track"&gt;
+      &lt;span class="md-switch-thumb"&gt;
+        &lt;span class="material-icons md-switch-icon"&gt;check&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/span&gt;
+    Enable notifications
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-slider">
+                  <label for="slider1" class="md-slider-label">Volume</label>
+                  <input type="range" id="slider1" class="md-slider-input" min="0" max="100" value="50">
+                  <div class="md-slider-track">
+                    <div class="md-slider-active-track"></div>
+                    <div class="md-slider-thumb"></div>
+                  </div>
+                </div>
+                <div class="md-slider md-slider-discrete">
+                  <label for="slider2" class="md-slider-label">Brightness</label>
+                  <input type="range" id="slider2" class="md-slider-input" min="0" max="100" value="75" step="25">
+                  <div class="md-slider-track">
+                    <div class="md-slider-active-track"></div>
+                    <div class="md-slider-thumb">
+                      <div class="md-slider-value-indicator">75</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-slider"&gt;
+  &lt;label for="slider1" class="md-slider-label"&gt;Volume&lt;/label&gt;
+  &lt;input type="range" id="slider1" class="md-slider-input" min="0" max="100" value="50"&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cards Section -->
+      <section id="cards" class="component-section">
+        <h2 class="section-title">
+          <span class="material-icons">view_agenda</span>
+          Cards
+        </h2>
+
+        <div class="component-group">
+          <h3 class="group-title">Card Types</h3>
+          <div class="components-grid">
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-card md-card-elevated">
+                  <div class="md-card-header">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop&crop=top" alt="Card image" class="md-card-image">
+                  </div>
+                  <div class="md-card-content">
+                    <h4 class="md-card-title">Elevated Card</h4>
+                    <p class="md-card-subtitle">Card subtitle text</p>
+                    <p class="md-card-text">This is an elevated card with shadow. It stands out from the background and draws attention.</p>
+                  </div>
+                  <div class="md-card-actions">
+                    <button class="md-btn md-btn-text">Learn More</button>
+                    <button class="md-btn md-btn-filled">Action</button>
+                  </div>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-card md-card-elevated"&gt;
+  &lt;div class="md-card-header"&gt;
+    &lt;img src="image.jpg" alt="Card image" class="md-card-image"&gt;
+  &lt;/div&gt;
+  &lt;div class="md-card-content"&gt;
+    &lt;h4 class="md-card-title"&gt;Elevated Card&lt;/h4&gt;
+    &lt;p class="md-card-subtitle"&gt;Card subtitle text&lt;/p&gt;
+    &lt;p class="md-card-text"&gt;Card description text...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="md-card-actions"&gt;
+    &lt;button class="md-btn md-btn-text"&gt;Learn More&lt;/button&gt;
+    &lt;button class="md-btn md-btn-filled"&gt;Action&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-card md-card-filled">
+                  <div class="md-card-content">
+                    <div class="md-card-header-content">
+                      <span class="material-icons md-card-icon">article</span>
+                      <div>
+                        <h4 class="md-card-title">Filled Card</h4>
+                        <p class="md-card-subtitle">With icon header</p>
+                      </div>
+                    </div>
+                    <p class="md-card-text">This is a filled card with a tinted background. It provides subtle visual hierarchy.</p>
+                  </div>
+                  <div class="md-card-actions">
+                    <button class="md-icon-btn">
+                      <span class="material-icons">share</span>
+                    </button>
+                    <button class="md-icon-btn">
+                      <span class="material-icons">bookmark_border</span>
+                    </button>
+                    <button class="md-icon-btn">
+                      <span class="material-icons">more_vert</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="md-card md-card-outlined">
+                  <div class="md-card-content">
+                    <h4 class="md-card-title">Outlined Card</h4>
+                    <p class="md-card-text">This card has a subtle border and no shadow. Perfect for minimal designs.</p>
+                  </div>
+                  <div class="md-card-actions">
+                    <button class="md-btn md-btn-outlined">Edit</button>
+                  </div>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-card md-card-filled"&gt;
+  &lt;div class="md-card-content"&gt;
+    &lt;div class="md-card-header-content"&gt;
+      &lt;span class="material-icons md-card-icon"&gt;article&lt;/span&gt;
+      &lt;div&gt;
+        &lt;h4 class="md-card-title"&gt;Filled Card&lt;/h4&gt;
+        &lt;p class="md-card-subtitle"&gt;With icon header&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class="md-card-text"&gt;Card description...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation Section -->
+      <section id="navigation" class="component-section">
+        <h2 class="section-title">
+          <span class="material-icons">menu</span>
+          Navigation
+        </h2>
+
+        <div class="component-group">
+          <h3 class="group-title">App Bars</h3>
+          <div class="components-grid">
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-top-app-bar">
+                  <div class="md-top-app-bar-content">
+                    <button class="md-icon-btn">
+                      <span class="material-icons">menu</span>
+                    </button>
+                    <h3 class="md-top-app-bar-title">Page Title</h3>
+                    <div class="md-top-app-bar-actions">
+                      <button class="md-icon-btn">
+                        <span class="material-icons">search</span>
+                      </button>
+                      <button class="md-icon-btn">
+                        <span class="material-icons">more_vert</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="md-bottom-app-bar">
+                  <div class="md-bottom-app-bar-content">
+                    <button class="md-icon-btn">
+                      <span class="material-icons">menu</span>
+                    </button>
+                    <button class="md-icon-btn">
+                      <span class="material-icons">search</span>
+                    </button>
+                    <button class="md-icon-btn">
+                      <span class="material-icons">favorite</span>
+                    </button>
+                    <div class="md-spacer"></div>
+                    <button class="md-fab md-fab-primary">
+                      <span class="material-icons">add</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-top-app-bar"&gt;
+  &lt;div class="md-top-app-bar-content"&gt;
+    &lt;button class="md-icon-btn"&gt;
+      &lt;span class="material-icons"&gt;menu&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;h3 class="md-top-app-bar-title"&gt;Page Title&lt;/h3&gt;
+    &lt;div class="md-top-app-bar-actions"&gt;
+      &lt;button class="md-icon-btn"&gt;
+        &lt;span class="material-icons"&gt;search&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-navigation-rail">
+                  <div class="md-navigation-rail-header">
+                    <button class="md-icon-btn">
+                      <span class="material-icons">menu</span>
+                    </button>
+                    <button class="md-fab md-fab-small">
+                      <span class="material-icons">add</span>
+                    </button>
+                  </div>
+                  <nav class="md-navigation-rail-nav">
+                    <a href="#" class="md-navigation-rail-item active">
+                      <span class="material-icons">home</span>
+                      <span class="md-navigation-rail-label">Home</span>
+                    </a>
+                    <a href="#" class="md-navigation-rail-item">
+                      <span class="material-icons">search</span>
+                      <span class="md-navigation-rail-label">Search</span>
+                    </a>
+                    <a href="#" class="md-navigation-rail-item">
+                      <span class="material-icons">favorite</span>
+                      <span class="md-navigation-rail-label">Favorites</span>
+                    </a>
+                    <a href="#" class="md-navigation-rail-item">
+                      <span class="material-icons">person</span>
+                      <span class="md-navigation-rail-label">Profile</span>
+                    </a>
+                  </nav>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-navigation-rail"&gt;
+  &lt;nav class="md-navigation-rail-nav"&gt;
+    &lt;a href="#" class="md-navigation-rail-item active"&gt;
+      &lt;span class="material-icons"&gt;home&lt;/span&gt;
+      &lt;span class="md-navigation-rail-label"&gt;Home&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="component-group">
+          <h3 class="group-title">Navigation Drawer</h3>
+          <div class="components-grid">
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-navigation-drawer">
+                  <div class="md-navigation-drawer-header">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User avatar" class="md-avatar">
+                    <div class="md-navigation-drawer-user">
+                      <h4 class="md-navigation-drawer-name">John Doe</h4>
+                      <p class="md-navigation-drawer-email">john@example.com</p>
+                    </div>
+                  </div>
+                  <nav class="md-navigation-drawer-nav">
+                    <a href="#" class="md-navigation-drawer-item active">
+                      <span class="material-icons">inbox</span>
+                      <span class="md-navigation-drawer-label">Inbox</span>
+                      <span class="md-badge">3</span>
+                    </a>
+                    <a href="#" class="md-navigation-drawer-item">
+                      <span class="material-icons">star</span>
+                      <span class="md-navigation-drawer-label">Starred</span>
+                    </a>
+                    <a href="#" class="md-navigation-drawer-item">
+                      <span class="material-icons">send</span>
+                      <span class="md-navigation-drawer-label">Sent</span>
+                    </a>
+                    <div class="md-divider"></div>
+                    <a href="#" class="md-navigation-drawer-item">
+                      <span class="material-icons">drafts</span>
+                      <span class="md-navigation-drawer-label">Drafts</span>
+                    </a>
+                    <a href="#" class="md-navigation-drawer-item">
+                      <span class="material-icons">delete</span>
+                      <span class="md-navigation-drawer-label">Trash</span>
+                    </a>
+                  </nav>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-navigation-drawer"&gt;
+  &lt;div class="md-navigation-drawer-header"&gt;
+    &lt;img src="avatar.jpg" alt="User avatar" class="md-avatar"&gt;
+    &lt;div class="md-navigation-drawer-user"&gt;
+      &lt;h4 class="md-navigation-drawer-name"&gt;John Doe&lt;/h4&gt;
+      &lt;p class="md-navigation-drawer-email"&gt;john@example.com&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;nav class="md-navigation-drawer-nav"&gt;
+    &lt;a href="#" class="md-navigation-drawer-item active"&gt;
+      &lt;span class="material-icons"&gt;inbox&lt;/span&gt;
+      &lt;span class="md-navigation-drawer-label"&gt;Inbox&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-tabs">
+                  <div class="md-tab-bar">
+                    <button class="md-tab active" data-tab="tab1">
+                      <span class="material-icons">home</span>
+                      <span class="md-tab-label">Home</span>
+                      <div class="md-tab-indicator"></div>
+                    </button>
+                    <button class="md-tab" data-tab="tab2">
+                      <span class="material-icons">search</span>
+                      <span class="md-tab-label">Search</span>
+                      <div class="md-tab-indicator"></div>
+                    </button>
+                    <button class="md-tab" data-tab="tab3">
+                      <span class="material-icons">favorite</span>
+                      <span class="md-tab-label">Favorites</span>
+                      <div class="md-tab-indicator"></div>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="md-bottom-navigation">
+                  <button class="md-bottom-nav-item active">
+                    <span class="material-icons">home</span>
+                    <span class="md-bottom-nav-label">Home</span>
+                  </button>
+                  <button class="md-bottom-nav-item">
+                    <span class="material-icons">search</span>
+                    <span class="md-bottom-nav-label">Search</span>
+                  </button>
+                  <button class="md-bottom-nav-item">
+                    <span class="material-icons">favorite</span>
+                    <span class="md-bottom-nav-label">Favorites</span>
+                  </button>
+                  <button class="md-bottom-nav-item">
+                    <span class="material-icons">person</span>
+                    <span class="md-bottom-nav-label">Profile</span>
+                  </button>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-tabs"&gt;
+  &lt;div class="md-tab-bar"&gt;
+    &lt;button class="md-tab active" data-tab="tab1"&gt;
+      &lt;span class="material-icons"&gt;home&lt;/span&gt;
+      &lt;span class="md-tab-label"&gt;Home&lt;/span&gt;
+      &lt;div class="md-tab-indicator"&gt;&lt;/div&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feedback Section -->
+      <section id="feedback" class="component-section">
+        <h2 class="section-title">
+          <span class="material-icons">feedback</span>
+          Feedback
+        </h2>
+
+        <div class="component-group">
+          <h3 class="group-title">Dialogs & Snackbars</h3>
+          <div class="components-grid">
+            <div class="component-card">
+              <div class="component-preview">
+                <button class="md-btn md-btn-outlined" onclick="showDialog('basicDialog')">Show Basic Dialog</button>
+                <button class="md-btn md-btn-outlined" onclick="showDialog('alertDialog')">Show Alert Dialog</button>
+                <button class="md-btn md-btn-outlined" onclick="showSnackbar('Basic snackbar message')">Show Snackbar</button>
+                
+                <div id="basicDialog" class="md-dialog">
+                  <div class="md-dialog-backdrop" onclick="hideDialog('basicDialog')"></div>
+                  <div class="md-dialog-container">
+                    <div class="md-dialog-header">
+                      <h3 class="md-dialog-title">Basic Dialog</h3>
+                      <button class="md-icon-btn" onclick="hideDialog('basicDialog')">
+                        <span class="material-icons">close</span>
+                      </button>
+                    </div>
+                    <div class="md-dialog-content">
+                      <p>This is a basic dialog with some content. Dialogs should be used sparingly and only when necessary to interrupt the user's workflow.</p>
+                    </div>
+                    <div class="md-dialog-actions">
+                      <button class="md-btn md-btn-text" onclick="hideDialog('basicDialog')">Cancel</button>
+                      <button class="md-btn md-btn-filled" onclick="hideDialog('basicDialog')">OK</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="alertDialog" class="md-dialog">
+                  <div class="md-dialog-backdrop" onclick="hideDialog('alertDialog')"></div>
+                  <div class="md-dialog-container">
+                    <div class="md-dialog-header">
+                      <span class="material-icons md-dialog-icon error">warning</span>
+                      <h3 class="md-dialog-title">Delete Item?</h3>
+                    </div>
+                    <div class="md-dialog-content">
+                      <p>This action cannot be undone. Are you sure you want to delete this item?</p>
+                    </div>
+                    <div class="md-dialog-actions">
+                      <button class="md-btn md-btn-text" onclick="hideDialog('alertDialog')">Cancel</button>
+                      <button class="md-btn md-btn-filled error" onclick="hideDialog('alertDialog')">Delete</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-dialog"&gt;
+  &lt;div class="md-dialog-backdrop"&gt;&lt;/div&gt;
+  &lt;div class="md-dialog-container"&gt;
+    &lt;div class="md-dialog-header"&gt;
+      &lt;h3 class="md-dialog-title"&gt;Dialog Title&lt;/h3&gt;
+    &lt;/div&gt;
+    &lt;div class="md-dialog-content"&gt;
+      &lt;p&gt;Dialog content...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="md-dialog-actions"&gt;
+      &lt;button class="md-btn md-btn-text"&gt;Cancel&lt;/button&gt;
+      &lt;button class="md-btn md-btn-filled"&gt;OK&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-progress-linear">
+                  <div class="md-progress-linear-track">
+                    <div class="md-progress-linear-bar" style="transform: scaleX(0.65)"></div>
+                  </div>
+                </div>
+                
+                <div class="md-progress-circular">
+                  <svg class="md-progress-circular-svg" viewBox="0 0 48 48">
+                    <circle class="md-progress-circular-track" cx="24" cy="24" r="18"></circle>
+                    <circle class="md-progress-circular-bar" cx="24" cy="24" r="18" style="stroke-dasharray: 75.4, 113.1"></circle>
+                  </svg>
+                </div>
+
+                <div class="md-chip">
+                  <span class="material-icons md-chip-icon">face</span>
+                  <span class="md-chip-label">Filter Chip</span>
+                  <button class="md-chip-remove">
+                    <span class="material-icons">close</span>
+                  </button>
+                </div>
+
+                <div class="md-chip md-chip-outlined">
+                  <span class="md-chip-label">Outlined Chip</span>
+                </div>
+
+                <div class="md-chip md-chip-elevated">
+                  <span class="md-chip-label">Elevated Chip</span>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-progress-linear"&gt;
+  &lt;div class="md-progress-linear-track"&gt;
+    &lt;div class="md-progress-linear-bar" style="transform: scaleX(0.65)"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="md-chip"&gt;
+  &lt;span class="material-icons md-chip-icon"&gt;face&lt;/span&gt;
+  &lt;span class="md-chip-label"&gt;Filter Chip&lt;/span&gt;
+  &lt;button class="md-chip-remove"&gt;
+    &lt;span class="material-icons"&gt;close&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Layout Section -->
+      <section id="layout" class="component-section">
+        <h2 class="section-title">
+          <span class="material-icons">dashboard</span>
+          Layout
+        </h2>
+
+        <div class="component-group">
+          <h3 class="group-title">Lists & Grids</h3>
+          <div class="components-grid">
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-list">
+                  <div class="md-list-item">
+                    <span class="material-icons md-list-icon">inbox</span>
+                    <div class="md-list-content">
+                      <div class="md-list-primary">Inbox</div>
+                      <div class="md-list-secondary">3 new messages</div>
+                    </div>
+                    <span class="md-badge">3</span>
+                  </div>
+                  <div class="md-list-item">
+                    <span class="material-icons md-list-icon">star</span>
+                    <div class="md-list-content">
+                      <div class="md-list-primary">Starred</div>
+                      <div class="md-list-secondary">Important items</div>
+                    </div>
+                  </div>
+                  <div class="md-list-item">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Avatar" class="md-avatar md-list-icon">
+                    <div class="md-list-content">
+                      <div class="md-list-primary">John Doe</div>
+                      <div class="md-list-secondary">Hey! How are you doing?</div>
+                    </div>
+                    <div class="md-list-meta">2:30 PM</div>
+                  </div>
+                  <div class="md-divider"></div>
+                  <div class="md-list-item">
+                    <span class="material-icons md-list-icon">settings</span>
+                    <div class="md-list-content">
+                      <div class="md-list-primary">Settings</div>
+                    </div>
+                    <button class="md-icon-btn">
+                      <span class="material-icons">chevron_right</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-list"&gt;
+  &lt;div class="md-list-item"&gt;
+    &lt;span class="material-icons md-list-icon"&gt;inbox&lt;/span&gt;
+    &lt;div class="md-list-content"&gt;
+      &lt;div class="md-list-primary"&gt;Inbox&lt;/div&gt;
+      &lt;div class="md-list-secondary"&gt;3 new messages&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class="md-badge"&gt;3&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="component-card">
+              <div class="component-preview">
+                <div class="md-grid">
+                  <div class="md-grid-item">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=150&h=150&fit=crop" alt="Grid item" class="md-grid-image">
+                    <div class="md-grid-content">
+                      <h5 class="md-grid-title">Nature</h5>
+                    </div>
+                  </div>
+                  <div class="md-grid-item">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=150&h=150&fit=crop" alt="Grid item" class="md-grid-image">
+                    <div class="md-grid-content">
+                      <h5 class="md-grid-title">Adventure</h5>
+                    </div>
+                  </div>
+                  <div class="md-grid-item">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=150&h=150&fit=crop" alt="Grid item" class="md-grid-image">
+                    <div class="md-grid-content">
+                      <h5 class="md-grid-title">Forest</h5>
+                    </div>
+                  </div>
+                  <div class="md-grid-item">
+                    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=150&h=150&fit=crop" alt="Grid item" class="md-grid-image">
+                    <div class="md-grid-content">
+                      <h5 class="md-grid-title">Stars</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="show-code-btn" onclick="toggleCode(this)">
+                <span class="material-icons">code</span>
+              </button>
+              <div class="code-block">
+                <pre><code class="language-html">&lt;div class="md-grid"&gt;
+  &lt;div class="md-grid-item"&gt;
+    &lt;img src="image.jpg" alt="Grid item" class="md-grid-image"&gt;
+    &lt;div class="md-grid-content"&gt;
+      &lt;h5 class="md-grid-title"&gt;Title&lt;/h5&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Snackbar Container -->
+  <div id="snackbar-container" class="md-snackbar-container"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 class="footer-title">Material Design 3 UI Kit</h4>
+          <p class="footer-text">A complete component library following Google's Material Design 3 specifications. Built with modern web technologies and accessibility in mind.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4 class="footer-title">Components</h4>
+          <ul class="footer-links">
+            <li><a href="#buttons">Buttons</a></li>
+            <li><a href="#inputs">Form Controls</a></li>
+            <li><a href="#cards">Cards</a></li>
+            <li><a href="#navigation">Navigation</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+            <li><a href="#layout">Layout</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4 class="footer-title">Resources</h4>
+          <ul class="footer-links">
+            <li><a href="https://m3.material.io/" target="_blank" rel="noopener noreferrer">Material Design 3</a></li>
+            <li><a href="https://fonts.google.com/icons" target="_blank" rel="noopener noreferrer">Material Icons</a></li>
+            <li><a href="https://github.com/syntaxsidekick" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://codepen.io/syntaxsidekick" target="_blank" rel="noopener noreferrer">CodePen</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4 class="footer-title">Connect</h4>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/riadkilani" target="_blank" rel="noopener noreferrer" class="icon linkedin" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://x.com/syntaxsidekick" target="_blank" rel="noopener noreferrer" class="icon twitter" aria-label="X (Twitter)">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://github.com/syntaxsidekick" target="_blank" rel="noopener noreferrer" class="icon github" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://codepen.io/syntaxsidekick" target="_blank" rel="noopener noreferrer" class="icon codepen" aria-label="CodePen">
+              <i class="fab fa-codepen"></i>
+            </a>
+            <a href="https://riadkilani.com" target="_blank" rel="noopener noreferrer" class="icon portfolio" aria-label="Portfolio">
+              <i class="fas fa-globe"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Riad Kilani. All rights reserved. | Built with ❤️ and Material Design 3</p>
+      </div>
+    </div>
+  </footer>  
+
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
