@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Collection of modern button UI components and designs">
+  <title>Button Components Collection</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <h1 class="header-title">Button Components</h1>
+        <p class="header-subtitle">A collection of modern button UI designs by <span style="color: #e8c81a; font-weight: bold;">{Syntax}</span>Sidekick</p>
+      </div>
+      <div class="dark-mode-toggle">
+        <span class="toggle-label">
+          <span class="material-icons light-icon">light_mode</span>
+        </span>
+        <label class="toggle-switch" for="darkModeToggle" aria-label="Toggle dark mode">
+          <input type="checkbox" id="darkModeToggle" class="toggle-input">
+          <span class="toggle-slider"></span>
+        </label>
+        <span class="toggle-label">
+          <span class="material-icons dark-icon">dark_mode</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="container">
+      
+      <!-- Basic Buttons Section -->
+      <section class="card-section">
+        <h2 class="section-title">Basic Buttons</h2>
+        <div class="cards-grid">
+          
+          <!-- Primary Buttons -->
+          <div class="card card-basic" data-card-type="primary">
+            <div class="card-header">
+              <h3 class="card-title">Primary Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Essential action buttons in different sizes and states.</p>
+              <div class="button-showcase">
+                <button class="btn btn-primary btn-sm">Small</button>
+                <button class="btn btn-primary">Medium</button>
+                <button class="btn btn-primary btn-lg">Large</button>
+                <button class="btn btn-primary" disabled>Disabled</button>
+              </div>
+            </div>
+            <button class="code-view-btn" data-card="primary" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+          </div>
+
+          <!-- Secondary Buttons -->
+          <div class="card card-basic" data-card-type="secondary">
+            <div class="card-header">
+              <h3 class="card-title">Secondary Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Subtle buttons for secondary actions and alternatives.</p>
+              <div class="button-showcase">
+                <button class="btn btn-secondary btn-sm">Small</button>
+                <button class="btn btn-secondary">Medium</button>
+                <button class="btn btn-secondary btn-lg">Large</button>
+                <button class="btn btn-secondary" disabled>Disabled</button>
+              </div>
+            </div>
+            <button class="code-view-btn" data-card="secondary" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+          </div>
+
+          <!-- Outline Buttons -->
+          <div class="card card-basic" data-card-type="outline">
+            <div class="card-header">
+              <h3 class="card-title">Outline Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Clean outline buttons with hover fill effects.</p>
+              <div class="button-showcase">
+                <button class="btn btn-outline btn-sm">Small</button>
+                <button class="btn btn-outline">Medium</button>
+                <button class="btn btn-outline btn-lg">Large</button>
+                <button class="btn btn-outline" disabled>Disabled</button>
+              </div>
+            </div>
+            <button class="code-view-btn" data-card="outline" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+          </div>
+
+          <!-- Ghost Buttons -->
+          <div class="card card-basic" data-card-type="ghost">
+            <div class="card-header">
+              <h3 class="card-title">Ghost Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Minimal transparent buttons with subtle interactions.</p>
+              <div class="button-showcase">
+                <button class="btn btn-ghost btn-sm">Small</button>
+                <button class="btn btn-ghost">Medium</button>
+                <button class="btn btn-ghost btn-lg">Large</button>
+                <button class="btn btn-ghost" disabled>Disabled</button>
+              </div>
+            </div>
+            <button class="code-view-btn" data-card="ghost" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+          </div>
+
+          <!-- Icon Buttons -->
+          <div class="card card-basic" data-card-type="icon">
+            <button class="code-view-btn" data-card="icon" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Icon Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Buttons with icons for enhanced visual communication.</p>
+              <div class="button-showcase">
+                <button class="btn btn-primary btn-sm">
+                  <span class="material-icons">add</span>
+                  Add
+                </button>
+                <button class="btn btn-primary">
+                  <span class="material-icons">download</span>
+                  Download
+                </button>
+                <button class="btn btn-primary btn-lg">
+                  <span class="material-icons">send</span>
+                  Send Message
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Action Button -->
+          <div class="card card-basic" data-card-type="fab">
+            <button class="code-view-btn" data-card="fab" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Floating Action Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Circular floating buttons for primary actions.</p>
+              <div class="button-showcase">
+                <button class="btn btn-fab btn-sm">
+                  <span class="material-icons">add</span>
+                </button>
+                <button class="btn btn-fab">
+                  <span class="material-icons">edit</span>
+                </button>
+                <button class="btn btn-fab btn-lg">
+                  <span class="material-icons">favorite</span>
+                </button>
+                <button class="btn btn-fab btn-extended">
+                  <span class="material-icons">add</span>
+                  Create New
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Advanced Buttons Section -->
+      <section class="card-section">
+        <h2 class="section-title">Advanced Buttons</h2>
+        <div class="cards-grid">
+          
+          <!-- Loading Buttons -->
+          <div class="card card-advanced" data-card-type="loading">
+            <button class="code-view-btn" data-card="loading" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Loading Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Buttons with loading states and spinner animations.</p>
+              <div class="button-showcase">
+                <button class="btn btn-primary btn-loading">
+                  <span class="btn-spinner"></span>
+                  Loading...
+                </button>
+                <button class="btn btn-secondary btn-loading">
+                  <span class="btn-spinner"></span>
+                  Processing
+                </button>
+                <button class="btn btn-outline btn-loading">
+                  <span class="btn-spinner"></span>
+                  Submitting
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gradient Buttons -->
+          <div class="card card-advanced" data-card-type="gradient">
+            <button class="code-view-btn" data-card="gradient" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Gradient Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Eye-catching buttons with beautiful gradient backgrounds.</p>
+              <div class="button-showcase">
+                <button class="btn btn-gradient-primary">Primary Gradient</button>
+                <button class="btn btn-gradient-secondary">Secondary Gradient</button>
+                <button class="btn btn-gradient-success">Success Gradient</button>
+                <button class="btn btn-gradient-danger">Danger Gradient</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Buttons -->
+          <div class="card card-advanced" data-card-type="social">
+            <button class="code-view-btn" data-card="social" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Social Media Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Brand-specific buttons for social media integration.</p>
+              <div class="button-showcase">
+                <button class="btn btn-social btn-facebook">
+                  <i class="fab fa-facebook-f"></i>
+                  Facebook
+                </button>
+                <button class="btn btn-social btn-twitter">
+                  <i class="fab fa-twitter"></i>
+                  Twitter
+                </button>
+                <button class="btn btn-social btn-linkedin">
+                  <i class="fab fa-linkedin-in"></i>
+                  LinkedIn
+                </button>
+                <button class="btn btn-social btn-github">
+                  <i class="fab fa-github"></i>
+                  GitHub
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toggle Buttons -->
+          <div class="card card-advanced" data-card-type="toggle">
+            <button class="code-view-btn" data-card="toggle" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Toggle Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Interactive toggle buttons for on/off states with Material UI patterns.</p>
+              <div class="button-showcase">
+                <button class="btn btn-toggle" data-toggle="off">
+                  <span class="toggle-text">Toggle Me</span>
+                  <span class="toggle-indicator"></span>
+                </button>
+                <button class="btn btn-toggle btn-toggle-switch" data-toggle="off">
+                  <span class="switch-slider"></span>
+                </button>
+                <button class="btn btn-toggle btn-toggle-switch theme-toggle" data-toggle="off" title="Light/Dark Mode">
+                  <span class="switch-slider"></span>
+                </button>
+                <button class="btn btn-toggle btn-toggle-switch notification" data-toggle="on" title="Notifications">
+                  <span class="switch-slider"></span>
+                </button>
+                <button class="btn btn-toggle btn-toggle-switch wifi" data-toggle="off" title="Wi-Fi">
+                  <span class="switch-slider"></span>
+                </button>
+                <button class="btn btn-toggle btn-toggle-switch privacy" data-toggle="on" title="Privacy Mode">
+                  <span class="switch-slider"></span>
+                </button>
+                <button class="btn btn-toggle btn-toggle-switch power" data-toggle="off" title="Power Mode">
+                  <span class="switch-slider"></span>
+                </button>
+                <button class="btn btn-toggle btn-toggle-switch success" data-toggle="on" title="Success State">
+                  <span class="switch-slider"></span>
+                </button>
+                <button class="btn btn-toggle btn-toggle-switch small" data-toggle="off" title="Compact Size">
+                  <span class="switch-slider"></span>
+                </button>
+                <button class="btn btn-toggle btn-toggle-switch large" data-toggle="on" title="Large Size">
+                  <span class="switch-slider"></span>
+                </button>
+                <div class="btn-group-toggle">
+                  <button class="btn btn-outline active">Option 1</button>
+                  <button class="btn btn-outline">Option 2</button>
+                  <button class="btn btn-outline">Option 3</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button Groups -->
+          <div class="card card-advanced" data-card-type="groups">
+            <button class="code-view-btn" data-card="groups" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Button Groups</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Grouped buttons for related actions and navigation.</p>
+              <div class="button-showcase">
+                <div class="btn-group">
+                  <button class="btn btn-outline">Left</button>
+                  <button class="btn btn-outline">Center</button>
+                  <button class="btn btn-outline">Right</button>
+                </div>
+                <div class="btn-group">
+                  <button class="btn btn-primary">
+                    <span class="material-icons">format_bold</span>
+                  </button>
+                  <button class="btn btn-primary">
+                    <span class="material-icons">format_italic</span>
+                  </button>
+                  <button class="btn btn-primary">
+                    <span class="material-icons">format_underlined</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dropdown Buttons -->
+          <div class="card card-advanced" data-card-type="dropdown">
+            <button class="code-view-btn" data-card="dropdown" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Dropdown Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Buttons with integrated dropdown menus.</p>
+              <div class="button-showcase">
+                <div class="btn-dropdown">
+                  <button class="btn btn-primary">
+                    Actions
+                    <span class="material-icons">arrow_drop_down</span>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Edit</a>
+                    <a href="#" class="dropdown-item">Duplicate</a>
+                    <a href="#" class="dropdown-item">Delete</a>
+                  </div>
+                </div>
+                <div class="btn-dropdown">
+                  <button class="btn btn-outline">
+                    <span class="material-icons">more_horiz</span>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">
+                      <span class="material-icons">share</span>
+                      Share
+                    </a>
+                    <a href="#" class="dropdown-item">
+                      <span class="material-icons">download</span>
+                      Download
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Animated Buttons Section -->
+      <section class="card-section">
+        <h2 class="section-title">Animated Buttons</h2>
+        <div class="cards-grid">
+          
+          <!-- Hover Effects -->
+          <div class="card card-animated" data-card-type="hover">
+            <button class="code-view-btn" data-card="hover" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Hover Effects</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Buttons with smooth hover animations and transitions.</p>
+              <div class="button-showcase">
+                <button class="btn btn-hover-fill">Fill Effect</button>
+                <button class="btn btn-hover-slide">Slide Effect</button>
+                <button class="btn btn-hover-glow">Glow Effect</button>
+                <button class="btn btn-hover-bounce">Bounce Effect</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ripple Animation -->
+          <div class="card card-animated" data-card-type="ripple">
+            <button class="code-view-btn" data-card="ripple" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Ripple Animation</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Material Design inspired ripple effect on click.</p>
+              <div class="button-showcase">
+                <button class="btn btn-ripple btn-primary">Click for Ripple</button>
+                <button class="btn btn-ripple btn-secondary">Ripple Effect</button>
+                <button class="btn btn-ripple btn-outline">Animated Click</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pulse Animation -->
+          <div class="card card-animated" data-card-type="pulse">
+            <button class="code-view-btn" data-card="pulse" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Pulse Animation</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Attention-grabbing pulse animations for CTAs.</p>
+              <div class="button-showcase">
+                <button class="btn btn-pulse btn-primary">Call to Action</button>
+                <button class="btn btn-pulse-border btn-outline">Border Pulse</button>
+                <button class="btn btn-pulse-glow btn-gradient-primary">Glowing Pulse</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Morphing Buttons -->
+          <div class="card card-animated" data-card-type="morph">
+            <button class="code-view-btn" data-card="morph" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Morphing Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Buttons that transform into different shapes or states.</p>
+              <div class="button-showcase">
+                <button class="btn btn-morph-circle">Morph to Circle</button>
+                <button class="btn btn-morph-expand">Expand on Hover</button>
+                <button class="btn btn-morph-flip">
+                  <span class="btn-text-front">Hover Me</span>
+                  <span class="btn-text-back">Flipped!</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sliding Text Animation -->
+          <div class="card card-animated" data-card-type="sliding">
+            <button class="code-view-btn" data-card="sliding" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Sliding Text</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Text that slides in and out with smooth animations.</p>
+              <div class="button-showcase">
+                <button class="btn btn-slide-text">
+                  <span class="btn-text-slide">Slide Up</span>
+                  <span class="btn-text-slide">Complete!</span>
+                </button>
+                <button class="btn btn-slide-icon">
+                  <span class="btn-content">
+                    <span class="material-icons">send</span>
+                    Send Message
+                  </span>
+                  <span class="btn-content">
+                    <span class="material-icons">check</span>
+                    Sent!
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D Transform Buttons -->
+          <div class="card card-animated" data-card-type="transform">
+            <button class="code-view-btn" data-card="transform" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">3D Transforms</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Buttons with 3D perspective and rotation effects.</p>
+              <div class="button-showcase">
+                <button class="btn btn-3d">3D Button</button>
+                <button class="btn btn-flip-3d">
+                  <span class="btn-face btn-face-front">Front</span>
+                  <span class="btn-face btn-face-back">Back</span>
+                </button>
+                <button class="btn btn-rotate-3d">Rotate 3D</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Particle Effect Buttons -->
+          <div class="card card-animated" data-card-type="particles">
+            <button class="code-view-btn" data-card="particles" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Particle Effects</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Advanced buttons with particle animations and effects.</p>
+              <div class="button-showcase">
+                <button class="btn btn-particles">
+                  <span class="btn-particles-container">
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                    <span class="particle"></span>
+                  </span>
+                  Magical Button
+                </button>
+                <button class="btn btn-explosion">Explosion Effect</button>
+                <button class="btn btn-confetti">Confetti Burst</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Liquid Animation -->
+          <div class="card card-animated" data-card-type="liquid">
+            <button class="code-view-btn" data-card="liquid" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Liquid Animation</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Fluid, liquid-like animations for modern interactions.</p>
+              <div class="button-showcase">
+                <button class="btn btn-liquid">
+                  <span class="btn-liquid-fill"></span>
+                  Liquid Fill
+                </button>
+                <button class="btn btn-wave">
+                  <span class="btn-wave-effect"></span>
+                  Wave Effect
+                </button>
+                <button class="btn btn-blob">
+                  <span class="btn-blob-bg"></span>
+                  Blob Morph
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- RGB Glow Effect -->
+          <div class="card card-animated" data-card-type="rgb-glow">
+            <div class="card-header">
+              <h3 class="card-title">RGB Glow Effect</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Stunning RGB rainbow border animation with glowing effects.</p>
+              <div class="button-showcase">
+                <button class="rgb-glow">Click Here</button>
+                <button class="btn rgb-glow rgb-glow-fast">Fast Glow</button>
+                <button class="btn rgb-glow rgb-glow-pulse">Pulse Glow</button>
+                <button class="btn rgb-glow rgb-glow-large">Large Glow</button>
+              </div>
+            </div>
+            <button class="code-view-btn" data-card="rgb-glow" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Styled Buttons Section -->
+      <section class="card-section">
+        <h2 class="section-title">Styled Buttons</h2>
+        <div class="cards-grid">
+          
+          <!-- Glossy Buttons -->
+          <div class="card card-styled" data-card-type="glossy">
+            <div class="card-header">
+              <h3 class="card-title">Glossy Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Shiny, glossy finish with realistic highlights and shadows.</p>
+              <div class="button-showcase">
+                <button class="btn btn-glossy btn-glossy-blue">Glossy Blue</button>
+                <button class="btn btn-glossy btn-glossy-green">Glossy Green</button>
+                <button class="btn btn-glossy btn-glossy-red">Glossy Red</button>
+                <button class="btn btn-glossy btn-glossy-gold">Glossy Gold</button>
+              </div>
+            </div>
+            <button class="code-view-btn" data-card="glossy" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+          </div>
+
+          <!-- Glass Buttons -->
+          <div class="card card-styled card-glass-demo" data-card-type="glass">
+            <div class="glass-background"></div>
+            <div class="card-header">
+              <h3 class="card-title">Glass Morphism</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Modern glass effect with backdrop blur and transparency.</p>
+              <div class="button-showcase">
+                <button class="btn btn-glass btn-glass-light">Light Glass</button>
+                <button class="btn btn-glass btn-glass-dark">Dark Glass</button>
+                <button class="btn btn-glass btn-glass-colorful">Colorful</button>
+                <button class="btn btn-glass btn-glass-frosted">Frosted</button>
+              </div>
+            </div>
+            <button class="code-view-btn" data-card="glass" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+          </div>
+
+          <!-- Metallic Buttons -->
+          <div class="card card-styled" data-card-type="metallic">
+            <div class="card-header">
+              <h3 class="card-title">Metallic Finish</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Realistic metallic surfaces with brushed and polished effects.</p>
+              <div class="button-showcase">
+                <button class="btn btn-metallic btn-metallic-silver">Silver</button>
+                <button class="btn btn-metallic btn-metallic-copper">Copper</button>
+                <button class="btn btn-metallic btn-metallic-chrome">Chrome</button>
+                <button class="btn btn-metallic btn-metallic-titanium">Titanium</button>
+              </div>
+            </div>
+            <button class="code-view-btn" data-card="metallic" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+          </div>
+
+          <!-- Neon Buttons -->
+          <div class="card card-styled" data-card-type="neon">
+            <div class="card-header">
+              <h3 class="card-title">Neon Glow</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Vibrant neon effects with electric glow and pulsing animations.</p>
+              <div class="button-showcase">
+                <button class="btn btn-neon btn-neon-cyan">Neon Cyan</button>
+                <button class="btn btn-neon btn-neon-pink">Neon Pink</button>
+                <button class="btn btn-neon btn-neon-yellow">Neon Yellow</button>
+                <button class="btn btn-neon btn-neon-purple">Neon Purple</button>
+              </div>
+            </div>
+            <button class="code-view-btn" data-card="neon" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+          </div>
+
+          <!-- 3D Buttons -->
+          <div class="card card-styled" data-card-type="threed">
+            <div class="card-header">
+              <h3 class="card-title">3D Effects</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Three-dimensional buttons with depth, shadows, and perspective.</p>
+              <div class="button-showcase">
+                <button class="btn btn-3d btn-3d-raised">Raised 3D</button>
+                <button class="btn btn-3d btn-3d-pressed">Pressed</button>
+                <button class="btn btn-3d btn-3d-floating">Floating</button>
+                <button class="btn btn-3d btn-3d-isometric">Isometric</button>
+              </div>
+            </div>
+            <button class="code-view-btn" data-card="threed" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+          </div>
+
+          <!-- Gradient Shine -->
+          <div class="card card-styled" data-card-type="gradient-shine">
+            <div class="card-header">
+              <h3 class="card-title">Gradient Shine</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Beautiful gradients with animated shine and reflection effects.</p>
+              <div class="button-showcase">
+                <button class="btn btn-gradient-shine btn-shine-ocean">Ocean Shine</button>
+                <button class="btn btn-gradient-shine btn-shine-sunset">Sunset</button>
+                <button class="btn btn-gradient-shine btn-shine-aurora">Aurora</button>
+                <button class="btn btn-gradient-shine btn-shine-galaxy">Galaxy</button>
+              </div>
+            </div>
+            <button class="code-view-btn" data-card="gradient-shine" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Code Modal -->
+  <div id="codeModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 class="modal-title">Button Code</h2>
+        <button class="modal-close" id="closeModal">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+      
+      <div class="modal-tabs">
+        <button class="tab-button active" data-tab="html">HTML</button>
+        <button class="tab-button" data-tab="css">CSS</button>
+        <button class="tab-button" data-tab="js">JavaScript</button>
+      </div>
+      
+      <div class="modal-content">
+        <div class="tab-content active" id="html-tab">
+          <button class="copy-button" data-code="html">
+            <span class="material-icons">content_copy</span>
+            Copy
+          </button>
+          <pre><code id="html-code" class="language-html"></code></pre>
+        </div>
+        
+        <div class="tab-content" id="css-tab">
+          <button class="copy-button" data-code="css">
+            <span class="material-icons">content_copy</span>
+            Copy
+          </button>
+          <pre><code id="css-code" class="language-css"></code></pre>
+        </div>
+        
+        <div class="tab-content" id="js-tab">
+          <button class="copy-button" data-code="js">
+            <span class="material-icons">content_copy</span>
+            Copy
+          </button>
+          <pre><code id="js-code" class="language-javascript"></code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <h3 class="footer-title">Created by <span class="brand-highlight">Riad Kilani</span> @ <span class="brand-highlight">{</span>Syntax<span class="brand-highlight">}</span>Sidekick</h3>
+          <p class="footer-subtitle">Senior Front-End Developer | React & UI/UX Expert | Design Systems Architect | Building Scalable, Human-Centered Web Experiences</p>
+          <p class="footer-description">Crafting modern web experiences with clean code and beautiful design</p>
+        </div>
+        
+        <div class="footer-socials">
+          <p class="socials-label">Connect with me:</p>
+          <div class="icon-grid">
+            <a href="https://linkedin.com/in/riad-kilani" target="_blank" rel="noopener noreferrer" class="icon linkedin" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://x.com/syntaxsidekick" target="_blank" rel="noopener noreferrer" class="icon twitter" aria-label="X (Twitter)">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://github.com/syntaxsidekick" target="_blank" rel="noopener noreferrer" class="icon github" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://codepen.io/syntaxsidekick" target="_blank" rel="noopener noreferrer" class="icon codepen" aria-label="CodePen">
+              <i class="fab fa-codepen"></i>
+            </a>
+            <a href="https://riadkilani.com" target="_blank" rel="noopener noreferrer" class="icon portfolio" aria-label="Portfolio">
+              <i class="fas fa-globe"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Riad Kilani. All rights reserved. | Built with ❤️ and modern web technologies</p>
+      </div>
+    </div>
+  </footer>  
+
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

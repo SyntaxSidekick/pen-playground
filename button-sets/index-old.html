@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Collection of modern button UI components and designs">
+  <title>Button Components Collection</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="header-title" style="display: inline-block; margin-right: 15px;">Button Components</h1>
+      <p class="header-subtitle" style="display: inline-block; margin: 0;">A collection of modern button UI designs by <span style="color: #e8c81a; font-weight: bold;">{Syntax}</span>Sidekick</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="container">
+      
+      <!-- Basic Buttons Section -->
+      <section class="card-section">
+        <h2 class="section-title">Basic Buttons</h2>
+        <div class="cards-grid">
+          
+          <!-- Primary Buttons -->
+          <div class="card card-basic" data-card-type="primary">
+            <button class="code-view-btn" data-card="primary" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Primary Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Essential action buttons in different sizes and states.</p>
+              <div class="button-showcase">
+                <button class="btn btn-primary btn-sm">Small</button>
+                <button class="btn btn-primary">Medium</button>
+                <button class="btn btn-primary btn-lg">Large</button>
+                <button class="btn btn-primary" disabled>Disabled</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Buttons -->
+          <div class="card card-basic" data-card-type="secondary">
+            <button class="code-view-btn" data-card="secondary" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Secondary Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Subtle buttons for secondary actions and alternatives.</p>
+              <div class="button-showcase">
+                <button class="btn btn-secondary btn-sm">Small</button>
+                <button class="btn btn-secondary">Medium</button>
+                <button class="btn btn-secondary btn-lg">Large</button>
+                <button class="btn btn-secondary" disabled>Disabled</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outline Buttons -->
+          <div class="card card-basic" data-card-type="outline">
+            <button class="code-view-btn" data-card="outline" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Outline Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Clean outline buttons with hover fill effects.</p>
+              <div class="button-showcase">
+                <button class="btn btn-outline btn-sm">Small</button>
+                <button class="btn btn-outline">Medium</button>
+                <button class="btn btn-outline btn-lg">Large</button>
+                <button class="btn btn-outline" disabled>Disabled</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ghost Buttons -->
+          <div class="card card-basic" data-card-type="ghost">
+            <button class="code-view-btn" data-card="ghost" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Ghost Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Minimal transparent buttons with subtle interactions.</p>
+              <div class="button-showcase">
+                <button class="btn btn-ghost btn-sm">Small</button>
+                <button class="btn btn-ghost">Medium</button>
+                <button class="btn btn-ghost btn-lg">Large</button>
+                <button class="btn btn-ghost" disabled>Disabled</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Icon Buttons -->
+          <div class="card card-basic" data-card-type="icon">
+            <button class="code-view-btn" data-card="icon" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Icon Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Buttons with icons for enhanced visual communication.</p>
+              <div class="button-showcase">
+                <button class="btn btn-primary btn-sm">
+                  <span class="material-icons">add</span>
+                  Add
+                </button>
+                <button class="btn btn-primary">
+                  <span class="material-icons">download</span>
+                  Download
+                </button>
+                <button class="btn btn-primary btn-lg">
+                  <span class="material-icons">send</span>
+                  Send Message
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Action Button -->
+          <div class="card card-basic" data-card-type="fab">
+            <button class="code-view-btn" data-card="fab" title="View code for this button">
+              <span class="material-icons">code</span>
+              <span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Floating Action Buttons</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Circular floating buttons for primary actions.</p>
+              <div class="button-showcase">
+                <button class="btn btn-fab btn-sm">
+                  <span class="material-icons">add</span>
+                </button>
+                <button class="btn btn-fab">
+                  <span class="material-icons">edit</span>
+                </button>
+                <button class="btn btn-fab btn-lg">
+                  <span class="material-icons">favorite</span>
+                </button>
+                <button class="btn btn-fab btn-extended">
+                  <span class="material-icons">add</span>
+                  Create New
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+            </div>
+            <div class="card-content">
+              <p class="card-text">A card featuring an image at the top with content below. Perfect for showcasing visual content.</p>
+            </div>
+          </div>
+
+          <!-- Card with Actions -->
+          <div class="card card-basic" data-card-type="actions">
+            <button class="code-view-btn" data-card="actions" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="card-header">
+              <h3 class="card-title">Interactive Card</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">This card includes action buttons and interactive elements for enhanced user engagement.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-text">Cancel</button>
+              <button class="btn btn-primary">Continue</button>
+            </div>
+          </div>
+
+          <!-- Card with Icon -->
+          <div class="card card-basic" data-card-type="icon">
+            <button class="code-view-btn" data-card="icon" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="card-header">
+              <div class="card-icon">
+                <span class="material-icons">favorite</span>
+              </div>
+              <h3 class="card-title">Card with Icon</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Features an icon in the header area to provide visual context and improve recognition.</p>
+            </div>
+          </div>
+
+          <!-- Card with Badge -->
+          <div class="card card-basic" data-card-type="badge">
+            <button class="code-view-btn" data-card="badge" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="card-header">
+              <div class="card-badge">New</div>
+              <h3 class="card-title">Card with Badge</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Includes a status badge to highlight important information or current state.</p>
+            </div>
+          </div>
+
+          <!-- Full Featured Card -->
+          <div class="card card-basic" data-card-type="featured">
+            <button class="code-view-btn" data-card="featured" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=200&fit=crop" alt="Coffee cup" />
+              <div class="card-badge">Featured</div>
+            </div>
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="material-icons">schedule</span>
+                <span class="meta-text">2 min read</span>
+              </div>
+              <h3 class="card-title">Complete Card Example</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">A comprehensive card example featuring image, badge, metadata, content, and actions all combined.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-icon">
+                <span class="material-icons">bookmark_border</span>
+              </button>
+              <button class="btn btn-icon">
+                <span class="material-icons">share</span>
+              </button>
+              <button class="btn btn-primary">Read More</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Advanced Cards Section -->
+      <section class="card-section">
+        <h2 class="section-title">Advanced Cards</h2>
+        <div class="cards-grid">
+          
+          <!-- Profile Card -->
+          <div class="card card-profile" data-card-type="profile">
+            <button class="code-view-btn" data-card="profile" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="profile-header">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=face" alt="Profile" class="profile-avatar" />
+              <div class="profile-info">
+                <h3 class="profile-name">Alex Johnson</h3>
+                <p class="profile-role">Senior Frontend Developer</p>
+                <div class="profile-stats">
+                  <span class="stat">
+                    <span class="stat-number">127</span>
+                    <span class="stat-label">Projects</span>
+                  </span>
+                  <span class="stat">
+                    <span class="stat-number">2.4k</span>
+                    <span class="stat-label">Followers</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="profile-actions">
+              <button class="btn btn-primary">Follow</button>
+              <button class="btn btn-text">Message</button>
+            </div>
+          </div>
+
+          <!-- Product Card -->
+          <div class="card card-product" data-card-type="product">
+            <button class="code-view-btn" data-card="product" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop" alt="Wireless Headphones" />
+              <div class="product-badge sale">-30%</div>
+              <button class="product-wishlist btn-icon">
+                <span class="material-icons">favorite_border</span>
+              </button>
+            </div>
+            <div class="product-content">
+              <div class="product-category">Electronics</div>
+              <h3 class="product-title">Premium Wireless Headphones</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <span class="material-icons star filled">star</span>
+                  <span class="material-icons star filled">star</span>
+                  <span class="material-icons star filled">star</span>
+                  <span class="material-icons star filled">star</span>
+                  <span class="material-icons star">star</span>
+                </div>
+                <span class="rating-text">(4.2) 89 reviews</span>
+              </div>
+              <div class="product-price">
+                <span class="price-current">$169.99</span>
+                <span class="price-original">$239.99</span>
+              </div>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-primary">Add to Cart</button>
+              <button class="btn btn-icon">
+                <span class="material-icons">shopping_cart</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dashboard Stats Card -->
+          <div class="card card-stats" data-card-type="stats">
+            <button class="code-view-btn" data-card="stats" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="stats-header">
+              <div class="stats-icon">
+                <span class="material-icons">trending_up</span>
+              </div>
+              <div class="stats-info">
+                <h3 class="stats-title">Total Revenue</h3>
+                <div class="stats-period">This month</div>
+              </div>
+            </div>
+            <div class="stats-content">
+              <div class="stats-value">$24,847</div>
+              <div class="stats-change positive">
+                <span class="material-icons">arrow_upward</span>
+                <span class="change-text">+12.5%</span>
+              </div>
+            </div>
+            <div class="stats-chart">
+              <div class="mini-chart">
+                <div class="chart-bar" style="height: 20%"></div>
+                <div class="chart-bar" style="height: 45%"></div>
+                <div class="chart-bar" style="height: 30%"></div>
+                <div class="chart-bar" style="height: 70%"></div>
+                <div class="chart-bar" style="height: 55%"></div>
+                <div class="chart-bar" style="height: 85%"></div>
+                <div class="chart-bar" style="height: 65%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Media Post Card -->
+          <div class="card card-social" data-card-type="social">
+            <button class="code-view-btn" data-card="social" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="social-header">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face" alt="User" class="social-avatar" />
+              <div class="social-meta">
+                <h4 class="social-name">Sarah Williams</h4>
+                <div class="social-time">
+                  <span class="material-icons">schedule</span>
+                  <span>2 hours ago</span>
+                </div>
+              </div>
+              <button class="social-menu btn-icon">
+                <span class="material-icons">more_vert</span>
+              </button>
+            </div>
+            <div class="social-content">
+              <p class="social-text">Just launched my new portfolio website! 🚀 Excited to share my latest projects and connect with fellow developers. Check it out and let me know what you think!</p>
+              <div class="social-image">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=250&fit=crop" alt="Portfolio screenshot" />
+              </div>
+            </div>
+            <div class="social-actions">
+              <button class="social-action">
+                <span class="material-icons">favorite_border</span>
+                <span>24</span>
+              </button>
+              <button class="social-action">
+                <span class="material-icons">chat_bubble_outline</span>
+                <span>8</span>
+              </button>
+              <button class="social-action">
+                <span class="material-icons">share</span>
+                <span>Share</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Pricing Card -->
+          <div class="card card-pricing featured" data-card-type="pricing">
+            <button class="code-view-btn" data-card="pricing" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-header">
+              <h3 class="pricing-title">Professional</h3>
+              <div class="pricing-price">
+                <span class="price-currency">$</span>
+                <span class="price-amount">29</span>
+                <span class="price-period">/month</span>
+              </div>
+              <p class="pricing-description">Perfect for growing businesses and teams</p>
+            </div>
+            <div class="pricing-features">
+              <div class="feature">
+                <span class="material-icons">check_circle</span>
+                <span>Unlimited projects</span>
+              </div>
+              <div class="feature">
+                <span class="material-icons">check_circle</span>
+                <span>Advanced analytics</span>
+              </div>
+              <div class="feature">
+                <span class="material-icons">check_circle</span>
+                <span>Priority support</span>
+              </div>
+              <div class="feature">
+                <span class="material-icons">check_circle</span>
+                <span>Custom integrations</span>
+              </div>
+              <div class="feature">
+                <span class="material-icons">check_circle</span>
+                <span>Team collaboration</span>
+              </div>
+            </div>
+            <div class="pricing-actions">
+              <button class="btn btn-primary full-width">Start Free Trial</button>
+              <p class="pricing-trial">14-day free trial, no credit card required</p>
+            </div>
+          </div>
+
+          <!-- Article/Blog Card -->
+          <div class="card card-article" data-card-type="article">
+            <button class="code-view-btn" data-card="article" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="article-image">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop" alt="JavaScript Development" />
+              <div class="article-category">Development</div>
+            </div>
+            <div class="article-content">
+              <div class="article-meta">
+                <span class="article-date">Nov 1, 2025</span>
+                <span class="article-read-time">5 min read</span>
+              </div>
+              <h3 class="article-title">Modern JavaScript Patterns for Better Code</h3>
+              <p class="article-excerpt">Discover the latest JavaScript patterns and best practices that will make your code more maintainable, readable, and efficient.</p>
+              <div class="article-author">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Author" class="author-avatar" />
+                <div class="author-info">
+                  <span class="author-name">David Chen</span>
+                  <span class="author-role">Tech Lead</span>
+                </div>
+              </div>
+            </div>
+            <div class="article-actions">
+              <button class="btn btn-text">
+                <span class="material-icons">bookmark_border</span>
+                Save
+              </button>
+              <button class="btn btn-primary">Read Article</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Animated Cards Section -->
+      <section class="card-section">
+        <h2 class="section-title">Animated Cards</h2>
+        <div class="cards-grid">
+          
+          <!-- Card Flip Animation -->
+          <div class="card card-flip" data-card-type="flip">
+            <button class="code-view-btn" data-card="flip" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="card-flip-inner">
+              <div class="card-flip-front">
+                <div class="flip-icon">
+                  <span class="material-icons">psychology</span>
+                </div>
+                <h3 class="flip-title">Hover to Flip</h3>
+                <p class="flip-subtitle">Interactive card animation</p>
+              </div>
+              <div class="card-flip-back">
+                <div class="flip-content">
+                  <h3 class="flip-back-title">Card Flipped!</h3>
+                  <p class="flip-back-text">This demonstrates a smooth 3D flip animation using CSS transforms. Perfect for revealing additional content or creating interactive experiences.</p>
+                  <button class="btn btn-primary">Learn More</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hover Lift Animation -->
+          <div class="card card-hover-lift" data-card-type="hover-lift">
+            <button class="code-view-btn" data-card="hover-lift" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="card-header">
+              <div class="lift-icon">
+                <span class="material-icons">flight_takeoff</span>
+              </div>
+              <h3 class="card-title">Hover Lift Effect</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">This card lifts up smoothly when you hover over it, creating an elegant floating effect with enhanced shadows.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary">Explore</button>
+            </div>
+          </div>
+
+          <!-- Glow Animation -->
+          <div class="card card-glow" data-card-type="glow">
+            <button class="code-view-btn" data-card="glow" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="card-header">
+              <div class="glow-icon">
+                <span class="material-icons">auto_awesome</span>
+              </div>
+              <h3 class="card-title">Glow Effect</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Features a subtle pulsing glow animation that draws attention and creates a magical, premium feel.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary">Discover</button>
+            </div>
+          </div>
+
+          <!-- Tilt Animation -->
+          <div class="card card-tilt" data-card-type="tilt">
+            <button class="code-view-btn" data-card="tilt" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="card-header">
+              <div class="tilt-icon">
+                <span class="material-icons">360</span>
+              </div>
+              <h3 class="card-title">3D Tilt Effect</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">This card tilts in 3D space following your mouse movement, creating an immersive parallax-like experience.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary">Experience</button>
+            </div>
+          </div>
+
+          <!-- Slide Animation -->
+          <div class="card card-slide" data-card-type="slide">
+            <button class="code-view-btn" data-card="slide" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="slide-content-wrapper">
+              <div class="slide-main-content">
+                <div class="card-header">
+                  <div class="slide-icon">
+                    <span class="material-icons">swipe</span>
+                  </div>
+                  <h3 class="card-title">Slide Animation</h3>
+                </div>
+                <div class="card-content">
+                  <p class="card-text">Hover to see content slide in from the side with smooth transitions.</p>
+                </div>
+              </div>
+              <div class="slide-overlay">
+                <div class="slide-overlay-content">
+                  <h4>Hidden Content</h4>
+                  <p>This content slides in smoothly when you hover over the card, revealing additional information.</p>
+                  <button class="btn btn-primary">Action</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Morphing Animation -->
+          <div class="card card-morph" data-card-type="morph">
+            <button class="code-view-btn" data-card="morph" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="morph-content">
+              <div class="card-header">
+                <div class="morph-icon">
+                  <span class="material-icons">transform</span>
+                </div>
+                <h3 class="card-title">Morphing Card</h3>
+              </div>
+              <div class="card-content">
+                <p class="card-text">Watch this card smoothly transform its shape and reveal new content on hover.</p>
+              </div>
+              <div class="morph-expanded">
+                <h4>Expanded View</h4>
+                <p>The card has morphed to show additional content with smooth transitions and new layout.</p>
+                <div class="morph-actions">
+                  <button class="btn btn-primary">Primary Action</button>
+                  <button class="btn btn-text">Secondary</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Particle Animation -->
+          <div class="card card-particles" data-card-type="particles">
+            <button class="code-view-btn" data-card="particles" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="particles-container">
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+            <div class="card-header">
+              <div class="particles-icon">
+                <span class="material-icons">blur_on</span>
+              </div>
+              <h3 class="card-title">Particle Effect</h3>
+            </div>
+            <div class="card-content">
+              <p class="card-text">Features floating particle animations that create a dynamic, premium experience.</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary">Animate</button>
+            </div>
+          </div>
+
+          <!-- Reveal Animation -->
+          <div class="card card-reveal" data-card-type="reveal">
+            <button class="code-view-btn" data-card="reveal" title="View code for this card">
+              <span class="material-icons">code</span><span>show code</span>
+            </button>
+            <div class="reveal-front">
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=400&h=300&fit=crop" alt="Code editor" />
+              </div>
+              <div class="card-header">
+                <h3 class="card-title">Click to Reveal</h3>
+              </div>
+              <div class="card-content">
+                <p class="card-text">Click this card to see a smooth reveal animation with additional content.</p>
+              </div>
+            </div>
+            <div class="reveal-back">
+              <div class="reveal-back-content">
+                <button class="reveal-close">
+                  <span class="material-icons">close</span>
+                </button>
+                <h3>Revealed Content</h3>
+                <p>This is the hidden content that's revealed with a smooth animation. Perfect for showing detailed information without navigation.</p>
+                <div class="reveal-actions">
+                  <button class="btn btn-primary">Take Action</button>
+                  <button class="btn btn-text">Learn More</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Code Modal -->
+  <div id="codeModal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 class="modal-title">Card Code</h2>
+        <button class="modal-close" id="closeModal">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+      
+      <div class="modal-tabs">
+        <button class="tab-button active" data-tab="html">HTML</button>
+        <button class="tab-button" data-tab="css">CSS</button>
+        <button class="tab-button" data-tab="js">JavaScript</button>
+      </div>
+      
+      <div class="modal-content">
+        <div class="tab-content active" id="html-tab">
+          <button class="copy-button" data-code="html">
+            <span class="material-icons">content_copy</span>
+            Copy
+          </button>
+          <pre><code id="html-code" class="language-html"></code></pre>
+        </div>
+        
+        <div class="tab-content" id="css-tab">
+          <button class="copy-button" data-code="css">
+            <span class="material-icons">content_copy</span>
+            Copy
+          </button>
+          <pre><code id="css-code" class="language-css"></code></pre>
+        </div>
+        
+        <div class="tab-content" id="js-tab">
+          <button class="copy-button" data-code="js">
+            <span class="material-icons">content_copy</span>
+            Copy
+          </button>
+          <pre><code id="js-code" class="language-javascript"></code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <h3 class="footer-title">Created by <span class="brand-highlight">Riad Kilani</span> @ <span class="brand-highlight">{</span>Syntax<span class="brand-highlight">}</span>Sidekick</h3>
+          <p class="footer-subtitle">Senior Front-End Developer | React & UI/UX Expert | Design Systems Architect | Building Scalable, Human-Centered Web Experiences</p>
+          <p class="footer-description">Crafting modern web experiences with clean code and beautiful design</p>
+        </div>
+        
+        <div class="footer-socials">
+          <p class="socials-label">Connect with me:</p>
+          <div class="icon-grid">
+            <a href="https://linkedin.com/in/riad-kilani" target="_blank" rel="noopener noreferrer" class="icon linkedin" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://x.com/syntaxsidekick" target="_blank" rel="noopener noreferrer" class="icon twitter" aria-label="X (Twitter)">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://github.com/syntaxsidekick" target="_blank" rel="noopener noreferrer" class="icon github" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://codepen.io/syntaxsidekick" target="_blank" rel="noopener noreferrer" class="icon codepen" aria-label="CodePen">
+              <i class="fab fa-codepen"></i>
+            </a>
+            <a href="https://riadkilani.com" target="_blank" rel="noopener noreferrer" class="icon portfolio" aria-label="Portfolio">
+              <i class="fas fa-globe"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Riad Kilani. All rights reserved. | Built with ❤️ and modern web technologies</p>
+      </div>
+    </div>
+  </footer>  
+  
+  <script src="scripts.js"></script>
+</body>
+</html>
