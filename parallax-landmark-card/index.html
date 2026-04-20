@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #0a0c11;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        color: #fff;
+      }
+
+      .canvas {
+        padding: 2rem;
+      }
+
+      .landmark-card {
+        width: 680px;
+        max-width: 100%;
+        border-radius: 32px;
+        overflow: hidden;
+        background: #000;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .landmark-card:focus-visible {
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+      }
+
+      /* HERO */
+      .hero {
+        position: relative;
+        height: 360px;
+        overflow: hidden;
+      }
+
+      .hero img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.12);
+        will-change: transform;
+      }
+
+      .hero-title {
+        position: absolute;
+        left: 50%;
+        bottom: 1.5rem;
+        transform: translateX(-50%);
+        margin: 0;
+        font-size: 3.75rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        opacity: 0.92;
+        pointer-events: none;
+        will-change: transform;
+        text-shadow:
+          0 2px 12px rgba(0, 0, 0, 0.45),
+          0 1px 2px rgba(0, 0, 0, 0.6);
+      }
+
+      /* GLASS PANEL */
+      .glass-panel {
+        position: relative;
+        padding: 1.75rem 2.25rem 2.5rem;
+        display: grid;
+        gap: 1.25rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.22),
+          rgba(255, 255, 255, 0.06)
+        );
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .glass-panel::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 2.25rem;
+        right: 2.25rem;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .meta {
+        display: grid;
+        gap: 0.25rem;
+      }
+
+      .eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        opacity: 0.7;
+      }
+
+      .location {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        opacity: 0.9;
+      }
+
+      .summary {
+        margin: 0;
+        max-width: 58ch;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+
+      .details {
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0 0;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .details li {
+        display: grid;
+        gap: 0.15rem;
+        font-size: 0.75rem;
+      }
+
+      .details strong {
+        font-weight: 500;
+        opacity: 0.65;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .details span {
+        font-size: 0.9rem;
+        font-weight: 500;
+        opacity: 0.95;
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .hero img,
+        .hero-title {
+          transform: none !important;
+        }
+      }
+
+      /* ---------- Responsive Design ---------- */
+
+      /* Tablet and below */
+      @media (max-width: 768px) {
+        .canvas {
+          padding: 1.5rem;
+        }
+
+        .landmark-card {
+          border-radius: 24px;
+        }
+
+        .hero {
+          height: 300px;
+        }
+
+        .hero-title {
+          font-size: 3rem;
+          bottom: 1.25rem;
+        }
+
+        .glass-panel {
+          padding: 1.5rem 1.75rem 2rem;
+        }
+
+        .glass-panel::before {
+          left: 1.75rem;
+          right: 1.75rem;
+        }
+
+        .details {
+          gap: 0.875rem;
+        }
+      }
+
+      /* Mobile landscape and below */
+      @media (max-width: 640px) {
+        .canvas {
+          padding: 1rem;
+        }
+
+        .landmark-card {
+          border-radius: 20px;
+        }
+
+        .hero {
+          height: 240px;
+        }
+
+        .hero-title {
+          font-size: 2.25rem;
+          bottom: 1rem;
+        }
+
+        .glass-panel {
+          padding: 1.25rem 1.5rem 1.75rem;
+          gap: 1rem;
+        }
+
+        .glass-panel::before {
+          left: 1.5rem;
+          right: 1.5rem;
+        }
+
+        .location {
+          font-size: 0.95rem;
+        }
+
+        .summary {
+          font-size: 0.875rem;
+          line-height: 1.55;
+        }
+
+        .details {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem 1rem;
+        }
+
+        .details li {
+          font-size: 0.7rem;
+        }
+
+        .details span {
+          font-size: 0.85rem;
+        }
+      }
+
+      /* Mobile portrait */
+      @media (max-width: 480px) {
+        .canvas {
+          padding: 0.75rem;
+        }
+
+        .landmark-card {
+          border-radius: 16px;
+        }
+
+        .hero {
+          height: 200px;
+        }
+
+        .hero-title {
+          font-size: 1.875rem;
+          letter-spacing: 0.05em;
+          bottom: 0.875rem;
+        }
+
+        .glass-panel {
+          padding: 1rem 1.25rem 1.5rem;
+          gap: 0.875rem;
+        }
+
+        .glass-panel::before {
+          left: 1.25rem;
+          right: 1.25rem;
+        }
+
+        .eyebrow {
+          font-size: 0.6rem;
+        }
+
+        .location {
+          font-size: 0.9rem;
+        }
+
+        .summary {
+          font-size: 0.8rem;
+          line-height: 1.5;
+        }
+
+        .details {
+          grid-template-columns: 1fr;
+          gap: 0.625rem;
+          margin-top: 0.25rem;
+        }
+
+        .details li {
+          font-size: 0.65rem;
+          gap: 0.1rem;
+        }
+
+        .details strong {
+          font-size: 0.65rem;
+        }
+
+        .details span {
+          font-size: 0.8rem;
+        }
+      }
+
+      /* Extra small screens */
+      @media (max-width: 360px) {
+        .hero {
+          height: 180px;
+        }
+
+        .hero-title {
+          font-size: 1.625rem;
+        }
+
+        .glass-panel {
+          padding: 0.875rem 1rem 1.25rem;
+        }
+
+        .glass-panel::before {
+          left: 1rem;
+          right: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="canvas">
+      <article class="landmark-card" tabindex="0">
+        <div class="hero">
+          <img
+            src="https://www.infinite-morocco.com/wp-content/uploads/2024/02/Hassan-II-Mosque-7-1024x683.jpg"
+            alt="Hassan II Mosque in Casablanca, Morocco"
+          />
+          <h2 class="hero-title">Hassan II Mosque</h2>
+        </div>
+
+        <section class="glass-panel">
+          <header class="meta">
+            <span class="eyebrow">Historic Landmark</span>
+            <h3 class="location">Casablanca, Morocco</h3>
+          </header>
+
+          <p class="summary">
+            Built partially over the Atlantic Ocean, the Hassan II Mosque stands
+            as a symbol of Moroccan craftsmanship, faith, and architectural
+            ambition.
+          </p>
+
+          <ul class="details">
+            <li>
+              <strong>Completed</strong>
+              <span>1993</span>
+            </li>
+            <li>
+              <strong>Minaret</strong>
+              <span>210 meters</span>
+            </li>
+            <li>
+              <strong>Capacity</strong>
+              <span>25,000 worshippers</span>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </div>
+    <script>
+      const card = document.querySelector(".landmark-card");
+      const image = card.querySelector(".hero img");
+      const title = card.querySelector(".hero-title");
+
+      card.addEventListener("pointermove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const dx = (e.clientX - rect.left) / rect.width - 0.5;
+        const dy = (e.clientY - rect.top) / rect.height - 0.5;
+
+        image.style.transform = `
+    scale(1.14)
+    translate(${dx * 24}px, ${dy * 24}px)
+  `;
+
+        title.style.transform = `
+    translateX(-50%)
+    translate(${dx * -36}px, ${dy * -18}px)
+  `;
+      });
+
+      card.addEventListener("pointerleave", () => {
+        image.style.transform = "scale(1.12)";
+        title.style.transform = "translateX(-50%)";
+      });
+    </script>
+  </body>
+</html>
