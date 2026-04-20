@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* =========================================================
+   GLOBAL RESET + TOKENS
+========================================================= */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      :root {
+        /* Brand Colors */
+        --color-primary: #4f46e5;
+        --color-secondary: #ec4899;
+
+        /* Dark mode defaults */
+        --color-bg: #0b0f19;
+        --color-surface: #111827;
+        --color-text: #e5e7eb;
+        --color-text-subtle: color-mix(
+          in srgb,
+          var(--color-text) 55%,
+          transparent
+        );
+
+        /* Component radius tokens */
+        --radius-lg: 16px;
+        --radius-md: 12px;
+        --radius-sm: 8px;
+
+        /* App spacing (NOT controlled by slider) */
+        --space-1: 4px;
+        --space-2: 8px;
+        --space-3: 12px;
+        --space-4: 16px;
+        --space-6: 24px;
+        --space-8: 32px;
+
+        /* Component spacing (controlled by slider) */
+        --comp-space-sm: 8px;
+        --comp-space-md: 14px;
+        --comp-space-lg: 20px;
+
+        /* Shadows & borders */
+        --shadow-soft: 0 24px 55px rgba(0, 0, 0, 0.45);
+        --border-subtle: 1px solid rgba(255, 255, 255, 0.12);
+
+        --font-sans:
+          system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      /* =========================================================
+   LIGHT MODE OVERRIDES
+========================================================= */
+      .app[data-theme="light"] {
+        --color-bg: #ffffff;
+        --color-surface: #f5f6f8;
+        --color-text: #111;
+        --color-text-subtle: #555;
+        --shadow-soft: 0 14px 28px rgba(0, 0, 0, 0.09);
+        --border-subtle: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      /* =========================================================
+   BASE PAGE
+========================================================= */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: var(--color-bg);
+        font-family: var(--font-sans);
+        color: var(--color-text);
+      }
+
+      /* =========================================================
+   APP LAYOUT
+========================================================= */
+      .app {
+        min-height: 100vh;
+        padding: var(--space-4);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+
+      .app-header {
+        text-align: center;
+        margin-bottom: var(--space-4);
+      }
+
+      .app-header h1 {
+        margin: 0;
+        font-size: clamp(1.8rem, 3vw, 2.4rem);
+        color: var(--color-text);
+      }
+
+      .app-header p {
+        margin: 0.3rem 0 0;
+        color: var(--color-text-subtle);
+      }
+
+      .app-main {
+        display: grid;
+        grid-template-columns: minmax(260px, 320px) 1.5fr 1.2fr;
+        gap: var(--space-4);
+      }
+
+      @media (max-width: 1200px) {
+        .app-main {
+          grid-template-columns: minmax(260px, 300px) 1fr;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .app-main {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* =========================================================
+   PANELS
+========================================================= */
+      .panel {
+        background: var(--color-surface);
+        border-radius: 20px;
+        border: var(--border-subtle);
+        padding: var(--space-4);
+        box-shadow: var(--shadow-soft);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+
+      /* Controls panel header */
+      .panel-controls > h2 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--color-text);
+      }
+
+      /* Panel headers (preview + code tabs) */
+      .panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .panel-header h2 {
+        margin: 0;
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: color-mix(in srgb, var(--color-text) 85%, transparent);
+      }
+
+      /* =========================================================
+   CONTROLS (LEFT PANEL)
+========================================================= */
+      .control-group {
+        background: var(--color-surface);
+        border: var(--border-subtle);
+        border-radius: 14px;
+        padding: var(--space-3);
+      }
+
+      .control-group h3 {
+        margin: 0 0 var(--space-2);
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-text-subtle);
+      }
+
+      .control {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: var(--space-2);
+        font-size: 0.82rem;
+      }
+
+      .control span {
+        color: var(--color-text);
+      }
+
+      .control-input {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .control input[type="color"] {
+        width: 32px;
+        height: 24px;
+        border-radius: 999px;
+        border: var(--border-subtle);
+        background: transparent;
+      }
+
+      .control input[type="text"] {
+        flex: 1;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: var(--border-subtle);
+        background: transparent;
+        color: var(--color-text);
+      }
+
+      .control input[type="range"] {
+        flex: 1;
+      }
+
+      .control .value {
+        font-size: 0.75rem;
+        color: var(--color-text-subtle);
+        min-width: 40px;
+      }
+
+      .control-inline {
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+      }
+
+      select {
+        padding: 6px 12px;
+        border-radius: 999px;
+        border: var(--border-subtle);
+        background: transparent;
+        color: var(--color-text);
+      }
+
+      /* =========================================================
+   BUTTONS
+========================================================= */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 7px 16px;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        border: none;
+        white-space: nowrap;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-secondary)
+        );
+        color: #fff;
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: var(--border-subtle);
+        color: var(--color-text);
+      }
+
+      .hint {
+        margin: 0;
+        font-size: 0.75rem;
+        color: var(--color-text-subtle);
+      }
+
+      /* =========================================================
+   PREVIEW CANVAS
+========================================================= */
+      .preview-canvas {
+        padding: var(--space-4);
+        border-radius: 18px;
+        border: var(--border-subtle);
+        background: linear-gradient(
+          140deg,
+          color-mix(in srgb, var(--color-surface) 92%, transparent),
+          color-mix(in srgb, var(--color-bg) 75%, transparent)
+        );
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+
+      /* Card grid */
+      .preview-cards {
+        display: grid;
+        gap: var(--space-3);
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 768px) {
+        .preview-cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .preview-cards {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .preview-cta {
+        display: flex;
+        gap: var(--space-2);
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .preview-cta .ui-button {
+        flex: 0 1 auto;
+      }
+
+      /* =========================================================
+   WEB COMPONENT STYLES
+========================================================= */
+
+      /* ---------- HERO ---------- */
+      .ui-hero {
+        border-radius: var(--radius-lg);
+        padding: var(--comp-space-lg);
+        background: linear-gradient(
+          135deg,
+          color-mix(in srgb, var(--color-surface) 94%, transparent),
+          color-mix(in srgb, var(--color-surface) 98%, transparent)
+        );
+        border: var(--border-subtle);
+        display: grid;
+        gap: var(--comp-space-md);
+        grid-template-columns: 2fr 1.2fr;
+      }
+
+      .ui-hero-main h1 {
+        margin: 0 0 var(--comp-space-sm);
+        font-size: 1.8rem;
+        color: var(--color-text);
+      }
+
+      .ui-hero-main p {
+        margin: 0 0 var(--comp-space-md);
+        color: var(--color-text-subtle);
+      }
+
+      .ui-hero-actions {
+        margin-bottom: var(--comp-space-sm);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .ui-hero-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .ui-hero-meta span {
+        font-size: 0.75rem;
+        padding: 3px 10px;
+        border-radius: 999px;
+        border: var(--border-subtle);
+        color: var(--color-text-subtle);
+      }
+
+      .ui-hero-aside {
+        border-radius: var(--radius-md);
+        padding: var(--comp-space-md);
+        background: var(--color-surface);
+        border: 1px dashed
+          color-mix(in srgb, var(--color-text) 40%, transparent);
+        color: var(--color-text-subtle);
+      }
+
+      @media (max-width: 768px) {
+        .ui-hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ---------- BUTTON ---------- */
+      .ui-button {
+        padding: var(--comp-space-sm) var(--comp-space-md);
+        border-radius: var(--radius-md);
+        border: none;
+        cursor: pointer;
+        font-size: 0.85rem;
+      }
+
+      .ui-button--primary {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-secondary)
+        );
+        color: #fff;
+      }
+
+      .ui-button--ghost {
+        background: transparent;
+        border: var(--border-subtle);
+        color: var(--color-text);
+      }
+
+      /* ---------- CARD ---------- */
+      .ui-card {
+        border-radius: var(--radius-md);
+        padding: var(--comp-space-md);
+        background: var(--color-surface);
+        border: var(--border-subtle);
+        display: flex;
+        flex-direction: column;
+        gap: var(--comp-space-sm);
+      }
+
+      .ui-card-tag {
+        font-size: 0.75rem;
+        padding: 3px 8px;
+        border-radius: 999px;
+        border: var(--border-subtle);
+        color: var(--color-text-subtle);
+      }
+
+      .ui-card-title {
+        margin: 0;
+        font-size: 1rem;
+        color: var(--color-text);
+      }
+
+      .ui-card-body {
+        margin: 0;
+        color: var(--color-text-subtle);
+      }
+
+      /* =========================================================
+   CODE OUTPUT PANEL
+========================================================= */
+      .code-tabs {
+        display: inline-flex;
+        gap: 4px;
+        padding: 3px;
+        border-radius: 999px;
+        border: var(--border-subtle);
+      }
+
+      .code-tab {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+        border-radius: 999px;
+        background: transparent;
+        border: none;
+        color: var(--color-text-subtle);
+        cursor: pointer;
+      }
+
+      .code-tab.active {
+        background: var(--color-bg);
+        border: var(--border-subtle);
+        color: var(--color-text);
+      }
+
+      .code-output {
+        background: var(--color-surface);
+        border: var(--border-subtle);
+        padding: var(--space-3);
+        border-radius: 14px;
+        overflow: auto;
+      }
+
+      code {
+        color: var(--color-text);
+        font-size: 0.75rem;
+        font-family: ui-monospace, SFMono-Regular, monospace;
+      }
+
+      /* =========================================================
+   FOOTER
+========================================================= */
+      .app-footer {
+        margin-top: var(--space-4);
+        padding-top: var(--space-2);
+        border-top: var(--border-subtle);
+        font-size: 0.75rem;
+        color: var(--color-text-subtle);
+      }
+
+      /* =========================================================
+   RESPONSIVE ENHANCEMENTS
+========================================================= */
+
+      /* Large tablets - adjust 3 column layout */
+      @media (max-width: 1200px) {
+        .panel-code {
+          grid-column: 1 / -1;
+        }
+      }
+
+      /* Tablets and below */
+      @media (max-width: 1024px) {
+        .app {
+          padding: var(--space-3);
+          gap: var(--space-3);
+        }
+
+        .app-header h1 {
+          font-size: 1.8rem;
+        }
+
+        .app-main {
+          gap: var(--space-3);
+        }
+
+        .panel {
+          padding: var(--space-3);
+        }
+
+        .preview-canvas {
+          padding: var(--space-3);
+        }
+      }
+
+      /* Mobile landscape and below */
+      @media (max-width: 768px) {
+        .app {
+          padding: var(--space-2);
+          gap: var(--space-3);
+        }
+
+        .app-header {
+          margin-bottom: var(--space-2);
+        }
+
+        .app-header h1 {
+          font-size: 1.5rem;
+        }
+
+        .app-header p {
+          font-size: 0.85rem;
+        }
+
+        .app-main {
+          gap: var(--space-2);
+        }
+
+        .panel {
+          border-radius: 16px;
+          padding: var(--space-2);
+        }
+
+        .control-group {
+          padding: var(--space-2);
+        }
+
+        .preview-canvas {
+          padding: var(--space-2);
+          gap: var(--space-3);
+        }
+
+        .preview-cards {
+          grid-template-columns: 1fr;
+          gap: var(--space-2);
+        }
+
+        .preview-cta {
+          flex-direction: column;
+          gap: var(--space-2);
+        }
+
+        .preview-cta .ui-button {
+          width: 100%;
+        }
+
+        .code-output {
+          max-height: 300px;
+        }
+
+        .code-output pre {
+          overflow-x: auto;
+        }
+
+        code {
+          font-size: 0.7rem;
+        }
+
+        .ui-hero {
+          padding: var(--comp-space-md);
+        }
+
+        .ui-hero-main h1 {
+          font-size: 1.4rem;
+        }
+      }
+
+      /* Mobile portrait */
+      @media (max-width: 640px) {
+        .app {
+          padding: var(--space-2);
+          gap: var(--space-2);
+        }
+
+        .app-header h1 {
+          font-size: 1.3rem;
+        }
+
+        .app-header p {
+          font-size: 0.8rem;
+        }
+
+        .panel {
+          border-radius: 12px;
+          padding: var(--space-2);
+          gap: var(--space-2);
+        }
+
+        .panel-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--space-2);
+        }
+
+        .code-tabs {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .code-tab {
+          flex: 1;
+          text-align: center;
+        }
+
+        .control-group {
+          border-radius: 10px;
+          padding: 10px;
+        }
+
+        .control-group h3 {
+          font-size: 0.72rem;
+        }
+
+        .control {
+          font-size: 0.78rem;
+          margin-bottom: 10px;
+        }
+
+        .control-input {
+          flex-wrap: wrap;
+        }
+
+        .control input[type="text"] {
+          min-width: 100px;
+        }
+
+        select {
+          width: 100%;
+          padding: 8px 12px;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+          padding: 10px 16px;
+        }
+
+        .preview-canvas {
+          padding: var(--space-2);
+          gap: var(--space-2);
+          border-radius: 12px;
+        }
+
+        .ui-hero {
+          padding: var(--comp-space-sm);
+          gap: var(--comp-space-sm);
+        }
+
+        .ui-hero-main h1 {
+          font-size: 1.2rem;
+          margin-bottom: 8px;
+        }
+
+        .ui-hero-main p {
+          font-size: 0.85rem;
+          margin-bottom: 10px;
+        }
+
+        .ui-hero-actions {
+          margin-bottom: 8px;
+        }
+
+        .ui-hero-aside {
+          padding: var(--comp-space-sm);
+        }
+
+        .ui-hero-aside h3 {
+          font-size: 0.9rem;
+          margin: 0 0 6px;
+        }
+
+        .ui-hero-aside p {
+          font-size: 0.8rem;
+          margin: 0;
+        }
+
+        .ui-card {
+          padding: 12px;
+        }
+
+        .ui-card-title {
+          font-size: 0.95rem;
+        }
+
+        .ui-card-body {
+          font-size: 0.85rem;
+        }
+
+        .code-output {
+          padding: var(--space-2);
+          max-height: 250px;
+          border-radius: 10px;
+        }
+
+        code {
+          font-size: 0.65rem;
+        }
+      }
+
+      /* Extra small screens */
+      @media (max-width: 480px) {
+        .app {
+          padding: 8px;
+        }
+
+        .app-header h1 {
+          font-size: 1.2rem;
+        }
+
+        .app-header p {
+          font-size: 0.75rem;
+        }
+
+        .panel {
+          border-radius: 10px;
+          padding: 12px;
+        }
+
+        .control {
+          font-size: 0.75rem;
+        }
+
+        .control input[type="color"] {
+          width: 28px;
+          height: 22px;
+        }
+
+        .control input[type="text"] {
+          font-size: 0.75rem;
+          padding: 5px 8px;
+        }
+
+        .btn {
+          font-size: 0.75rem;
+          padding: 8px 14px;
+        }
+
+        .ui-hero-main h1 {
+          font-size: 1.1rem;
+        }
+
+        .ui-hero-main p {
+          font-size: 0.8rem;
+        }
+
+        .ui-button {
+          font-size: 0.8rem;
+          padding: 8px 12px;
+        }
+
+        .code-output {
+          max-height: 200px;
+        }
+
+        code {
+          font-size: 0.6rem;
+        }
+
+        .hint {
+          font-size: 0.7rem;
+        }
+
+        .app-footer {
+          font-size: 0.7rem;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app" data-theme="dark">
+      <header class="app-header">
+        <h1>Web Components UI Generator</h1>
+        <p>
+          Build themed UI components instantly — Buttons, Cards, Hero & More
+        </p>
+      </header>
+
+      <main class="app-main">
+        <!-- ===========================
+         LEFT PANEL — CONTROLS
+    ============================ -->
+        <section class="panel panel-controls">
+          <h2>Theme Controls</h2>
+
+          <div class="control-group">
+            <h3>Brand Colors</h3>
+
+            <label class="control">
+              <span>Primary</span>
+              <div class="control-input">
+                <input type="color" id="primaryColor" value="#4f46e5" />
+                <input type="text" id="primaryHex" value="#4f46e5" />
+              </div>
+            </label>
+
+            <label class="control">
+              <span>Secondary</span>
+              <div class="control-input">
+                <input type="color" id="secondaryColor" value="#ec4899" />
+                <input type="text" id="secondaryHex" value="#ec4899" />
+              </div>
+            </label>
+
+            <label class="control">
+              <span>Background</span>
+              <div class="control-input">
+                <input type="color" id="bgColor" value="#0b0f19" />
+                <input type="text" id="bgHex" value="#0b0f19" />
+              </div>
+            </label>
+
+            <label class="control">
+              <span>Surface</span>
+              <div class="control-input">
+                <input type="color" id="surfaceColor" value="#111827" />
+                <input type="text" id="surfaceHex" value="#111827" />
+              </div>
+            </label>
+
+            <label class="control">
+              <span>Text</span>
+              <div class="control-input">
+                <input type="color" id="textColor" value="#e5e7eb" />
+                <input type="text" id="textHex" value="#e5e7eb" />
+              </div>
+            </label>
+          </div>
+
+          <div class="control-group">
+            <h3>Radius & Spacing</h3>
+
+            <label class="control">
+              <span>Border Radius</span>
+              <div class="control-input">
+                <input
+                  type="range"
+                  id="radiusRange"
+                  min="0"
+                  max="30"
+                  value="16"
+                />
+                <span id="radiusValue">16px</span>
+              </div>
+            </label>
+
+            <label class="control">
+              <span>Component Spacing</span>
+              <div class="control-input">
+                <input
+                  type="range"
+                  id="spacingRange"
+                  min="4"
+                  max="24"
+                  value="8"
+                />
+                <span id="spacingValue">8px</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="control-group">
+            <h3>Display</h3>
+
+            <label class="control control-inline">
+              <input type="checkbox" id="darkModeToggle" />
+              <span>Light mode preview</span>
+            </label>
+
+            <label class="control">
+              <span>Component Focus</span>
+              <select id="componentFilter">
+                <option value="all">All Components</option>
+                <option value="hero">Hero Only</option>
+                <option value="cards">Cards Only</option>
+                <option value="buttons">Buttons Only</option>
+              </select>
+            </label>
+          </div>
+
+          <button class="btn btn-primary" id="copyAllBtn">Copy All Code</button>
+          <p class="hint">Copy individual tabs from the code panel →</p>
+        </section>
+
+        <!-- ===========================
+         MIDDLE PANEL — PREVIEW
+    ============================ -->
+        <section class="panel panel-preview">
+          <div class="panel-header">
+            <h2>Preview</h2>
+          </div>
+
+          <div class="preview-canvas" id="previewCanvas">
+            <!-- HERO -->
+            <ui-hero
+              title="Design once. Ship everywhere."
+              subtitle="Framework-agnostic Web Components generated from your design tokens."
+              cta-label="Get Started"
+              variant="primary"
+            ></ui-hero>
+
+            <!-- CARDS -->
+            <section class="preview-cards" data-section="cards">
+              <ui-card
+                title="Smart Tokens"
+                body="Generate palettes, radii, and spacing."
+                tag="Core"
+              ></ui-card>
+              <ui-card
+                title="Framework Agnostic"
+                body="Works in any framework."
+                tag="Universal"
+              ></ui-card>
+              <ui-card
+                title="Scalable"
+                body="Extend to a full design system."
+                tag="Pro"
+              ></ui-card>
+            </section>
+
+            <!-- BUTTONS -->
+            <section class="preview-cta" data-section="buttons">
+              <ui-button variant="primary">Primary Button</ui-button>
+              <ui-button variant="ghost">Ghost Button</ui-button>
+            </section>
+          </div>
+        </section>
+
+        <!-- ===========================
+         RIGHT PANEL — CODE OUTPUT
+    ============================ -->
+        <section class="panel panel-code">
+          <div class="panel-header">
+            <h2>Generated Code</h2>
+
+            <div class="code-tabs">
+              <button class="code-tab active" data-tab="html">HTML</button>
+              <button class="code-tab" data-tab="css">CSS</button>
+              <button class="code-tab" data-tab="js">JS</button>
+            </div>
+          </div>
+
+          <div class="code-output">
+            <pre><code id="codeBlock"></code></pre>
+          </div>
+
+          <button class="btn btn-outline" id="copyTabBtn">
+            Copy Current Tab
+          </button>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        Web Components UI Generator — Powered by Custom Elements + CSS Variables
+      </footer>
+    </div>
+
+    <script>
+      // =========================================================
+      //  WEB COMPONENTS
+      // =========================================================
+
+      class UIButton extends HTMLElement {
+        static get observedAttributes() {
+          return ["variant"];
+        }
+        connectedCallback() {
+          this.render();
+        }
+        attributeChangedCallback() {
+          this.render();
+        }
+        render() {
+          const variant = this.getAttribute("variant") || "primary";
+          const label = this.textContent.trim();
+          this.innerHTML = `<button class="ui-button ui-button--${variant}"><span>${label}</span></button>`;
+        }
+      }
+
+      class UICard extends HTMLElement {
+        connectedCallback() {
+          this.render();
+        }
+        render() {
+          const title = this.getAttribute("title");
+          const body = this.getAttribute("body");
+          const tag = this.getAttribute("tag") || "";
+          this.innerHTML = `<article class="ui-card">
+        ${tag ? `<span class="ui-card-tag">${tag}</span>` : ""}
+        <h3 class="ui-card-title">${title}</h3>
+        <p class="ui-card-body">${body}</p>
+      </article>`;
+        }
+      }
+
+      class UIHero extends HTMLElement {
+        static get observedAttributes() {
+          return ["title", "subtitle", "cta-label", "variant"];
+        }
+        connectedCallback() {
+          this.render();
+        }
+        attributeChangedCallback() {
+          this.render();
+        }
+        render() {
+          const title = this.getAttribute("title");
+          const subtitle = this.getAttribute("subtitle");
+          const cta = this.getAttribute("cta-label");
+          const variant = this.getAttribute("variant") || "primary";
+
+          this.innerHTML = `<section class="ui-hero">
+        <div class="ui-hero-main">
+          <h1>${title}</h1>
+          <p>${subtitle}</p>
+          <button class="ui-button ui-button--${variant}">${cta}</button>
+        </div>
+        <aside class="ui-hero-aside">
+          <h3>Starter layout</h3>
+          <p>Powered by design tokens and Web Components.</p>
+        </aside>
+      </section>`;
+        }
+      }
+
+      customElements.define("ui-button", UIButton);
+      customElements.define("ui-card", UICard);
+      customElements.define("ui-hero", UIHero);
+
+      // =========================================================
+      // STATE
+      // =========================================================
+
+      const state = {
+        activeTab: "html",
+        filter: "all",
+        radius: 16,
+        spacing: 8,
+      };
+
+      // =========================================================
+      // ELEMENTS
+      // =========================================================
+
+      const app = document.querySelector(".app");
+      const previewCanvas = document.getElementById("previewCanvas");
+      const codeBlock = document.getElementById("codeBlock");
+
+      // Controls
+      const radiusRange = document.getElementById("radiusRange");
+      const radiusValue = document.getElementById("radiusValue");
+      const spacingRange = document.getElementById("spacingRange");
+      const spacingValue = document.getElementById("spacingValue");
+      const componentFilter = document.getElementById("componentFilter");
+      const darkToggle = document.getElementById("darkModeToggle");
+
+      // Tabs
+      const tabs = document.querySelectorAll(".code-tab");
+
+      // Copy buttons
+      const copyTabBtn = document.getElementById("copyTabBtn");
+      const copyAllBtn = document.getElementById("copyAllBtn");
+
+      // =========================================================
+      // APPLY SLIDER UPDATES
+      // =========================================================
+
+      function applyRadius() {
+        document.documentElement.style.setProperty(
+          "--radius-lg",
+          state.radius + "px",
+        );
+        document.documentElement.style.setProperty(
+          "--radius-md",
+          state.radius * 0.7 + "px",
+        );
+        document.documentElement.style.setProperty(
+          "--radius-sm",
+          state.radius * 0.5 + "px",
+        );
+      }
+
+      function applySpacing() {
+        document.documentElement.style.setProperty(
+          "--comp-space-sm",
+          state.spacing + "px",
+        );
+        document.documentElement.style.setProperty(
+          "--comp-space-md",
+          state.spacing * 1.5 + "px",
+        );
+        document.documentElement.style.setProperty(
+          "--comp-space-lg",
+          state.spacing * 2 + "px",
+        );
+      }
+
+      // =========================================================
+      // PREVIEW FILTER
+      // =========================================================
+
+      function applyFilter() {
+        const hero = previewCanvas.querySelector("ui-hero");
+        const cards = previewCanvas.querySelector('[data-section="cards"]');
+        const buttons = previewCanvas.querySelector('[data-section="buttons"]');
+
+        const f = state.filter;
+
+        if (hero)
+          hero.style.display = f === "all" || f === "hero" ? "" : "none";
+        if (cards)
+          cards.style.display = f === "all" || f === "cards" ? "" : "none";
+        if (buttons)
+          buttons.style.display = f === "all" || f === "buttons" ? "" : "none";
+      }
+
+      // =========================================================
+      // CODE GENERATION
+      // =========================================================
+
+      function htmlForFilter() {
+        if (state.filter === "hero") {
+          return `<ui-hero title="Design once. Ship everywhere." 
+  subtitle="Powered by tokens." 
+  cta-label="Get Started" 
+  variant="primary"></ui-hero>`;
+        }
+        if (state.filter === "cards") {
+          return `<section class="card-grid">
+  <ui-card title="Smart Tokens" body="Generate spacing & radius." tag="Core"></ui-card>
+  <ui-card title="Framework Agnostic" body="Use anywhere." tag="Universal"></ui-card>
+</section>`;
+        }
+        if (state.filter === "buttons") {
+          return `<ui-button variant="primary">Primary Button</ui-button>
+<ui-button variant="ghost">Ghost Button</ui-button>`;
+        }
+
+        return `<!-- All Components -->
+<ui-hero title="Design once. Ship everywhere." 
+  subtitle="Powered by tokens." 
+  cta-label="Get Started"></ui-hero>
+
+<section class="card-grid">
+  <ui-card title="Smart Tokens" body="Consistent UI." tag="Core"></ui-card>
+  <ui-card title="Framework Agnostic" body="Use anywhere." tag="Universal"></ui-card>
+</section>
+
+<ui-button variant="primary">Primary Button</ui-button>
+<ui-button variant="ghost">Ghost Button</ui-button>`;
+      }
+
+      function cssOutput() {
+        return `/* Your tokens */
+:root {
+  --radius-lg: ${state.radius}px;
+  --radius-md: ${state.radius * 0.7}px;
+  --radius-sm: ${state.radius * 0.5}px;
+  --comp-space-sm: ${state.spacing}px;
+  --comp-space-md: ${state.spacing * 1.5}px;
+  --comp-space-lg: ${state.spacing * 2}px;
+}`;
+      }
+
+      function jsOutput() {
+        return `// Import ui-button, ui-card, ui-hero
+// (same JS used in CodePen demo)`;
+      }
+
+      function renderCode() {
+        if (state.activeTab === "html") codeBlock.textContent = htmlForFilter();
+        if (state.activeTab === "css") codeBlock.textContent = cssOutput();
+        if (state.activeTab === "js") codeBlock.textContent = jsOutput();
+      }
+
+      // =========================================================
+      // EVENT HANDLERS
+      // =========================================================
+
+      radiusRange.addEventListener("input", () => {
+        state.radius = parseInt(radiusRange.value, 10);
+        radiusValue.textContent = state.radius + "px";
+        applyRadius();
+        renderCode();
+      });
+
+      spacingRange.addEventListener("input", () => {
+        state.spacing = parseInt(spacingRange.value, 10);
+        spacingValue.textContent = state.spacing + "px";
+        applySpacing();
+        renderCode();
+      });
+
+      componentFilter.addEventListener("change", () => {
+        state.filter = componentFilter.value;
+        applyFilter();
+        renderCode();
+      });
+
+      darkToggle.addEventListener("change", () => {
+        app.setAttribute("data-theme", darkToggle.checked ? "light" : "dark");
+      });
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+          state.activeTab = tab.dataset.tab;
+          renderCode();
+        });
+      });
+
+      copyTabBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(codeBlock.textContent);
+      });
+
+      copyAllBtn.addEventListener("click", () => {
+        const all =
+          htmlForFilter() + "\n\n" + cssOutput() + "\n\n" + jsOutput();
+        navigator.clipboard.writeText(all);
+      });
+
+      // =========================================================
+      // INIT
+      // =========================================================
+
+      applyRadius();
+      applySpacing();
+      applyFilter();
+      renderCode();
+    </script>
+  </body>
+</html>
