@@ -37,6 +37,43 @@
         --md-sys-shape-large: 18px;
 
         --md-sys-motion-standard: cubic-bezier(0.2, 0, 0, 1);
+
+        /* Font size tokens */
+        --font-xs: 0.75rem;
+        --font-sm: 0.875rem;
+        --font-base: 1rem;
+        --font-lg: 1.25rem;
+        --font-xl: 1.5rem;
+
+        /* Spacing tokens */
+        --space-0-5: 0.125rem;  /* 2px */
+        --space-0-75: 0.1875rem; /* 3px */
+        --space-1: 0.25rem;     /* 4px */
+        --space-1-5: 0.375rem;  /* 6px */
+        --space-2: 0.5rem;     /* 8px */
+        --space-2-5: 0.625rem; /* 10px */
+        --space-3: 0.75rem;    /* 12px */
+        --space-3-5: 0.875rem; /* 14px */
+        --space-4: 1rem;       /* 16px */
+        --space-4-5: 1.125rem; /* 18px */
+        --space-5: 1.25rem;    /* 20px */
+        --space-6: 1.5rem;     /* 24px */
+        --space-7: 1.75rem;    /* 28px */
+
+        /* Border radius tokens */
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 16px;
+        --radius-xl: 24px;
+        --radius-full: 999px;
+
+        /* Duration tokens */
+        --duration-instant: 0.1s;
+        --duration-fast: 0.12s;
+        --duration-medium: 0.15s;
+        --duration-normal: 0.16s;
+        --duration-slow: 0.2s;
+        --duration-slowest: 0.25s;
       }
 
       :root[data-theme="dark"] {
@@ -84,8 +121,8 @@
         color: var(--md-sys-color-on-surface);
         line-height: 1.75;
         transition:
-          background 0.2s var(--md-sys-motion-standard),
-          color 0.2s var(--md-sys-motion-standard);
+          background var(--duration-slow) var(--md-sys-motion-standard),
+          color var(--duration-slow) var(--md-sys-motion-standard);
       }
 
       button {
@@ -100,30 +137,30 @@
       .tonal-button,
       .text-button,
       .icon-button {
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         border: 1px solid transparent;
         padding: 0.45rem 0.9rem;
-        font-size: 0.85rem;
+        font-size: var(--font-sm);
         cursor: pointer;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 0.25rem;
+        gap: var(--space-1);
         background: none;
         color: var(--md-sys-color-on-surface);
         transition:
-          background 0.16s var(--md-sys-motion-standard),
-          border-color 0.16s var(--md-sys-motion-standard),
-          box-shadow 0.16s var(--md-sys-motion-standard),
-          transform 0.12s ease-out;
+          background var(--duration-normal) var(--md-sys-motion-standard),
+          border-color var(--duration-normal) var(--md-sys-motion-standard),
+          box-shadow var(--duration-normal) var(--md-sys-motion-standard),
+          transform var(--duration-fast) ease-out;
       }
 
       .filled-button:focus-visible,
       .tonal-button:focus-visible,
       .text-button:focus-visible,
       .icon-button:focus-visible {
-        outline: 2px solid var(--md-sys-color-primary);
-        outline-offset: 2px;
+        outline: var(--space-0-5) solid var(--md-sys-color-primary);
+        outline-offset: var(--space-0-5);
       }
 
       .filled-button {
@@ -176,9 +213,9 @@
       .icon-button {
         width: 32px;
         height: 32px;
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         border-color: var(--md-sys-color-outline-variant);
-        font-size: 1.1rem;
+        font-size: var(--font-lg);
         background: var(--md-sys-color-surface-variant);
         color: var(--md-sys-color-on-surface-variant);
         flex-shrink: 0;
@@ -195,16 +232,16 @@
 
       .pricing-app {
         max-width: 1120px;
-        margin: 28px auto;
-        padding: 18px 18px 20px;
-        border-radius: 24px;
+        margin: var(--space-7) auto;
+        padding: var(--space-4-5) var(--space-4-5) var(--space-5);
+        border-radius: var(--radius-xl);
         background: var(--md-sys-color-surface);
         border: 1px solid var(--md-sys-color-outline-variant);
         box-shadow: var(--md-sys-elevation-1);
         transition:
-          background 0.2s var(--md-sys-motion-standard),
-          border-color 0.2s var(--md-sys-motion-standard),
-          box-shadow 0.2s var(--md-sys-motion-standard);
+          background var(--duration-slow) var(--md-sys-motion-standard),
+          border-color var(--duration-slow) var(--md-sys-motion-standard),
+          box-shadow var(--duration-slow) var(--md-sys-motion-standard);
       }
 
       .pricing-app .app-header {
@@ -212,8 +249,8 @@
         align-items: center;
         justify-content: space-between;
         flex-wrap: nowrap;
-        gap: 16px;
-        padding-bottom: 12px;
+        gap: var(--space-4);
+        padding-bottom: var(--space-3);
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
       }
 
@@ -223,14 +260,14 @@
       }
 
       .pricing-app .app-header__titles h1 {
-        margin: 0 0 4px;
-        font-size: 1.25rem;
+        margin: 0 0 var(--space-1);
+        font-size: var(--font-lg);
         letter-spacing: 0.02em;
       }
 
       .pricing-app .app-header__titles p {
         margin: 0;
-        font-size: 0.85rem;
+        font-size: var(--font-sm);
         color: var(--md-sys-color-on-surface-variant);
       }
 
@@ -238,15 +275,15 @@
         flex: 0 0 auto;
         white-space: nowrap;
         display: inline-flex;
-        gap: 10px;
+        gap: var(--space-2-5);
         align-items: center;
       }
 
       .pricing-app .app-layout {
-        margin-top: 16px;
+        margin-top: var(--space-4);
         display: grid;
         grid-template-columns: 7fr 5fr;
-        gap: 18px;
+        gap: var(--space-4-5);
       }
 
       @media (max-width: 900px) {
@@ -259,7 +296,7 @@
         .pricing-app .app-header {
           flex-direction: column;
           align-items: stretch;
-          gap: 12px;
+          gap: var(--space-3);
         }
 
         .pricing-app .app-header__titles {
@@ -275,7 +312,7 @@
       .pricing-app .column--primary {
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: var(--space-3-5);
       }
 
       .pricing-app .column--secondary {
@@ -284,37 +321,47 @@
       }
 
       /* ===========================
-     THEME TOGGLE (SEGMENTED)
+     SHARED: SEGMENTED CONTROLS
      =========================== */
 
-      .pricing-app .theme-toggle {
+      .pricing-app .segmented-container {
         display: inline-flex;
-        padding: 3px;
-        border-radius: 999px;
+        padding: var(--space-0-75);
+        border-radius: var(--radius-full);
         background: var(--md-sys-color-surface-variant);
         border: 1px solid var(--md-sys-color-outline-variant);
-        gap: 3px;
+        gap: var(--space-0-75);
       }
 
-      .pricing-app .theme-toggle__option {
-        border-radius: 999px;
+      .pricing-app .segmented-button {
+        border-radius: var(--radius-full);
         border: none;
-        padding: 0.32rem 0.8rem;
-        font-size: 0.78rem;
+        font-size: var(--font-sm);
         background: transparent;
         color: var(--md-sys-color-muted);
         cursor: pointer;
         transition:
-          background 0.15s var(--md-sys-motion-standard),
-          color 0.15s var(--md-sys-motion-standard),
-          box-shadow 0.15s var(--md-sys-motion-standard),
-          transform 0.1s ease-out;
+          background var(--duration-medium) var(--md-sys-motion-standard),
+          color var(--duration-medium) var(--md-sys-motion-standard),
+          box-shadow var(--duration-medium) var(--md-sys-motion-standard);
       }
 
-      .pricing-app .theme-toggle__option.is-active {
+      .pricing-app .segmented-button.is-active {
         background: var(--md-sys-color-surface);
         color: var(--md-sys-color-on-surface);
         box-shadow: var(--md-sys-elevation-1);
+      }
+
+      /* ===========================
+     THEME TOGGLE (SEGMENTED)
+     =========================== */
+
+      .pricing-app .theme-toggle__option {
+        padding: 0.32rem 0.8rem;
+        transition: transform var(--duration-instant) ease-out;
+      }
+
+      .pricing-app .theme-toggle__option.is-active {
         transform: translateY(-0.5px);
       }
 
@@ -322,46 +369,21 @@
      TABS & PANELS
      =========================== */
 
-      .pricing-app .panel-tabs {
-        display: inline-flex;
-        padding: 4px;
-        border-radius: 999px;
-        background: var(--md-sys-color-surface-variant);
-        border: 1px solid var(--md-sys-color-outline-variant);
-        gap: 4px;
-      }
-
       .pricing-app .panel-tabs__button {
-        border-radius: 999px;
-        border: none;
         padding: 0.4rem 1.1rem;
-        font-size: 0.8rem;
-        background: transparent;
-        color: var(--md-sys-color-muted);
-        cursor: pointer;
-        transition:
-          background 0.15s var(--md-sys-motion-standard),
-          color 0.15s var(--md-sys-motion-standard),
-          box-shadow 0.15s var(--md-sys-motion-standard);
-      }
-
-      .pricing-app .panel-tabs__button.is-active {
-        background: var(--md-sys-color-surface);
-        color: var(--md-sys-color-on-surface);
-        box-shadow: var(--md-sys-elevation-1);
       }
 
       .pricing-app .panel {
-        margin-top: 8px;
+        margin-top: var(--space-2);
         background: var(--md-sys-color-surface-variant);
         border-radius: var(--md-sys-shape-large);
         border: 1px solid var(--md-sys-color-outline-variant);
-        padding: 14px 14px 12px;
-        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+        padding: var(--space-3-5) var(--space-3-5) var(--space-3);
+        box-shadow: 0 var(--space-3) 32px rgba(15, 23, 42, 0.08);
         display: none;
         transition:
-          background 0.2s var(--md-sys-motion-standard),
-          border-color 0.2s var(--md-sys-motion-standard);
+          background var(--duration-slow) var(--md-sys-motion-standard),
+          border-color var(--duration-slow) var(--md-sys-motion-standard);
       }
 
       .pricing-app .panel.is-active {
@@ -369,12 +391,12 @@
       }
 
       .pricing-app .panel__header {
-        margin-bottom: 10px;
+        margin-bottom: var(--space-2-5);
       }
 
       .pricing-app .panel__header h2 {
-        margin: 0 0 2px;
-        font-size: 0.9rem;
+        margin: 0 0 var(--space-0-5);
+        font-size: var(--font-sm);
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--md-sys-color-on-surface);
@@ -382,25 +404,25 @@
 
       .pricing-app .panel__header p {
         margin: 0;
-        font-size: 0.82rem;
+        font-size: var(--font-sm);
         color: var(--md-sys-color-on-surface-variant);
       }
 
       .pricing-app .panel__footer {
-        margin-top: 12px;
-        padding-top: 10px;
+        margin-top: var(--space-3);
+        padding-top: var(--space-2-5);
         border-top: 1px solid var(--md-sys-color-outline-variant);
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        gap: 10px;
-        font-size: 0.82rem;
+        gap: var(--space-2-5);
+        font-size: var(--font-sm);
       }
 
       .pricing-app .panel__footer-left {
         display: flex;
         flex-wrap: wrap;
-        gap: 6px;
+        gap: var(--space-1-5);
       }
 
       .pricing-app .panel__footer-right {
@@ -411,8 +433,8 @@
       .pricing-app .meta-row {
         display: flex;
         justify-content: space-between;
-        gap: 6px;
-        font-size: 0.8rem;
+        gap: var(--space-1-5);
+        font-size: var(--font-sm);
         color: var(--md-sys-color-muted);
       }
 
@@ -432,20 +454,20 @@
       .pricing-app .line-items {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: var(--space-2-5);
       }
 
       .pricing-app .item-row {
         background: var(--md-sys-color-surface);
         border-radius: var(--md-sys-shape-medium);
         border: 1px solid var(--md-sys-color-outline-variant);
-        padding: 10px;
+        padding: var(--space-2-5);
         display: grid;
-        gap: 20px;
+        gap: var(--space-5);
         transition:
-          border-color 0.2s var(--md-sys-motion-standard),
-          box-shadow 0.2s var(--md-sys-motion-standard),
-          transform 0.12s ease-out;
+          border-color var(--duration-slow) var(--md-sys-motion-standard),
+          box-shadow var(--duration-slow) var(--md-sys-motion-standard),
+          transform var(--duration-fast) ease-out;
       }
 
       .pricing-app .item-row:hover {
@@ -461,8 +483,8 @@
       .pricing-app .item-row__bottom {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) auto;
-        gap: 8px;
-        align-items: center;
+        gap: var(--space-2);
+        align-items: flex-end;
       }
 
       @media (max-width: 640px) {
@@ -478,21 +500,16 @@
       .pricing-app .field {
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: var(--space-0-5);
       }
 
       .pricing-app .field-label {
-        font-size: 0.68rem;
+        font-size: var(--font-xs);
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--md-sys-color-muted);
         line-height: 1;
-        padding-left: 6px;
-      }
-
-      /* Tighten vertical rhythm */
-      .pricing-app .item-row__bottom {
-        align-items: flex-end;
+        padding-left: var(--space-1-5);
       }
 
       /* Desktop polish: visually de-emphasize labels */
@@ -503,22 +520,22 @@
       }
 
       .pricing-app input {
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         border: 1px solid var(--md-sys-color-outline-variant);
         background: var(--md-sys-color-surface);
         padding: 0.45rem 0.7rem;
-        font-size: 0.83rem;
+        font-size: var(--font-sm);
         color: var(--md-sys-color-on-surface);
         min-width: 0;
         transition:
-          border-color 0.18s var(--md-sys-motion-standard),
-          background 0.18s var(--md-sys-motion-standard),
-          box-shadow 0.18s var(--md-sys-motion-standard);
+          border-color var(--duration-normal) var(--md-sys-motion-standard),
+          background var(--duration-normal) var(--md-sys-motion-standard),
+          box-shadow var(--duration-normal) var(--md-sys-motion-standard);
       }
 
       .pricing-app input:focus-visible {
-        outline: 2px solid var(--md-sys-color-primary);
-        outline-offset: 2px;
+        outline: var(--space-0-5) solid var(--md-sys-color-primary);
+        outline-offset: var(--space-0-5);
         box-shadow: 0 0 0 1px var(--md-sys-color-primary-container);
       }
 
@@ -541,19 +558,19 @@
       .pricing-app .remove-btn {
         width: 32px;
         height: 32px;
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         border: 1px solid var(--md-sys-color-outline-variant);
         background: var(--md-sys-color-surface-variant);
         color: var(--md-sys-color-on-surface-variant);
         flex-shrink: 0;
-        font-size: 1.1rem;
+        font-size: var(--font-lg);
         line-height: 1;
         cursor: pointer;
         transition:
-          background 0.18s var(--md-sys-motion-standard),
-          color 0.18s var(--md-sys-motion-standard),
-          border-color 0.18s var(--md-sys-motion-standard),
-          transform 0.12s ease-out;
+          background var(--duration-normal) var(--md-sys-motion-standard),
+          color var(--duration-normal) var(--md-sys-motion-standard),
+          border-color var(--duration-normal) var(--md-sys-motion-standard),
+          transform var(--duration-fast) ease-out;
       }
 
       .pricing-app .remove-btn:hover {
@@ -575,46 +592,46 @@
         background: var(--md-sys-color-surface);
         border-radius: var(--md-sys-shape-large);
         border: 1px solid var(--md-sys-color-outline-variant);
-        padding: 16px 16px 14px;
+        padding: var(--space-4) var(--space-4) var(--space-3-5);
         box-shadow: var(--md-sys-elevation-2);
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: var(--space-2-5);
       }
 
       .pricing-app .summary-card__header {
-        margin-bottom: 6px;
+        margin-bottom: var(--space-1-5);
       }
 
       .pricing-app .summary-card__header h2 {
-        margin: 0 0 2px;
-        font-size: 0.9rem;
+        margin: 0 0 var(--space-0-5);
+        font-size: var(--font-sm);
         letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
       .pricing-app .summary-card__header p {
         margin: 0;
-        font-size: 0.8rem;
+        font-size: var(--font-sm);
         color: var(--md-sys-color-on-surface-variant);
       }
 
       .pricing-app .summary-section--inputs {
         display: flex;
         flex-direction: column;
-        gap: 4px;
-        margin-top: 4px;
+        gap: var(--space-1);
+        margin-top: var(--space-1);
       }
 
       .pricing-app .summary-section--meta {
-        margin-top: 2px;
+        margin-top: var(--space-0-5);
       }
 
       .pricing-app .summary-row {
         display: flex;
         justify-content: space-between;
-        font-size: 0.85rem;
-        gap: 6px;
+        font-size: var(--font-sm);
+        gap: var(--space-1-5);
       }
 
       .pricing-app .summary-row span {
@@ -623,18 +640,18 @@
 
       .pricing-app .summary-divider {
         border-bottom: 1px dashed var(--md-sys-color-outline-variant);
-        margin: 8px 0;
+        margin: var(--space-2) 0;
       }
 
       .pricing-app .inline-input {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
+        gap: var(--space-2-5);
       }
 
       .pricing-app .inline-input label {
-        font-size: 0.82rem;
+        font-size: var(--font-sm);
         color: var(--md-sys-color-muted);
         flex: 1;
       }
@@ -644,18 +661,18 @@
       }
 
       .pricing-app .summary-callout {
-        margin-top: 10px;
-        padding: 14px 16px;
-        border-radius: 16px;
+        margin-top: var(--space-2-5);
+        padding: var(--space-3-5) var(--space-4);
+        border-radius: var(--radius-lg);
         border: 1px solid var(--md-sys-color-secondary);
         background: var(--md-sys-color-secondary-container);
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: var(--space-1);
       }
 
       .pricing-app .summary-callout__label {
-        font-size: 0.78rem;
+        font-size: var(--font-sm);
         letter-spacing: 0.08em;
         text-transform: uppercase;
         font-weight: 600;
@@ -663,15 +680,33 @@
       }
 
       .pricing-app .summary-callout__value {
-        font-size: 1.4rem;
+        font-size: var(--font-xl);
         font-weight: 700;
         color: var(--md-sys-color-on-secondary-container);
       }
 
       .pricing-app .summary-actions {
-        margin-top: 6px;
+        margin-top: var(--space-1-5);
         display: flex;
         justify-content: flex-end;
+      }
+
+      /* ===========================
+     SHARED: OVERLAYS
+     =========================== */
+
+      .pricing-app .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.36);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--duration-slow) var(--md-sys-motion-standard);
+      }
+
+      .pricing-app .overlay.is-open {
+        opacity: 1;
+        pointer-events: auto;
       }
 
       /* ===========================
@@ -679,18 +714,7 @@
      =========================== */
 
       .pricing-app .guide-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(15, 23, 42, 0.36);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s var(--md-sys-motion-standard);
         z-index: 40;
-      }
-
-      .pricing-app .guide-overlay.is-open {
-        opacity: 1;
-        pointer-events: auto;
       }
 
       .pricing-app .guide-drawer {
@@ -703,7 +727,7 @@
         border-left: 1px solid var(--md-sys-color-outline-variant);
         box-shadow: -24px 0 60px rgba(0, 0, 0, 0.35);
         transform: translateX(100%);
-        transition: transform 0.25s var(--md-sys-motion-standard);
+        transition: transform var(--duration-slowest) var(--md-sys-motion-standard);
         z-index: 41;
         display: flex;
         flex-direction: column;
@@ -714,7 +738,7 @@
       }
 
       .pricing-app .guide-drawer__header {
-        padding: 14px 16px;
+        padding: var(--space-3-5) var(--space-4);
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
         display: flex;
         align-items: center;
@@ -723,39 +747,39 @@
 
       .pricing-app .guide-drawer__header h2 {
         margin: 0;
-        font-size: 0.95rem;
+        font-size: var(--font-base);
       }
 
       .pricing-app .guide-drawer__body {
-        padding: 14px 16px 18px;
+        padding: var(--space-3-5) var(--space-4) var(--space-4-5);
         overflow-y: auto;
-        font-size: 0.85rem;
+        font-size: var(--font-sm);
         color: var(--md-sys-color-on-surface-variant);
       }
 
       .pricing-app .guide-drawer__body section {
-        margin-bottom: 12px;
+        margin-bottom: var(--space-3);
       }
 
       .pricing-app .guide-drawer__body section h3 {
-        margin: 0 0 4px;
-        font-size: 0.88rem;
+        margin: 0 0 var(--space-1);
+        font-size: var(--font-sm);
         color: var(--md-sys-color-on-surface);
       }
 
       .pricing-app .guide-drawer__body section p {
-        margin: 0 0 4px;
+        margin: 0 0 var(--space-1);
       }
 
       .pricing-app .guide-drawer__body section ul,
       .pricing-app .guide-drawer__body section ol {
-        margin: 4px 0 0 18px;
+        margin: var(--space-1) 0 0 var(--space-4-5);
         padding: 0;
       }
 
       .pricing-app .guide-drawer__body section ul li,
       .pricing-app .guide-drawer__body section ol li {
-        margin-bottom: 3px;
+        margin-bottom: var(--space-0-75);
       }
 
       /* ===========================
@@ -763,18 +787,7 @@
      =========================== */
 
       .pricing-app .modal-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(15, 23, 42, 0.36);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s var(--md-sys-motion-standard);
         z-index: 60;
-      }
-
-      .pricing-app .modal-overlay.is-open {
-        opacity: 1;
-        pointer-events: auto;
       }
 
       .pricing-app .print-modal {
@@ -793,8 +806,8 @@
         opacity: 0;
         pointer-events: none;
         transition:
-          opacity 0.2s var(--md-sys-motion-standard),
-          transform 0.2s var(--md-sys-motion-standard);
+          opacity var(--duration-slow) var(--md-sys-motion-standard),
+          transform var(--duration-slow) var(--md-sys-motion-standard);
       }
 
       .pricing-app .print-modal.is-open {
@@ -804,12 +817,12 @@
       }
 
       .pricing-app .print-modal__header {
-        padding: 14px 16px;
+        padding: var(--space-3-5) var(--space-4);
         border-bottom: 1px solid var(--md-sys-color-outline-variant);
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        gap: 10px;
+        gap: var(--space-2-5);
       }
 
       .pricing-app .print-modal__title-block {
@@ -818,13 +831,13 @@
       }
 
       .pricing-app .print-modal__body {
-        padding: 14px 16px 16px;
+        padding: var(--space-3-5) var(--space-4) var(--space-4);
         overflow-y: auto;
-        font-size: 0.85rem;
+        font-size: var(--font-sm);
       }
 
       .pricing-app .print-modal__footer {
-        padding: 10px 16px 14px;
+        padding: var(--space-2-5) var(--space-4) var(--space-3-5);
         border-top: 1px solid var(--md-sys-color-outline-variant);
         display: flex;
         justify-content: flex-end;
@@ -833,29 +846,29 @@
       .pricing-app .client-name-display {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: var(--space-2-5);
       }
 
       .pricing-app .client-name-display strong {
-        font-size: 1.1rem;
+        font-size: var(--font-lg);
       }
 
       .pricing-app .edit-client-btn {
-        font-size: 0.75rem;
+        font-size: var(--font-xs);
         padding-inline: 0.35rem;
       }
 
       .pricing-app .client-name-edit {
         display: none;
-        margin-top: 8px;
+        margin-top: var(--space-2);
       }
 
       .pricing-app .client-name-edit label {
-        font-size: 0.78rem;
+        font-size: var(--font-sm);
         text-transform: uppercase;
         letter-spacing: 0.07em;
         color: var(--md-sys-color-muted);
-        margin-bottom: 3px;
+        margin-bottom: var(--space-0-75);
         display: block;
       }
 
@@ -864,14 +877,14 @@
       }
 
       .pricing-app .scope-block {
-        margin-top: 16px;
+        margin-top: var(--space-4);
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: var(--space-2-5);
       }
 
       .pricing-app .scope-block label {
-        font-size: 0.78rem;
+        font-size: var(--font-sm);
         text-transform: uppercase;
         letter-spacing: 0.07em;
         color: var(--md-sys-color-muted);
@@ -879,19 +892,19 @@
 
       .pricing-app .scope-toolbar {
         display: flex;
-        gap: 6px;
+        gap: var(--space-1-5);
         flex-wrap: wrap;
       }
 
       .pricing-app .scope-toolbar .rt-btn {
-        padding: 6px 10px;
-        font-size: 0.78rem;
-        border-radius: 8px;
+        padding: var(--space-1-5) var(--space-2-5);
+        font-size: var(--font-sm);
+        border-radius: var(--radius-sm);
         background: var(--md-sys-color-surface-variant);
         border: 1px solid var(--md-sys-color-outline-variant);
         cursor: pointer;
         color: var(--md-sys-color-on-surface-variant);
-        transition: background 0.18s var(--md-sys-motion-standard);
+        transition: background var(--duration-normal) var(--md-sys-motion-standard);
       }
 
       .pricing-app .scope-toolbar .rt-btn:hover {
@@ -905,7 +918,7 @@
 
       .pricing-app .scope-editor-wrapper {
         border: 1px solid var(--md-sys-color-outline-variant);
-        border-radius: 12px;
+        border-radius: var(--radius-md);
         background: var(--md-sys-color-surface);
         padding: 0;
         overflow: hidden;
@@ -914,8 +927,8 @@
 
       .pricing-app .scope-editor {
         min-height: 140px;
-        padding: 14px;
-        font-size: 0.9rem;
+        padding: var(--space-3-5);
+        font-size: var(--font-sm);
         line-height: 1.55;
         outline: none;
         white-space: pre-wrap;
@@ -930,28 +943,28 @@
 
       .pricing-app .scope-editor:focus {
         background: var(--md-sys-color-surface);
-        outline: 2px solid var(--md-sys-color-primary);
+        outline: var(--space-0-5) solid var(--md-sys-color-primary);
         outline-offset: -2px;
       }
 
       .pricing-app .scope-editor h3 {
-        margin: 8px 0;
-        font-size: 1.05rem;
+        margin: var(--space-2) 0;
+        font-size: var(--font-lg);
         font-weight: 600;
       }
 
       .pricing-app .print-services {
         display: flex;
         flex-direction: column;
-        gap: 6px;
-        margin-bottom: 12px;
+        gap: var(--space-1-5);
+        margin-bottom: var(--space-3);
       }
 
       .pricing-app .print-line {
         display: flex;
         justify-content: space-between;
-        gap: 8px;
-        padding: 6px 0;
+        gap: var(--space-2);
+        padding: var(--space-1-5) 0;
         border-bottom: 1px dashed var(--md-sys-color-outline-variant);
       }
 
@@ -964,13 +977,13 @@
       }
 
       .pricing-app .print-total {
-        margin-top: 8px;
-        padding-top: 10px;
+        margin-top: var(--space-2);
+        padding-top: var(--space-2-5);
         border-top: 1px solid var(--md-sys-color-outline-variant);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 0.9rem;
+        font-size: var(--font-sm);
       }
 
       .pricing-app .print-total span {
@@ -978,7 +991,7 @@
       }
 
       .pricing-app .print-total strong {
-        font-size: 1.1rem;
+        font-size: var(--font-lg);
       }
 
       /* ===============================
@@ -987,10 +1000,6 @@
 
       ::selection {
         background: rgba(56, 132, 255, 0.25);
-      }
-
-      .no-print {
-        /* hidden only in print mode */
       }
 
       @media print {
@@ -1051,7 +1060,7 @@
         position: relative;
         z-index: 101;
         box-shadow:
-          0 0 0 4px var(--md-sys-color-primary),
+          0 0 0 var(--space-1) var(--md-sys-color-primary),
           0 0 0 9999px rgba(15, 23, 42, 0.45);
         border-radius: var(--md-sys-shape-large);
         isolation: isolate;
@@ -1064,28 +1073,28 @@
         border-radius: var(--md-sys-shape-large);
         border: 1px solid var(--md-sys-color-outline-variant);
         box-shadow: var(--md-sys-elevation-2);
-        padding: 14px;
+        padding: var(--space-3-5);
         z-index: 102;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: var(--space-2-5);
       }
 
       .walkthrough-tooltip h4 {
         margin: 0;
-        font-size: 0.95rem;
+        font-size: var(--font-base);
       }
 
       .walkthrough-tooltip p {
         margin: 0;
-        font-size: 0.85rem;
+        font-size: var(--font-sm);
         color: var(--md-sys-color-on-surface-variant);
       }
 
       .walkthrough-tooltip__actions {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: var(--space-2);
       }
 
       .walkthrough-tooltip__actions .spacer {
@@ -1093,7 +1102,7 @@
       }
 
       .walkthrough-tooltip__step {
-        font-size: 0.7rem;
+        font-size: var(--font-xs);
         text-transform: uppercase;
         letter-spacing: 0.08em;
         color: var(--md-sys-color-muted);
@@ -1118,9 +1127,9 @@
           </button>
 
           <!-- Material 3 style segmented theme toggle -->
-          <div class="theme-toggle" role="radiogroup" aria-label="Theme mode">
+          <div class="theme-toggle segmented-container" role="radiogroup" aria-label="Theme mode">
             <button
-              class="theme-toggle__option is-active"
+              class="theme-toggle__option segmented-button is-active"
               type="button"
               data-theme="light"
               aria-pressed="true"
@@ -1128,7 +1137,7 @@
               Light
             </button>
             <button
-              class="theme-toggle__option"
+              class="theme-toggle__option segmented-button"
               type="button"
               data-theme="dark"
               aria-pressed="false"
@@ -1147,16 +1156,16 @@
         <!-- PRIMARY COLUMN -->
         <div class="column column--primary">
           <!-- Tabs -->
-          <div class="panel-tabs" role="tablist">
+          <div class="panel-tabs segmented-container" role="tablist">
             <button
-              class="panel-tabs__button is-active"
+              class="panel-tabs__button segmented-button is-active"
               type="button"
               data-tab="services"
             >
               Services
             </button>
             <button
-              class="panel-tabs__button"
+              class="panel-tabs__button segmented-button"
               type="button"
               data-tab="overheads"
             >
@@ -1326,7 +1335,7 @@
       </section>
 
       <!-- GUIDE PANEL -->
-      <div class="guide-overlay" id="guide-overlay"></div>
+      <div class="guide-overlay overlay" id="guide-overlay"></div>
 
       <aside class="guide-drawer" id="guide-drawer" aria-hidden="true">
         <header class="guide-drawer__header">
@@ -1337,14 +1346,14 @@
             id="guide-close"
             aria-label="Close help"
           >
-            ×
+            ?
           </button>
         </header>
         <div class="guide-drawer__body">
           <section>
             <h3>What this tool does</h3>
             <p>
-              This console helps you move from â€œhourly guessingâ€ to a
+              This console helps you move from ?hourly guessing? to a
               repeatable pricing model. You define <strong>services</strong> and
               <strong>overheads</strong>, then layer overhead %, project buffer
               %, and profit % on top.
@@ -1352,7 +1361,7 @@
           </section>
 
           <section>
-            <h3>1 â€” Add services</h3>
+            <h3>1 ? Add services</h3>
             <ol>
               <li>
                 Create one line per project phase (Discovery, UX, Front-end
@@ -1367,25 +1376,25 @@
           </section>
 
           <section>
-            <h3>2 â€” Add overhead expenses</h3>
+            <h3>2 ? Add overhead expenses</h3>
             <ol>
               <li>
                 Use overhead items for tools, subscriptions, admin, tax, and
                 ops.
               </li>
               <li>
-                Think in â€œper projectâ€ slices (for example, a portion of
+                Think in ?per project? slices (for example, a portion of
                 Figma, hosting, etc.).
               </li>
               <li>
-                The raw overhead total is for your eyes only; clients donâ€™t
+                The raw overhead total is for your eyes only; clients don?t
                 see this number.
               </li>
             </ol>
           </section>
 
           <section>
-            <h3>3 â€” Apply overhead %, buffer %, and profit %</h3>
+            <h3>3 ? Apply overhead %, buffer %, and profit %</h3>
             <ul>
               <li>
                 <strong>Overhead %</strong> applies a percentage of your
@@ -1403,7 +1412,7 @@
           </section>
 
           <section>
-            <h3>4 â€” Read the summary & print</h3>
+            <h3>4 ? Read the summary & print</h3>
             <ul>
               <li>
                 <strong>Base cost</strong> = services + overhead charge +
@@ -1422,7 +1431,7 @@
       </aside>
 
       <!-- PRINT MODAL OVERLAY -->
-      <div class="modal-overlay" id="print-overlay"></div>
+      <div class="modal-overlay overlay" id="print-overlay"></div>
 
       <!-- PRINT MODAL -->
       <section class="print-modal" id="print-modal" aria-hidden="true">
@@ -1430,7 +1439,7 @@
           <div class="print-modal__title-block">
             <!-- CLIENT NAME DISPLAY -->
             <div class="client-name-display" id="client-name-display">
-              <strong id="client-name-text">Website Design â€” Acme Co.</strong>
+              <strong id="client-name-text">Website Design ? Acme Co.</strong>
               <button
                 class="text-button edit-client-btn"
                 id="edit-client-btn"
@@ -1446,7 +1455,7 @@
               <input
                 id="print-project-name"
                 type="text"
-                value="Website Design â€” Acme Co."
+                value="Website Design ? Acme Co."
               />
             </div>
 
@@ -1469,7 +1478,7 @@
                   type="button"
                   data-cmd="insertUnorderedList"
                 >
-                  â€¢ Bullet
+                  ? Bullet
                 </button>
                 <button
                   class="rt-btn"
@@ -1513,7 +1522,7 @@
             id="print-close"
             aria-label="Close print dialog"
           >
-            ×
+            ?
           </button>
         </header>
 
@@ -1642,7 +1651,7 @@
               class="remove-btn"
               type="button"
               aria-label="Remove service"
-            >×</button>
+            >?</button>
           </div>
         `;
 
@@ -1683,7 +1692,7 @@
               initial.amount || ""
             }">
             <input class="over-total" disabled placeholder="$0.00">
-            <button class="remove-btn" type="button">×</button>
+            <button class="remove-btn" type="button">?</button>
           </div>
         `;
 
@@ -1981,7 +1990,7 @@
       });
 
       /* ============================================================
-   WALKTHROUGH â€” FINAL, STABLE, PRODUCTION SAFE
+   WALKTHROUGH ? FINAL, STABLE, PRODUCTION SAFE
 ============================================================ */
 
       const walkthroughSteps = [
