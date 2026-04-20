@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        --bg: #0f1115;
+        --panel: #171a21;
+        --border: #23263a;
+        --text: #e6e8ee;
+
+        --skel-base: #242836;
+        --skel-highlight: #313754;
+
+        --radius: 14px;
+        --gap: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: system-ui, sans-serif;
+      }
+
+      .app {
+        max-width: 1200px;
+        margin: 32px auto;
+        padding: 0 16px;
+        display: grid;
+        gap: 24px;
+      }
+
+      /* ---------- skeleton core ---------- */
+      .skel {
+        background: var(--skel-base);
+        border-radius: 6px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .app[data-shimmer="true"] .skel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          100deg,
+          transparent 40%,
+          var(--skel-highlight) 50%,
+          transparent 60%
+        );
+        animation: shimmer 1.4s infinite linear;
+      }
+
+      @keyframes shimmer {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(100%);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .skel::after {
+          animation: none;
+        }
+      }
+
+      /* ---------- header ---------- */
+      .topbar {
+        display: grid;
+        grid-template-columns: 120px 1fr 40px;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .logo {
+        width: 120px;
+        height: 24px;
+      }
+      .nav {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .nav-item {
+        width: 80px;
+        height: 16px;
+      }
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      /* ---------- metrics ---------- */
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .metric-card {
+        padding: 16px;
+        border-radius: var(--radius);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        display: grid;
+        gap: 10px;
+      }
+
+      .metric-label {
+        width: 60%;
+        height: 12px;
+      }
+      .metric-value {
+        width: 40%;
+        height: 22px;
+      }
+
+      /* ---------- layout ---------- */
+      .layout {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 24px;
+      }
+
+      .sidebar {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 16px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .menu-item {
+        height: 14px;
+      }
+
+      /* ---------- feed ---------- */
+      .feed {
+        display: grid;
+        gap: 16px;
+      }
+
+      .card {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        gap: 14px;
+        padding: 16px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+      }
+
+      .body {
+        display: grid;
+        gap: 8px;
+      }
+
+      .line {
+        height: 14px;
+      }
+      .line.title {
+        height: 18px;
+        width: 60%;
+      }
+      .w-80 {
+        width: 80%;
+      }
+      .w-60 {
+        width: 60%;
+      }
+
+      /* ---------- table ---------- */
+      .table {
+        margin-top: 24px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 12px 16px;
+        gap: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .row:last-child {
+        border-bottom: none;
+      }
+
+      .cell {
+        height: 14px;
+      }
+
+      /* ---------- responsive ---------- */
+      
+      /* Tablet and below */
+      @media (max-width: 1024px) {
+        .app {
+          margin: 24px auto;
+          gap: 20px;
+        }
+
+        .layout {
+          gap: 20px;
+        }
+      }
+
+      /* Mobile landscape and below */
+      @media (max-width: 768px) {
+        .app {
+          margin: 16px auto;
+          padding: 0 12px;
+          gap: 16px;
+        }
+
+        /* Stack metrics in 2 columns */
+        .metrics {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+        }
+
+        /* Stack layout: sidebar on top */
+        .layout {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        /* Compact sidebar */
+        .sidebar {
+          padding: 12px;
+          gap: 10px;
+        }
+
+        /* Table wrapper for horizontal scroll */
+        .table {
+          overflow-x: auto;
+          margin-top: 16px;
+        }
+
+        .row {
+          grid-template-columns: 1fr 1fr 1fr;
+          min-width: 500px;
+          padding: 10px 12px;
+        }
+      }
+
+      /* Mobile portrait */
+      @media (max-width: 640px) {
+        .app {
+          margin: 12px auto;
+          padding: 0 8px;
+          gap: 12px;
+        }
+
+        /* Compact topbar */
+        .topbar {
+          grid-template-columns: 80px 1fr 36px;
+          gap: 12px;
+        }
+
+        .logo {
+          width: 80px;
+          height: 20px;
+        }
+
+        /* Hide some nav items on very small screens */
+        .nav {
+          gap: 8px;
+        }
+
+        .nav-item {
+          width: 60px;
+          height: 14px;
+        }
+
+        .nav-item:nth-child(3) {
+          display: none;
+        }
+
+        .avatar {
+          width: 36px;
+          height: 36px;
+        }
+
+        /* Stack metrics in 1 column */
+        .metrics {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .metric-card {
+          padding: 12px;
+        }
+
+        /* Compact cards */
+        .card {
+          padding: 12px;
+          gap: 10px;
+        }
+
+        .feed {
+          gap: 12px;
+        }
+
+        /* Smaller table cells */
+        .row {
+          min-width: 400px;
+          padding: 8px 10px;
+          gap: 12px;
+        }
+
+        .cell {
+          height: 12px;
+        }
+      }
+
+      /* Extra small screens */
+      @media (max-width: 480px) {
+        .topbar {
+          grid-template-columns: 60px 1fr 32px;
+          gap: 8px;
+        }
+
+        .logo {
+          width: 60px;
+          height: 18px;
+        }
+
+        .nav-item:nth-child(2) {
+          display: none;
+        }
+
+        .nav-item {
+          width: 50px;
+        }
+
+        .avatar {
+          width: 32px;
+          height: 32px;
+        }
+
+        .card {
+          grid-template-columns: 40px 1fr;
+          gap: 8px;
+          padding: 10px;
+        }
+
+        .line.title {
+          height: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app" data-loading="true" data-shimmer="true">
+      <!-- Header -->
+      <header class="topbar">
+        <div class="logo skel"></div>
+        <div class="nav">
+          <div class="nav-item skel"></div>
+          <div class="nav-item skel"></div>
+          <div class="nav-item skel"></div>
+        </div>
+        <div class="avatar skel"></div>
+      </header>
+
+      <!-- Metrics -->
+      <section class="metrics">
+        <article class="metric-card">
+          <div class="metric-label skel"></div>
+          <div class="metric-value skel"></div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label skel"></div>
+          <div class="metric-value skel"></div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label skel"></div>
+          <div class="metric-value skel"></div>
+        </article>
+      </section>
+
+      <!-- Main Layout -->
+      <section class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+          <div class="menu-item skel"></div>
+          <div class="menu-item skel"></div>
+          <div class="menu-item skel"></div>
+          <div class="menu-item skel"></div>
+        </aside>
+
+        <!-- Content -->
+        <div class="content">
+          <!-- Feed -->
+          <section class="feed">
+            <article class="card">
+              <div class="avatar skel"></div>
+              <div class="body">
+                <div class="line title skel"></div>
+                <div class="line skel w-80"></div>
+                <div class="line skel w-60"></div>
+              </div>
+            </article>
+            <article class="card">
+              <div class="avatar skel"></div>
+              <div class="body">
+                <div class="line title skel"></div>
+                <div class="line skel w-80"></div>
+                <div class="line skel w-60"></div>
+              </div>
+            </article>
+            <article class="card">
+              <div class="avatar skel"></div>
+              <div class="body">
+                <div class="line title skel"></div>
+                <div class="line skel w-80"></div>
+                <div class="line skel w-60"></div>
+              </div>
+            </article>
+          </section>
+
+          <!-- Table -->
+          <section class="table">
+            <div class="row header">
+              <div class="cell skel"></div>
+              <div class="cell skel"></div>
+              <div class="cell skel"></div>
+            </div>
+            <div class="row">
+              <div class="cell skel"></div>
+              <div class="cell skel"></div>
+              <div class="cell skel"></div>
+            </div>
+            <div class="row">
+              <div class="cell skel"></div>
+              <div class="cell skel"></div>
+              <div class="cell skel"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script>
+      const app = document.querySelector(".app");
+
+      let loading = true;
+      let shimmer = true;
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "s") {
+          loading = !loading;
+          app.dataset.loading = loading;
+        }
+        if (e.key === "m") {
+          shimmer = !shimmer;
+          app.dataset.shimmer = shimmer;
+        }
+      });
+
+      // simulate data load
+      setTimeout(() => {
+        app.dataset.loading = false;
+      }, 3000);
+    </script>
+  </body>
+</html>
