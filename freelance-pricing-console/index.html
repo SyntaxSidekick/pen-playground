@@ -1,0 +1,2342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+          /* ===============================
+      MATERIAL 3 THEME TOKENS
+      =============================== */
+
+      :root {
+        --md-sys-color-background: #f4f4f7;
+        --md-sys-color-surface: #ffffff;
+        --md-sys-color-surface-variant: #f1f2f5;
+        --md-sys-color-outline: #d3d6dd;
+        --md-sys-color-outline-variant: #e2e4eb;
+
+        --md-sys-color-on-surface: #151821;
+        --md-sys-color-on-surface-variant: #5f6470;
+        --md-sys-color-muted: #7a808c;
+
+        --md-sys-color-primary: #2563eb;
+        --md-sys-color-on-primary: #ffffff;
+        --md-sys-color-primary-container: #e0ecff;
+        --md-sys-color-on-primary-container: #0b2a6f;
+
+        --md-sys-color-secondary: #22c55e;
+        --md-sys-color-on-secondary: #022c22;
+        --md-sys-color-secondary-container: #d1fae5;
+        --md-sys-color-on-secondary-container: #064e3b;
+
+        --md-sys-elevation-1: 0 10px 30px rgba(15, 23, 42, 0.1);
+        --md-sys-elevation-2: 0 18px 40px rgba(15, 23, 42, 0.16);
+
+        --md-sys-shape-medium: 14px;
+        --md-sys-shape-large: 18px;
+        --md-sys-shape-xl: 24px;
+
+        /* Spacing tokens */
+        --md-sys-spacing-xs: 4px;
+        --md-sys-spacing-sm: 8px;
+        --md-sys-spacing-md: 12px;
+        --md-sys-spacing-lg: 16px;
+        --md-sys-spacing-xl: 20px;
+        --md-sys-spacing-2xl: 24px;
+        --md-sys-spacing-3xl: 28px;
+
+        --md-sys-motion-standard: cubic-bezier(0.2, 0, 0, 1);
+      }
+
+      /* Mobile spacing adjustments */
+      @media (max-width: 768px) {
+        :root {
+          --md-sys-spacing-xs: 3px;
+          --md-sys-spacing-sm: 6px;
+          --md-sys-spacing-md: 10px;
+          --md-sys-spacing-lg: 14px;
+          --md-sys-spacing-xl: 16px;
+          --md-sys-spacing-2xl: 20px;
+          --md-sys-spacing-3xl: 24px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        :root {
+          --md-sys-spacing-xs: 2px;
+          --md-sys-spacing-sm: 4px;
+          --md-sys-spacing-md: 8px;
+          --md-sys-spacing-lg: 12px;
+          --md-sys-spacing-xl: 14px;
+          --md-sys-spacing-2xl: 16px;
+          --md-sys-spacing-3xl: 20px;
+        }
+      }
+
+      :root[data-theme="dark"] {
+        --md-sys-color-background: #05070b;
+        --md-sys-color-surface: #12141b;
+        --md-sys-color-surface-variant: #191c24;
+        --md-sys-color-outline: #3f4451;
+        --md-sys-color-outline-variant: #262a36;
+
+        --md-sys-color-on-surface: #f3f4f6;
+        --md-sys-color-on-surface-variant: #a0a4b0;
+        --md-sys-color-muted: #8c909c;
+
+        --md-sys-color-primary: #60a5fa;
+        --md-sys-color-on-primary: #051423;
+        --md-sys-color-primary-container: #111827;
+        --md-sys-color-on-primary-container: #e5efff;
+
+        --md-sys-color-secondary: #34d399;
+        --md-sys-color-on-secondary: #022c22;
+        --md-sys-color-secondary-container: #064e3b;
+        --md-sys-color-on-secondary-container: #a7f3d0;
+      }
+
+      /* ===============================
+      BASE
+      =============================== */
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+          "Segoe UI", sans-serif;
+        background: var(--md-sys-color-background);
+        color: var(--md-sys-color-on-surface);
+        transition: background 0.2s var(--md-sys-motion-standard),
+          color 0.2s var(--md-sys-motion-standard);
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      /* ===============================
+      BUTTONS
+      =============================== */
+
+      .filled-button,
+      .tonal-button,
+      .text-button,
+      .icon-button {
+        border-radius: 999px;
+        border: 1px solid transparent;
+        padding: var(--md-sys-spacing-sm) var(--md-sys-spacing-md);
+        font-size: clamp(0.82rem, 1vw + 0.5rem, 0.85rem);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--md-sys-spacing-xs);
+        background: none;
+        color: var(--md-sys-color-on-surface);
+        transition: background 0.16s var(--md-sys-motion-standard),
+          border-color 0.16s var(--md-sys-motion-standard),
+          box-shadow 0.16s var(--md-sys-motion-standard), transform 0.12s ease-out;
+
+        &:focus-visible {
+          outline: 2px solid var(--md-sys-color-primary);
+          outline-offset: 2px;
+        }
+      }
+
+      .filled-button {
+        background: var(--md-sys-color-primary);
+        color: var(--md-sys-color-on-primary);
+
+        &:hover {
+          filter: brightness(1.05);
+          box-shadow: var(--md-sys-elevation-1);
+          transform: translateY(-0.5px);
+        }
+
+        &:active {
+          transform: translateY(0);
+          box-shadow: none;
+        }
+      }
+
+      .filled-button--secondary {
+        background: var(--md-sys-color-secondary);
+        color: var(--md-sys-color-on-secondary);
+
+        &:hover {
+          filter: brightness(1.05);
+        }
+      }
+
+      .tonal-button {
+        background: var(--md-sys-color-primary-container);
+        color: var(--md-sys-color-on-primary-container);
+
+        &:hover {
+          filter: brightness(1.03);
+          box-shadow: var(--md-sys-elevation-1);
+        }
+      }
+
+      .text-button {
+        border-color: transparent;
+        color: var(--md-sys-color-muted);
+        background: transparent;
+        padding-inline: var(--md-sys-spacing-sm);
+
+        &:hover {
+          background: var(--md-sys-color-surface-variant);
+          color: var(--md-sys-color-on-surface);
+        }
+      }
+
+      .icon-button {
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        border-color: var(--md-sys-color-outline-variant);
+        font-size: 1.1rem;
+        background: var(--md-sys-color-surface-variant);
+        color: var(--md-sys-color-on-surface-variant);
+        flex-shrink: 0;
+
+        &:hover {
+          background: var(--md-sys-color-primary-container);
+          color: var(--md-sys-color-on-primary-container);
+        }
+      }
+
+      /* ===============================
+      APP SHELL
+      =============================== */
+
+      .pricing-app {
+        max-width: 1120px;
+        margin: var(--md-sys-spacing-3xl) auto;
+        padding: var(--md-sys-spacing-lg) var(--md-sys-spacing-lg) var(--md-sys-spacing-xl);
+        border-radius: var(--md-sys-shape-xl);
+        background: var(--md-sys-color-surface);
+        border: 1px solid var(--md-sys-color-outline-variant);
+        box-shadow: var(--md-sys-elevation-1);
+        transition: background 0.2s var(--md-sys-motion-standard),
+          border-color 0.2s var(--md-sys-motion-standard),
+          box-shadow 0.2s var(--md-sys-motion-standard);
+
+        .app-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: var(--md-sys-spacing-lg);
+          padding-bottom: var(--md-sys-spacing-md);
+          border-bottom: 1px solid var(--md-sys-color-outline-variant);
+
+          @media (max-width: 900px) {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          &__titles {
+            flex: 1 1 auto;
+            min-width: 0;
+
+            @media (max-width: 900px) {
+              width: 100%;
+            }
+
+            h1 {
+              margin: 0 0 var(--md-sys-spacing-xs);
+              font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);
+              letter-spacing: 0.02em;
+            }
+
+            p {
+              margin: 0;
+              font-size: clamp(0.75rem, 1.5vw + 0.4rem, 0.85rem);
+              color: var(--md-sys-color-on-surface-variant);
+            }
+          }
+
+          &__actions {
+            flex: 0 0 auto;
+            display: flex;
+            gap: var(--md-sys-spacing-md);
+            align-items: center;
+            flex-wrap: wrap;
+
+            @media (max-width: 900px) {
+              width: 100%;
+              justify-content: flex-start;
+            }
+
+            @media (max-width: 640px) {
+              flex-direction: column;
+              align-items: stretch;
+              gap: var(--md-sys-spacing-sm);
+
+              .tonal-button {
+                width: 100%;
+                justify-content: center;
+              }
+            }
+          }
+        }
+
+        .app-layout {
+          margin-top: var(--md-sys-spacing-lg);
+          display: grid;
+          grid-template-columns: 7fr 5fr;
+          gap: var(--md-sys-spacing-lg);
+
+          @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .column {
+          &--primary {
+            display: flex;
+            flex-direction: column;
+            gap: var(--md-sys-spacing-md);
+          }
+
+          &--secondary {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+
+        /* ===========================
+        THEME TOGGLE (SEGMENTED)
+        =========================== */
+
+        .theme-toggle {
+          display: inline-flex;
+          padding: var(--md-sys-spacing-xs);
+          border-radius: 999px;
+          background: var(--md-sys-color-surface-variant);
+          border: 1px solid var(--md-sys-color-outline-variant);
+          gap: var(--md-sys-spacing-xs);
+
+          @media (max-width: 640px) {
+            width: 100%;
+          }
+
+          &__option {
+            border-radius: 999px;
+            border: none;
+            padding: 0.32rem 0.8rem;
+            font-size: 0.78rem;
+            background: transparent;
+            color: var(--md-sys-color-muted);
+            cursor: pointer;
+            transition: background 0.15s var(--md-sys-motion-standard),
+              color 0.15s var(--md-sys-motion-standard),
+              box-shadow 0.15s var(--md-sys-motion-standard), transform 0.1s ease-out;
+
+            @media (max-width: 640px) {
+              flex: 1;
+              text-align: center;
+            }
+
+            &.is-active {
+              background: var(--md-sys-color-surface);
+              color: var(--md-sys-color-on-surface);
+              box-shadow: var(--md-sys-elevation-1);
+              transform: translateY(-0.5px);
+            }
+          }
+        }
+
+        /* ===========================
+        TABS & PANELS
+        =========================== */
+
+        .panel-tabs {
+          display: inline-flex;
+          padding: var(--md-sys-spacing-xs);
+          border-radius: 999px;
+          background: var(--md-sys-color-surface-variant);
+          border: 1px solid var(--md-sys-color-outline-variant);
+          gap: var(--md-sys-spacing-xs);
+
+          @media (max-width: 640px) {
+            width: 100%;
+          }
+
+          &__button {
+            border-radius: 999px;
+            border: none;
+            padding: 0.4rem 1.1rem;
+            font-size: 0.8rem;
+            background: transparent;
+            color: var(--md-sys-color-muted);
+            cursor: pointer;
+            transition: background 0.15s var(--md-sys-motion-standard),
+              color 0.15s var(--md-sys-motion-standard),
+              box-shadow 0.15s var(--md-sys-motion-standard);
+
+            @media (max-width: 640px) {
+              flex: 1;
+              text-align: center;
+              padding: 0.4rem 0.8rem;
+            }
+
+            &.is-active {
+              background: var(--md-sys-color-surface);
+              color: var(--md-sys-color-on-surface);
+              box-shadow: var(--md-sys-elevation-1);
+            }
+          }
+        }
+
+        .panel {
+          margin-top: var(--md-sys-spacing-sm);
+          background: var(--md-sys-color-surface-variant);
+          border-radius: var(--md-sys-shape-large);
+          border: 1px solid var(--md-sys-color-outline-variant);
+          padding: var(--md-sys-spacing-md) var(--md-sys-spacing-md) var(--md-sys-spacing-lg);
+          box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+          display: none;
+          transition: background 0.2s var(--md-sys-motion-standard),
+            border-color 0.2s var(--md-sys-motion-standard);
+
+          &.is-active {
+            display: block;
+          }
+
+          &__header {
+            margin-bottom: var(--md-sys-spacing-md);
+
+            h2 {
+              margin: 0 0 var(--md-sys-spacing-xs);
+              font-size: clamp(0.85rem, 1.2vw + 0.6rem, 0.9rem);
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+              color: var(--md-sys-color-on-surface);
+            }
+
+            p {
+              margin: 0;
+              font-size: clamp(0.78rem, 1vw + 0.5rem, 0.82rem);
+              color: var(--md-sys-color-on-surface-variant);
+            }
+          }
+
+          &__footer {
+            margin-top: var(--md-sys-spacing-md);
+            padding-top: var(--md-sys-spacing-md);
+            border-top: 1px solid var(--md-sys-color-outline-variant);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: var(--md-sys-spacing-md);
+            font-size: 0.82rem;
+
+            @media (max-width: 768px) {
+              flex-direction: column;
+              align-items: stretch;
+            }
+
+            &-left {
+              display: flex;
+              flex-wrap: wrap;
+              gap: var(--md-sys-spacing-sm);
+
+              @media (max-width: 640px) {
+                flex-direction: column;
+
+                button {
+                  width: 100%;
+                  justify-content: center;
+                }
+              }
+            }
+
+            &-right {
+              text-align: right;
+              min-width: 160px;
+
+              @media (max-width: 768px) {
+                text-align: left;
+                min-width: auto;
+                width: 100%;
+              }
+            }
+          }
+        }
+
+        .meta-row {
+          display: flex;
+          justify-content: space-between;
+          gap: var(--md-sys-spacing-sm);
+          font-size: 0.8rem;
+          color: var(--md-sys-color-muted);
+
+          span {
+            flex: 1;
+          }
+
+          strong {
+            color: var(--md-sys-color-on-surface);
+            font-weight: 500;
+          }
+        }
+
+        /* ===========================
+        LINE ITEMS
+        =========================== */
+
+        .line-items {
+          display: flex;
+          flex-direction: column;
+          gap: var(--md-sys-spacing-md);
+        }
+
+        .item-row {
+          background: var(--md-sys-color-surface);
+          border-radius: var(--md-sys-shape-medium);
+          border: 1px solid var(--md-sys-color-outline-variant);
+          padding: var(--md-sys-spacing-md);
+          display: grid;
+          gap: var(--md-sys-spacing-lg);
+          transition: border-color 0.2s var(--md-sys-motion-standard),
+            box-shadow 0.2s var(--md-sys-motion-standard), transform 0.12s ease-out;
+
+          &:hover {
+            border-color: var(--md-sys-color-outline);
+            box-shadow: var(--md-sys-elevation-1);
+            transform: translateY(-0.5px);
+          }
+
+          &__top {
+            input {
+              width: 100%;
+            }
+          }
+
+          &__bottom {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+            gap: var(--md-sys-spacing-sm);
+            align-items: center;
+
+            @media (max-width: 768px) {
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+
+              .field:nth-child(3) {
+                grid-column: 1 / 2;
+              }
+
+              .remove-btn {
+                grid-column: 2 / 3;
+                justify-self: end;
+              }
+            }
+
+            @media (max-width: 480px) {
+              grid-template-columns: 1fr;
+
+              .field {
+                grid-column: 1 / -1;
+              }
+
+              .remove-btn {
+                grid-column: 1 / -1;
+                justify-self: stretch;
+                width: 100%;
+                height: 40px;
+              }
+            }
+          }
+        }
+        /* ===========================
+         FIELD + MICRO LABELS
+      =========================== */
+
+        .field {
+          display: flex;
+          flex-direction: column;
+          gap: var(--md-sys-spacing-xs);
+        }
+
+        .field-label {
+          font-size: 0.68rem;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--md-sys-color-muted);
+          line-height: 1;
+          padding-left: var(--md-sys-spacing-sm);
+        }
+
+        /* Tighten vertical rhythm */
+        .item-row__bottom {
+          align-items: flex-end;
+        }
+
+        /* Desktop polish: visually de-emphasize labels */
+        @media (min-width: 768px) {
+          .field-label {
+            opacity: 0.85;
+          }
+        }
+
+        input {
+          border-radius: 999px;
+          border: 1px solid var(--md-sys-color-outline-variant);
+          background: var(--md-sys-color-surface);
+          padding: var(--md-sys-spacing-sm) var(--md-sys-spacing-md);
+          font-size: clamp(0.8rem, 1vw + 0.5rem, 0.85rem);
+          color: var(--md-sys-color-on-surface);
+          min-width: 0;
+          transition: border-color 0.18s var(--md-sys-motion-standard),
+            background 0.18s var(--md-sys-motion-standard),
+            box-shadow 0.18s var(--md-sys-motion-standard);
+
+          &:focus-visible {
+            outline: 2px solid var(--md-sys-color-primary);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 1px var(--md-sys-color-primary-container);
+          }
+
+          &[disabled] {
+            background: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-muted);
+          }
+
+          &[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+            text-align: right;
+
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+              -webkit-appearance: none;
+            }
+          }
+        }
+
+        .remove-btn {
+          /* icon-button styles */
+          width: 32px;
+          height: 32px;
+          border-radius: 999px;
+          border: 1px solid transparent;
+          border-color: var(--md-sys-color-outline-variant);
+          background: var(--md-sys-color-surface-variant);
+          color: var(--md-sys-color-on-surface-variant);
+          flex-shrink: 0;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1rem;
+          line-height: 1;
+          transition: background 0.16s var(--md-sys-motion-standard),
+            border-color 0.16s var(--md-sys-motion-standard),
+            box-shadow 0.16s var(--md-sys-motion-standard), transform 0.12s ease-out;
+
+          &:hover {
+            background: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+          }
+
+          &:focus-visible {
+            outline: 2px solid var(--md-sys-color-primary);
+            outline-offset: 2px;
+          }
+        }
+
+        /* ===========================
+        SUMMARY CARD
+        =========================== */
+
+        .summary-card {
+          background: var(--md-sys-color-surface);
+          border-radius: var(--md-sys-shape-large);
+          border: 1px solid var(--md-sys-color-outline-variant);
+          padding: var(--md-sys-spacing-lg) var(--md-sys-spacing-lg) var(--md-sys-spacing-md);
+          box-shadow: var(--md-sys-elevation-2);
+          display: flex;
+          flex-direction: column;
+          gap: var(--md-sys-spacing-md);
+
+          &__header {
+            margin-bottom: var(--md-sys-spacing-sm);
+
+            h2 {
+              margin: 0 0 var(--md-sys-spacing-xs);
+              font-size: clamp(0.85rem, 1.2vw + 0.6rem, 0.9rem);
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+            }
+
+            p {
+              margin: 0;
+              font-size: clamp(0.75rem, 1vw + 0.5rem, 0.8rem);
+              color: var(--md-sys-color-on-surface-variant);
+            }
+          }
+        }
+
+        .summary-section {
+          &--inputs {
+            display: flex;
+            flex-direction: column;
+            gap: var(--md-sys-spacing-xs);
+            margin-top: var(--md-sys-spacing-xs);
+          }
+
+          &--meta {
+            margin-top: var(--md-sys-spacing-xs);
+          }
+        }
+
+        .summary-row {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.85rem;
+          gap: var(--md-sys-spacing-sm);
+
+          span {
+            color: var(--md-sys-color-muted);
+          }
+        }
+
+        .summary-divider {
+          border-bottom: 1px dashed var(--md-sys-color-outline-variant);
+          margin: var(--md-sys-spacing-sm) 0;
+        }
+
+        .inline-input {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--md-sys-spacing-md);
+
+          @media (max-width: 640px) {
+            flex-direction: column;
+            align-items: stretch;
+            gap: var(--md-sys-spacing-sm);
+          }
+
+          label {
+            font-size: 0.82rem;
+            color: var(--md-sys-color-muted);
+            flex: 1;
+
+            @media (max-width: 640px) {
+              flex: none;
+              font-size: 0.78rem;
+            }
+          }
+
+          input {
+            width: 80px;
+
+            @media (max-width: 640px) {
+              width: 100%;
+            }
+          }
+        }
+
+        .summary-callout {
+          margin-top: var(--md-sys-spacing-md);
+          padding: var(--md-sys-spacing-md) var(--md-sys-spacing-lg);
+          border-radius: var(--md-sys-shape-large);
+          border: 1px solid var(--md-sys-color-secondary);
+          background: var(--md-sys-color-secondary-container);
+          display: flex;
+          flex-direction: column;
+          gap: var(--md-sys-spacing-xs);
+
+          &__label {
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--md-sys-color-on-secondary-container);
+          }
+
+          &__value {
+            font-size: clamp(1.25rem, 2vw + 0.8rem, 1.4rem);
+            font-weight: 700;
+            color: var(--md-sys-color-on-secondary-container);
+          }
+        }
+
+        .summary-actions {
+          margin-top: var(--md-sys-spacing-sm);
+          display: flex;
+          justify-content: flex-end;
+
+          @media (max-width: 640px) {
+            button {
+              width: 100%;
+              justify-content: center;
+            }
+          }
+        }
+
+        /* ===========================
+        GUIDE DRAWER
+        =========================== */
+
+        .guide-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(15, 23, 42, 0.36);
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.2s var(--md-sys-motion-standard);
+          z-index: 40;
+
+          &.is-open {
+            opacity: 1;
+            pointer-events: auto;
+          }
+        }
+
+        .guide-drawer {
+          position: fixed;
+          right: 0;
+          top: 0;
+          width: min(360px, 100%);
+          height: 100%;
+          background: var(--md-sys-color-surface);
+          border-left: 1px solid var(--md-sys-color-outline-variant);
+          box-shadow: -24px 0 60px rgba(0, 0, 0, 0.35);
+          transform: translateX(100%);
+          transition: transform 0.25s var(--md-sys-motion-standard);
+          z-index: 41;
+          display: flex;
+          flex-direction: column;
+
+          @media (max-width: 480px) {
+            width: 100%;
+            border-left: none;
+          }
+
+          &.is-open {
+            transform: translateX(0);
+          }
+
+          &__header {
+            padding: var(--md-sys-spacing-md) var(--md-sys-spacing-lg);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h2 {
+              margin: 0;
+              font-size: clamp(0.9rem, 1.2vw + 0.6rem, 0.95rem);
+            }
+          }
+
+          &__body {
+            padding: var(--md-sys-spacing-md) var(--md-sys-spacing-lg) var(--md-sys-spacing-xl);
+            overflow-y: auto;
+            font-size: 0.85rem;
+            color: var(--md-sys-color-on-surface-variant);
+
+            section {
+              margin-bottom: var(--md-sys-spacing-md);
+
+              h3 {
+                margin: 0 0 var(--md-sys-spacing-xs);
+                font-size: clamp(0.85rem, 1.1vw + 0.6rem, 0.88rem);
+                color: var(--md-sys-color-on-surface);
+              }
+
+              p {
+                margin: 0 0 var(--md-sys-spacing-xs);
+              }
+
+              ul,
+              ol {
+                margin: var(--md-sys-spacing-xs) 0 0 var(--md-sys-spacing-lg);
+                padding: 0;
+
+                li {
+                  margin-bottom: var(--md-sys-spacing-xs);
+                }
+              }
+            }
+          }
+        }
+
+        /* ===========================
+        PRINT MODAL
+        =========================== */
+
+        .modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(15, 23, 42, 0.36);
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.2s var(--md-sys-motion-standard);
+          z-index: 60;
+
+          &.is-open {
+            opacity: 1;
+            pointer-events: auto;
+          }
+        }
+
+        .print-modal {
+          position: fixed;
+          inset: 50% auto auto 50%;
+          transform: translate(-50%, -50%) scale(0.98);
+          width: min(640px, calc(100% - var(--md-sys-spacing-3xl)));
+          max-height: calc(100vh - 80px);
+          background: var(--md-sys-color-surface);
+          border-radius: var(--md-sys-shape-large);
+          border: 1px solid var(--md-sys-color-outline-variant);
+          box-shadow: var(--md-sys-elevation-2);
+          z-index: 61;
+          display: flex;
+          flex-direction: column;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.2s var(--md-sys-motion-standard),
+            transform 0.2s var(--md-sys-motion-standard);
+
+          @media (max-width: 640px) {
+            width: calc(100% - var(--md-sys-spacing-lg));
+            max-height: calc(100vh - var(--md-sys-spacing-3xl));
+          }
+
+          &.is-open {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+          }
+
+          &__header {
+            padding: var(--md-sys-spacing-md) var(--md-sys-spacing-lg);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: var(--md-sys-spacing-md);
+          }
+
+          &__title-block {
+            flex: 1 1 auto;
+            min-width: 0;
+          }
+
+          &__body {
+            padding: var(--md-sys-spacing-md) var(--md-sys-spacing-lg) var(--md-sys-spacing-lg);
+            overflow-y: auto;
+            font-size: clamp(0.82rem, 1vw + 0.5rem, 0.85rem);
+          }
+
+          &__footer {
+            padding: var(--md-sys-spacing-md) var(--md-sys-spacing-lg) var(--md-sys-spacing-md);
+            border-top: 1px solid var(--md-sys-color-outline-variant);
+            display: flex;
+            justify-content: flex-end;
+            gap: var(--md-sys-spacing-sm);
+
+            @media (max-width: 480px) {
+              flex-direction: column-reverse;
+
+              button {
+                width: 100%;
+                justify-content: center;
+              }
+            }
+          }
+        }
+
+        .client-name-display {
+          display: flex;
+          align-items: center;
+          gap: var(--md-sys-spacing-md);
+
+          strong {
+            font-size: clamp(1rem, 1.5vw + 0.7rem, 1.1rem);
+          }
+        }
+
+        .edit-client-btn {
+          font-size: 0.75rem;
+          padding-inline: var(--md-sys-spacing-sm);
+        }
+
+        .client-name-edit {
+          display: none;
+          margin-top: var(--md-sys-spacing-sm);
+
+          label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--md-sys-color-muted);
+            margin-bottom: var(--md-sys-spacing-xs);
+            display: block;
+          }
+
+          input {
+            width: 100%;
+          }
+        }
+
+        .scope-block {
+          margin-top: var(--md-sys-spacing-lg);
+          display: flex;
+          flex-direction: column;
+          gap: var(--md-sys-spacing-md);
+
+          label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--md-sys-color-muted);
+          }
+        }
+
+        .scope-toolbar {
+          display: flex;
+          gap: var(--md-sys-spacing-sm);
+          flex-wrap: wrap;
+
+          .rt-btn {
+            padding: var(--md-sys-spacing-sm) var(--md-sys-spacing-md);
+            font-size: 0.78rem;
+            border-radius: 8px;
+            background: var(--md-sys-color-surface-variant);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            cursor: pointer;
+            color: var(--md-sys-color-on-surface-variant);
+            transition: background 0.18s var(--md-sys-motion-standard);
+
+            &:hover {
+              background: var(--md-sys-color-primary-container);
+              color: var(--md-sys-color-on-primary-container);
+            }
+
+            &:active {
+              transform: scale(0.97);
+            }
+          }
+        }
+
+        .scope-editor-wrapper {
+          border: 1px solid var(--md-sys-color-outline-variant);
+          border-radius: 12px;
+          background: var(--md-sys-color-surface);
+          padding: 0;
+          overflow: hidden;
+          box-shadow: var(--md-sys-elevation-1);
+        }
+
+        .scope-editor {
+          min-height: 140px;
+          padding: var(--md-sys-spacing-md);
+          font-size: clamp(0.85rem, 1.1vw + 0.6rem, 0.9rem);
+          line-height: 1.55;
+          outline: none;
+          white-space: pre-wrap;
+          color: var(--md-sys-color-on-surface);
+
+          &:empty::before {
+            content: attr(data-placeholder);
+            color: var(--md-sys-color-muted);
+            pointer-events: none;
+          }
+
+          &:focus {
+            background: var(--md-sys-color-surface);
+            outline: 2px solid var(--md-sys-color-primary);
+            outline-offset: -2px;
+          }
+
+          h3 {
+            margin: var(--md-sys-spacing-sm) 0;
+            font-size: clamp(1rem, 1.5vw + 0.7rem, 1.05rem);
+            font-weight: 600;
+          }
+        }
+
+        .print-services {
+          display: flex;
+          flex-direction: column;
+          gap: var(--md-sys-spacing-sm);
+          margin-bottom: var(--md-sys-spacing-md);
+
+          .print-line {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--md-sys-spacing-sm);
+            padding: var(--md-sys-spacing-sm) 0;
+            border-bottom: 1px dashed var(--md-sys-color-outline-variant);
+
+            &__name {
+              flex: 1;
+            }
+
+            &__amount {
+              font-weight: 500;
+            }
+          }
+        }
+
+        .print-total {
+          margin-top: var(--md-sys-spacing-sm);
+          padding-top: var(--md-sys-spacing-md);
+          border-top: 1px solid var(--md-sys-color-outline-variant);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 0.9rem;
+
+          span {
+            color: var(--md-sys-color-muted);
+          }
+
+          strong {
+            font-size: clamp(1rem, 1.5vw + 0.7rem, 1.1rem);
+          }
+        }
+      }
+
+      /* ===============================
+      SELECTION & PRINT
+      =============================== */
+
+      ::selection {
+        background: rgba(56, 132, 255, 0.25);
+      }
+
+      /* .no-print class is styled via @media print below */
+
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+
+        .print-modal,
+        .print-modal * {
+          visibility: visible;
+        }
+
+        .print-modal {
+          position: static;
+          transform: none;
+          width: auto;
+          max-height: none;
+          box-shadow: none;
+          border: none;
+          margin: 0;
+        }
+
+        .modal-overlay,
+        .guide-overlay,
+        .guide-drawer {
+          display: none !important;
+        }
+
+        .no-print,
+        .scope-toolbar,
+        .edit-client-btn,
+        .client-name-edit {
+          display: none !important;
+        }
+
+        .scope-editor-wrapper {
+          box-shadow: none !important;
+          border: none !important;
+        }
+
+        .scope-editor {
+          padding: 0 !important;
+        }
+      }
+      /* ===========================
+         WALKTHROUGH
+      =========================== */
+
+      .walkthrough-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.45);
+        z-index: 100;
+      }
+
+      .walkthrough-highlight {
+        position: relative;
+        z-index: 101;
+        box-shadow: 0 0 0 4px var(--md-sys-color-primary),
+          0 0 0 9999px rgba(15, 23, 42, 0.45);
+        border-radius: var(--md-sys-shape-large);
+      }
+
+      .walkthrough-tooltip {
+        position: fixed;
+        max-width: 320px;
+        background: var(--md-sys-color-surface);
+        border-radius: var(--md-sys-shape-large);
+        border: 1px solid var(--md-sys-color-outline-variant);
+        box-shadow: var(--md-sys-elevation-2);
+        padding: var(--md-sys-spacing-md);
+        z-index: 102;
+        display: flex;
+        flex-direction: column;
+        gap: var(--md-sys-spacing-md);
+
+        @media (max-width: 640px) {
+          max-width: calc(100vw - var(--md-sys-spacing-3xl));
+        }
+
+        h4 {
+          margin: 0;
+          font-size: clamp(0.9rem, 1.2vw + 0.6rem, 0.95rem);
+        }
+
+        p {
+          margin: 0;
+          font-size: clamp(0.82rem, 1vw + 0.5rem, 0.85rem);
+          color: var(--md-sys-color-on-surface-variant);
+
+          @media (max-width: 480px) {
+            font-size: 0.8rem;
+          }
+        }
+      }
+
+      .walkthrough-tooltip__actions {
+        display: flex;
+        align-items: center;
+        gap: var(--md-sys-spacing-sm);
+
+        .spacer {
+          flex: 1;
+        }
+      }
+
+      .walkthrough-tooltip__step {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--md-sys-color-muted);
+      }
+      .walkthrough-highlight {
+        isolation: isolate;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="pricing-app" aria-label="Freelance Pricing Console">
+      <!-- Top App Bar -->
+      <header class="app-header">
+        <div class="app-header__titles">
+          <h1>Freelance Pricing Console</h1>
+          <p>
+            Model services, overhead, buffer, and margin into a repeatable
+            project price.
+          </p>
+        </div>
+
+        <div class="app-header__actions">
+          <button class="tonal-button" type="button" id="walkthrough-start">
+            Show me how
+          </button>
+
+          <!-- Material 3 style segmented theme toggle -->
+          <div class="theme-toggle" role="radiogroup" aria-label="Theme mode">
+            <button
+              class="theme-toggle__option is-active"
+              type="button"
+              data-theme="light"
+              aria-pressed="true"
+            >
+              Light
+            </button>
+            <button
+              class="theme-toggle__option"
+              type="button"
+              data-theme="dark"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </div>
+
+          <button class="tonal-button" type="button" id="guide-toggle">
+            How it works
+          </button>
+        </div>
+      </header>
+
+      <section class="app-layout">
+        <!-- PRIMARY COLUMN -->
+        <div class="column column--primary">
+          <!-- Tabs -->
+          <div class="panel-tabs" role="tablist">
+            <button
+              class="panel-tabs__button is-active"
+              type="button"
+              data-tab="services"
+            >
+              Services
+            </button>
+            <button
+              class="panel-tabs__button"
+              type="button"
+              data-tab="overheads"
+            >
+              Overheads
+            </button>
+          </div>
+
+          <!-- Services Panel -->
+          <section id="services" class="panel is-active" aria-label="Services">
+            <header class="panel__header">
+              <h2>Services</h2>
+              <p>
+                Define billable work by rate and hours. Think in clear project
+                phases.
+              </p>
+            </header>
+
+            <div id="services-list" class="line-items"></div>
+
+            <footer class="panel__footer">
+              <div class="panel__footer-left">
+                <button class="filled-button" type="button" id="add-service">
+                  + Add service
+                </button>
+                <button class="text-button" type="button" id="reset-services">
+                  Reset
+                </button>
+              </div>
+
+              <div class="panel__footer-right">
+                <div class="meta-row">
+                  <span>Billable hours</span>
+                  <strong id="service-hours">0</strong>
+                </div>
+                <div class="meta-row">
+                  <span>Services total</span>
+                  <strong id="services-total">$0.00</strong>
+                </div>
+              </div>
+            </footer>
+          </section>
+
+          <!-- Overheads Panel -->
+          <section id="overheads" class="panel" aria-label="Overheads">
+            <header class="panel__header">
+              <h2>Overheads</h2>
+              <p>
+                Capture project-related expenses (tools, subscriptions, admin,
+                tax buffer).
+              </p>
+            </header>
+
+            <div id="overheads-list" class="line-items"></div>
+
+            <footer class="panel__footer">
+              <div class="panel__footer-left">
+                <button class="filled-button" type="button" id="add-overhead">
+                  + Add overhead
+                </button>
+                <button class="text-button" type="button" id="reset-overheads">
+                  Reset
+                </button>
+              </div>
+
+              <div class="panel__footer-right">
+                <div class="meta-row">
+                  <span>Raw overhead total</span>
+                  <strong id="overheads-raw">$0.00</strong>
+                </div>
+              </div>
+            </footer>
+          </section>
+        </div>
+
+        <!-- SUMMARY COLUMN -->
+        <aside class="column column--secondary" aria-label="Pricing summary">
+          <section class="summary-card">
+            <header class="summary-card__header">
+              <h2>Summary</h2>
+              <p>
+                Live rollup of cost, overhead, buffer, profit, and effective
+                rates.
+              </p>
+            </header>
+
+            <div class="summary-section">
+              <div class="summary-row">
+                <span>Services total</span>
+                <strong id="sum-services">$0.00</strong>
+              </div>
+              <div class="summary-row">
+                <span>Overhead charge</span>
+                <strong id="sum-overheads">$0.00</strong>
+              </div>
+              <div class="summary-row">
+                <span>Project buffer</span>
+                <strong id="sum-buffer">$0.00</strong>
+              </div>
+              <div class="summary-divider"></div>
+              <div class="summary-row">
+                <span>Base cost</span>
+                <strong id="sum-base">$0.00</strong>
+              </div>
+            </div>
+
+            <div class="summary-section summary-section--inputs">
+              <div class="inline-input">
+                <label for="overhead-markup">Overhead %</label>
+                <input
+                  id="overhead-markup"
+                  type="number"
+                  value="20"
+                  min="0"
+                  max="200"
+                />
+              </div>
+              <div class="inline-input">
+                <label for="buffer">Project buffer %</label>
+                <input id="buffer" type="number" value="10" min="0" max="300" />
+              </div>
+              <div class="inline-input">
+                <label for="profit">Desired profit %</label>
+                <input id="profit" type="number" value="30" min="0" max="300" />
+              </div>
+            </div>
+
+            <div class="summary-section">
+              <div class="summary-row">
+                <span>Profit amount</span>
+                <strong id="sum-profit">$0.00</strong>
+              </div>
+            </div>
+
+            <div class="summary-callout">
+              <div class="summary-callout__label">
+                Recommended project price
+              </div>
+              <div class="summary-callout__value" id="sum-grand">$0.00</div>
+            </div>
+
+            <div class="summary-section summary-section--meta">
+              <div class="meta-row">
+                <span>Billable hours</span>
+                <strong id="sum-hours">0</strong>
+              </div>
+              <div class="meta-row">
+                <span>Effective rate</span>
+                <strong id="sum-hourly">$0/hr</strong>
+              </div>
+              <div class="meta-row">
+                <span>Day rate (8h)</span>
+                <strong id="sum-day">$0/day</strong>
+              </div>
+            </div>
+
+            <div class="summary-actions">
+              <button
+                class="filled-button filled-button--secondary"
+                type="button"
+                id="print-open"
+              >
+                Print quote
+              </button>
+            </div>
+          </section>
+        </aside>
+      </section>
+
+      <!-- GUIDE PANEL -->
+      <div class="guide-overlay" id="guide-overlay"></div>
+
+      <aside class="guide-drawer" id="guide-drawer" aria-hidden="true">
+        <header class="guide-drawer__header">
+          <h2>How this pricing console works</h2>
+          <button
+            class="icon-button"
+            type="button"
+            id="guide-close"
+            aria-label="Close help"
+          >
+            ×
+          </button>
+        </header>
+        <div class="guide-drawer__body">
+          <section>
+            <h3>What this tool does</h3>
+            <p>
+              This console helps you move from “hourly guessing” to a repeatable
+              pricing model. You define <strong>services</strong> and
+              <strong>overheads</strong>, then layer overhead %, project buffer
+              %, and profit % on top.
+            </p>
+          </section>
+
+          <section>
+            <h3>1 — Add services</h3>
+            <ol>
+              <li>
+                Create one line per project phase (Discovery, UX, Front-end
+                build, QA).
+              </li>
+              <li>Set an hourly rate that reflects the value of that phase.</li>
+              <li>
+                Estimate hours realistically, including reviews and
+                communication.
+              </li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>2 — Add overhead expenses</h3>
+            <ol>
+              <li>
+                Use overhead items for tools, subscriptions, admin, tax, and
+                ops.
+              </li>
+              <li>
+                Think in “per project” slices (for example, a portion of Figma,
+                hosting, etc.).
+              </li>
+              <li>
+                The raw overhead total is for your eyes only; clients don’t see
+                this number.
+              </li>
+            </ol>
+          </section>
+
+          <section>
+            <h3>3 — Apply overhead %, buffer %, and profit %</h3>
+            <ul>
+              <li>
+                <strong>Overhead %</strong> applies a percentage of your
+                overhead total to the price.
+              </li>
+              <li>
+                <strong>Project buffer %</strong> is a contingency layer on top
+                of services + overhead.
+              </li>
+              <li>
+                <strong>Desired profit %</strong> is applied to the buffered
+                base cost.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>4 — Read the summary & print</h3>
+            <ul>
+              <li>
+                <strong>Base cost</strong> = services + overhead charge +
+                buffer.
+              </li>
+              <li>
+                <strong>Recommended project price</strong> = base cost + profit.
+              </li>
+              <li>
+                Use <strong>Print quote</strong> to generate a client-facing
+                summary PDF.
+              </li>
+            </ul>
+          </section>
+        </div>
+      </aside>
+
+      <!-- PRINT MODAL OVERLAY -->
+      <div class="modal-overlay" id="print-overlay"></div>
+
+      <!-- PRINT MODAL -->
+      <section class="print-modal" id="print-modal" aria-hidden="true">
+        <header class="print-modal__header">
+          <div class="print-modal__title-block">
+            <!-- CLIENT NAME DISPLAY -->
+            <div class="client-name-display" id="client-name-display">
+              <strong id="client-name-text">Website Design — Acme Co.</strong>
+              <button
+                class="text-button edit-client-btn"
+                id="edit-client-btn"
+                type="button"
+              >
+                Edit client
+              </button>
+            </div>
+
+            <!-- CLIENT NAME EDIT FIELD -->
+            <div class="client-name-edit" id="client-name-edit">
+              <label for="print-project-name">Client / Project Name</label>
+              <input
+                id="print-project-name"
+                type="text"
+                value="Website Design — Acme Co."
+              />
+            </div>
+
+            <!-- PROJECT SCOPE SECTION -->
+            <div class="scope-block">
+              <label>Project Scope</label>
+
+              <div class="scope-toolbar">
+                <button class="rt-btn" type="button" data-cmd="bold">
+                  <b>B</b>
+                </button>
+                <button class="rt-btn" type="button" data-cmd="italic">
+                  <i>I</i>
+                </button>
+                <button class="rt-btn" type="button" data-cmd="underline">
+                  <u>U</u>
+                </button>
+                <button
+                  class="rt-btn"
+                  type="button"
+                  data-cmd="insertUnorderedList"
+                >
+                  • Bullet
+                </button>
+                <button
+                  class="rt-btn"
+                  type="button"
+                  data-cmd="insertOrderedList"
+                >
+                  1. List
+                </button>
+                <button
+                  class="rt-btn"
+                  type="button"
+                  data-cmd="formatBlock"
+                  data-value="h3"
+                >
+                  H3
+                </button>
+                <button
+                  class="rt-btn"
+                  type="button"
+                  data-cmd="formatBlock"
+                  data-value="p"
+                >
+                  P
+                </button>
+              </div>
+
+              <div class="scope-editor-wrapper">
+                <div
+                  id="scope-editor"
+                  class="scope-editor"
+                  contenteditable="true"
+                  data-placeholder="Enter your project scope here..."
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="icon-button"
+            type="button"
+            id="print-close"
+            aria-label="Close print dialog"
+          >
+            ×
+          </button>
+        </header>
+
+        <div class="print-modal__body">
+          <div class="print-services" id="print-services"></div>
+
+          <div class="print-total">
+            <span>Total (incl. overhead, buffer & profit)</span>
+            <strong id="print-total">$0.00</strong>
+          </div>
+        </div>
+
+        <footer class="print-modal__footer no-print">
+          <button
+            class="filled-button filled-button--secondary"
+            type="button"
+            id="print-confirm"
+          >
+            Print to PDF
+          </button>
+        </footer>
+      </section>
+    </main>
+
+    <div class="walkthrough-overlay" id="walkthrough-overlay" hidden></div>
+
+    <div class="walkthrough-tooltip" id="walkthrough-tooltip" hidden>
+      <div class="walkthrough-tooltip__content">
+        <div class="walkthrough-tooltip__step" id="walkthrough-step">
+          Step 1 of 5
+        </div>
+
+        <h4 id="walkthrough-title">Title</h4>
+        <p id="walkthrough-text">Description</p>
+      </div>
+
+      <div class="walkthrough-tooltip__actions">
+        <button class="text-button" id="walkthrough-exit">Exit</button>
+        <div class="spacer"></div>
+        <button class="tonal-button" id="walkthrough-back">Back</button>
+        <button class="filled-button" id="walkthrough-next">Next</button>
+      </div>
+    </div>
+    <script>
+      /* ============================================================
+   Helpers
+============================================================ */
+
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => document.querySelectorAll(s);
+
+      const currency = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      });
+      const toNum = (v) => parseFloat(v) || 0;
+
+      /* ============================================================
+   Tabs
+============================================================ */
+
+      $$(".panel-tabs__button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          $$(".panel-tabs__button").forEach((b) =>
+            b.classList.remove("is-active"),
+          );
+          btn.classList.add("is-active");
+
+          const tab = btn.dataset.tab;
+          $$(".panel").forEach((p) => p.classList.remove("is-active"));
+          $("#" + tab).classList.add("is-active");
+        });
+      });
+
+      /* ============================================================
+   Service Rows
+============================================================ */
+
+      function createServiceRow(initial = {}) {
+        const row = document.createElement("div");
+        row.className = "item-row";
+
+        row.innerHTML = `
+  <div class="item-row__top">
+    <label class="field-label">Service</label>
+    <input
+      class="service-name"
+      placeholder="Service name"
+      value="${initial.name || ""}"
+      aria-label="Service name"
+    >
+  </div>
+
+  <div class="item-row__bottom">
+    <div class="field">
+      <label class="field-label">Hourly rate</label>
+      <input
+        class="service-rate"
+        type="number"
+        value="${initial.rate || ""}"
+        aria-label="Hourly rate"
+      >
+    </div>
+
+    <div class="field">
+      <label class="field-label">Hours</label>
+      <input
+        class="service-hours"
+        type="number"
+        value="${initial.hours || ""}"
+        aria-label="Hours"
+      >
+    </div>
+
+    <div class="field">
+      <label class="field-label">Total</label>
+      <input
+        class="service-total"
+        disabled
+        placeholder="$0.00"
+        aria-label="Total amount"
+      >
+    </div>
+
+    <button
+      class="remove-btn"
+      type="button"
+      aria-label="Remove service"
+    >×</button>
+  </div>
+`;
+
+        $("#services-list").appendChild(row);
+
+        row
+          .querySelectorAll("input")
+          .forEach((input) => input.addEventListener("input", recalcAll));
+
+        row.querySelector(".remove-btn").addEventListener("click", () => {
+          if ($$("#services-list .item-row").length > 1) {
+            row.remove();
+          } else {
+            row.querySelectorAll("input").forEach((i) => (i.value = ""));
+          }
+          recalcAll();
+        });
+
+        recalcAll();
+      }
+
+      /* ============================================================
+   Overhead Rows
+============================================================ */
+
+      function createOverheadRow(initial = {}) {
+        const row = document.createElement("div");
+        row.className = "item-row";
+
+        row.innerHTML = `
+    <div class="item-row__top">
+      <input class="over-label" placeholder="Overhead (e.g. Tools, Admin)" value="${
+        initial.label || ""
+      }">
+    </div>
+    <div class="item-row__bottom">
+      <input class="over-amount" type="number" placeholder="Amount" value="${
+        initial.amount || ""
+      }">
+      <input class="over-total" disabled placeholder="$0.00">
+      <button class="remove-btn" type="button">×</button>
+    </div>
+  `;
+
+        $("#overheads-list").appendChild(row);
+
+        row
+          .querySelectorAll("input")
+          .forEach((input) => input.addEventListener("input", recalcAll));
+
+        row.querySelector(".remove-btn").addEventListener("click", () => {
+          if ($$("#overheads-list .item-row").length > 1) {
+            row.remove();
+          } else {
+            row.querySelectorAll("input").forEach((i) => (i.value = ""));
+          }
+          recalcAll();
+        });
+
+        recalcAll();
+      }
+
+      /* ============================================================
+   Overhead Calculations
+============================================================ */
+
+      function calcOverheads() {
+        let raw = 0;
+
+        $$("#overheads-list .item-row").forEach((row) => {
+          const amt = toNum(row.querySelector(".over-amount").value);
+          raw += amt;
+          row.querySelector(".over-total").value = currency.format(amt);
+        });
+
+        $("#overheads-raw").textContent = currency.format(raw);
+
+        const pct = toNum($("#overhead-markup").value);
+        const charge = raw * (pct / 100);
+
+        return { raw, charge };
+      }
+
+      /* ============================================================
+   Recalculate Entire Model
+============================================================ */
+
+      function recalcAll() {
+        let serviceTotal = 0;
+        let totalHours = 0;
+
+        $$("#services-list .item-row").forEach((row) => {
+          const rate = toNum(row.querySelector(".service-rate").value);
+          const hrs = toNum(row.querySelector(".service-hours").value);
+          const line = rate * hrs;
+
+          serviceTotal += line;
+          totalHours += hrs;
+
+          row.querySelector(".service-total").value = currency.format(line);
+        });
+
+        const overhead = calcOverheads();
+        const overheadCharge = overhead.charge;
+
+        const bufferPct = toNum($("#buffer").value);
+        const baseBeforeBuffer = serviceTotal + overheadCharge;
+        const bufferAmount = baseBeforeBuffer * (bufferPct / 100);
+
+        const baseCost = baseBeforeBuffer + bufferAmount;
+
+        const profitPct = toNum($("#profit").value);
+        const profitAmount = baseCost * (profitPct / 100);
+
+        const grand = baseCost + profitAmount;
+
+        // Left summary
+        $("#service-hours").textContent = totalHours.toFixed(2);
+        $("#services-total").textContent = currency.format(serviceTotal);
+
+        // Right summary
+        $("#sum-services").textContent = currency.format(serviceTotal);
+        $("#sum-overheads").textContent = currency.format(overheadCharge);
+        $("#sum-buffer").textContent = currency.format(bufferAmount);
+        $("#sum-base").textContent = currency.format(baseCost);
+        $("#sum-profit").textContent = currency.format(profitAmount);
+        $("#sum-grand").textContent = currency.format(grand);
+
+        $("#sum-hours").textContent = totalHours.toFixed(2);
+        $("#sum-hourly").textContent =
+          totalHours > 0
+            ? currency.format(grand / totalHours) + "/hr"
+            : "$0/hr";
+
+        $("#sum-day").textContent =
+          totalHours > 0
+            ? currency.format((grand / totalHours) * 8) + "/day"
+            : "$0/day";
+      }
+
+      /* ============================================================
+   Buttons & Inputs
+============================================================ */
+
+      $("#add-service").addEventListener("click", () => createServiceRow());
+      $("#add-overhead").addEventListener("click", () => createOverheadRow());
+
+      $("#reset-services").addEventListener("click", () => {
+        $("#services-list").innerHTML = "";
+        createServiceRow({ name: "Discovery & strategy", rate: 125, hours: 6 });
+        createServiceRow({ name: "UX / UI design", rate: 135, hours: 12 });
+        createServiceRow({ name: "Front-end build", rate: 145, hours: 20 });
+      });
+
+      $("#reset-overheads").addEventListener("click", () => {
+        $("#overheads-list").innerHTML = "";
+        createOverheadRow({ label: "Design & dev tools", amount: 150 });
+        createOverheadRow({ label: "Admin & ops", amount: 120 });
+      });
+
+      ["profit", "buffer", "overhead-markup"].forEach((id) =>
+        $("#" + id).addEventListener("input", recalcAll),
+      );
+
+      /* ============================================================
+   Guide Drawer
+============================================================ */
+
+      const guideDrawer = $("#guide-drawer");
+      const guideOverlay = $("#guide-overlay");
+
+      function openGuide() {
+        guideDrawer.classList.add("is-open");
+        guideOverlay.classList.add("is-open");
+        guideDrawer.setAttribute("aria-hidden", "false");
+      }
+
+      function closeGuide() {
+        guideDrawer.classList.remove("is-open");
+        guideOverlay.classList.remove("is-open");
+        guideDrawer.setAttribute("aria-hidden", "true");
+      }
+
+      $("#guide-toggle").addEventListener("click", openGuide);
+      $("#guide-close").addEventListener("click", closeGuide);
+      guideOverlay.addEventListener("click", closeGuide);
+
+      /* ============================================================
+   Theme Toggle (Segmented)
+============================================================ */
+
+      const themeButtons = $$(".theme-toggle__option");
+
+      function setTheme(mode) {
+        document.documentElement.setAttribute("data-theme", mode);
+        localStorage.setItem("pricing-theme", mode);
+
+        themeButtons.forEach((btn) => {
+          const isActive = btn.dataset.theme === mode;
+          btn.classList.toggle("is-active", isActive);
+          btn.setAttribute("aria-pressed", String(isActive));
+        });
+      }
+
+      function initTheme() {
+        const stored = localStorage.getItem("pricing-theme");
+        if (stored === "light" || stored === "dark") {
+          setTheme(stored);
+          return;
+        }
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        setTheme(prefersDark ? "dark" : "light");
+      }
+
+      themeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const targetTheme = btn.dataset.theme;
+          setTheme(targetTheme);
+        });
+      });
+
+      /* ============================================================
+   Print Modal Logic
+============================================================ */
+
+      const printModal = $("#print-modal");
+      const printOverlay = $("#print-overlay");
+      const printServices = $("#print-services");
+      const printTotal = $("#print-total");
+
+      // Client name elements
+      const clientDisplay = $("#client-name-display");
+      const clientEdit = $("#client-name-edit");
+      const clientText = $("#client-name-text");
+      const clientInput = $("#print-project-name");
+      const editClientBtn = $("#edit-client-btn");
+
+      // Scope editor
+      const scopeEditor = $("#scope-editor");
+
+      // Open Print Modal
+      $("#print-open").addEventListener("click", () => {
+        recalcAll();
+
+        if (!clientInput.value.trim()) {
+          clientInput.value = "Untitled Project";
+        }
+        clientText.textContent = clientInput.value.trim();
+
+        // Build services list
+        printServices.innerHTML = "";
+        $$("#services-list .item-row").forEach((row) => {
+          const name =
+            row.querySelector(".service-name").value.trim() ||
+            "Untitled service";
+          const total =
+            row.querySelector(".service-total").value || currency.format(0);
+
+          const div = document.createElement("div");
+          div.className = "print-line";
+          div.innerHTML = `
+      <span class="print-line__name">${name}</span>
+      <span class="print-line__amount">${total}</span>
+    `;
+          printServices.appendChild(div);
+        });
+
+        printTotal.textContent = $("#sum-grand").textContent;
+
+        printModal.classList.add("is-open");
+        printOverlay.classList.add("is-open");
+        printModal.setAttribute("aria-hidden", "false");
+      });
+
+      function closePrintModal() {
+        printModal.classList.remove("is-open");
+        printOverlay.classList.remove("is-open");
+        printModal.setAttribute("aria-hidden", "true");
+      }
+
+      $("#print-close").addEventListener("click", closePrintModal);
+      printOverlay.addEventListener("click", closePrintModal);
+
+      // Print to PDF (browser's print dialog)
+      $("#print-confirm").addEventListener("click", () => {
+        window.print();
+      });
+
+      /* ============================================================
+   Client Name Edit Mode
+============================================================ */
+
+      function enterClientEdit() {
+        clientDisplay.style.display = "none";
+        clientEdit.style.display = "block";
+        clientInput.focus();
+        clientInput.select();
+      }
+
+      function saveClientName() {
+        const value = clientInput.value.trim() || "Untitled Project";
+        clientText.textContent = value;
+        clientDisplay.style.display = "flex";
+        clientEdit.style.display = "none";
+      }
+
+      editClientBtn.addEventListener("click", enterClientEdit);
+      clientInput.addEventListener("blur", saveClientName);
+      clientInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          saveClientName();
+        }
+      });
+
+      /* ============================================================
+   True Rich Text Editor Commands
+============================================================ */
+
+      $$(".rt-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const cmd = btn.dataset.cmd;
+          const val = btn.dataset.value || null;
+
+          scopeEditor.focus();
+          document.execCommand(cmd, false, val);
+        });
+      });
+
+      // Keep placeholder behavior consistent
+      scopeEditor.addEventListener("input", () => {
+        if (scopeEditor.textContent.trim().length === 0) {
+          scopeEditor.innerHTML = "";
+        }
+      });
+
+      /* ============================================================
+   WALKTHROUGH — FINAL, STABLE, PRODUCTION SAFE
+============================================================ */
+
+      const walkthroughSteps = [
+        {
+          target: ".panel-tabs",
+          tab: "services",
+          title: "Start with services",
+          text: "Define what you deliver. Each row represents a clear project phase.",
+        },
+        {
+          target: "#services-list .item-row:first-child",
+          tab: "services",
+          title: "Enter rates and hours",
+          text: "Set your hourly rate and estimate time realistically.",
+        },
+        {
+          target: '[data-tab="overheads"]',
+          tab: "overheads",
+          title: "Switch to overheads",
+          text: "Move to overheads to capture project-related expenses.",
+        },
+        {
+          target: "#overheads-list .item-row:first-child",
+          tab: "overheads",
+          title: "Add overhead costs",
+          text: "Include tools, subscriptions, admin, or tax buffers.",
+        },
+        {
+          target: ".summary-section--inputs",
+          tab: null,
+          title: "Apply buffer and profit",
+          text: "Adjust overhead, project buffer, and desired profit.",
+        },
+        {
+          target: ".summary-callout",
+          tab: null,
+          title: "Review your price",
+          text: "This is your recommended client-facing project price.",
+        },
+        {
+          target: "#print-open",
+          tab: null,
+          title: "Generate a client quote",
+          text: "Finish by creating a clean, printable summary for your client.",
+        },
+      ];
+
+      let walkthroughIndex = 0;
+      let activeTarget = null;
+
+      const overlay = $("#walkthrough-overlay");
+      const tooltip = $("#walkthrough-tooltip");
+      const titleEl = $("#walkthrough-title");
+      const textEl = $("#walkthrough-text");
+      const stepEl = $("#walkthrough-step");
+      const nextBtn = $("#walkthrough-next");
+      const backBtn = $("#walkthrough-back");
+
+      /* -------------------------
+   Utilities
+------------------------- */
+
+      function activateTab(tab) {
+        if (!tab) return;
+
+        $$(".panel-tabs__button").forEach((b) =>
+          b.classList.toggle("is-active", b.dataset.tab === tab),
+        );
+
+        $$(".panel").forEach((p) =>
+          p.classList.toggle("is-active", p.id === tab),
+        );
+      }
+
+      function scrollIntoViewIfNeeded(el) {
+        const rect = el.getBoundingClientRect();
+        const margin = 140;
+
+        if (rect.top < margin || rect.bottom > window.innerHeight - margin) {
+          el.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }
+      }
+
+      function positionTooltip() {
+        if (!activeTarget) return;
+
+        const rect = activeTarget.getBoundingClientRect();
+        const tip = tooltip.getBoundingClientRect();
+        const pad = 14;
+
+        let top;
+        let left;
+
+        const spaceBelow = window.innerHeight - rect.bottom;
+        const spaceAbove = rect.top;
+
+        // Prefer BELOW, fallback ABOVE
+        if (spaceBelow > tip.height + pad) {
+          top = rect.bottom + pad;
+        } else {
+          top = rect.top - tip.height - pad;
+        }
+
+        left = rect.left + rect.width / 2 - tip.width / 2;
+
+        // Clamp to viewport
+        left = Math.max(
+          pad,
+          Math.min(left, window.innerWidth - tip.width - pad),
+        );
+        top = Math.max(
+          pad,
+          Math.min(top, window.innerHeight - tip.height - pad),
+        );
+
+        tooltip.style.top = `${top}px`;
+        tooltip.style.left = `${left}px`;
+      }
+
+      /* -------------------------
+   Core
+------------------------- */
+
+      function showWalkthroughStep(index) {
+        const step = walkthroughSteps[index];
+
+        activateTab(step.tab);
+
+        // Clear previous highlights
+        $$(".walkthrough-highlight").forEach((el) =>
+          el.classList.remove("walkthrough-highlight"),
+        );
+
+        const target = document.querySelector(step.target);
+        if (!target) return;
+
+        activeTarget = target;
+        target.classList.add("walkthrough-highlight");
+
+        scrollIntoViewIfNeeded(target);
+
+        titleEl.textContent = step.title;
+        textEl.textContent = step.text;
+        stepEl.textContent = `Step ${index + 1} of ${walkthroughSteps.length}`;
+
+        // Button state
+        const isLast = index === walkthroughSteps.length - 1;
+        nextBtn.textContent = isLast ? "Finish walkthrough" : "Next";
+        backBtn.style.visibility = index === 0 ? "hidden" : "visible";
+
+        overlay.hidden = false;
+        tooltip.hidden = false;
+
+        requestAnimationFrame(positionTooltip);
+      }
+
+      function closeWalkthrough() {
+        overlay.hidden = true;
+        tooltip.hidden = true;
+        activeTarget = null;
+
+        nextBtn.textContent = "Next";
+        backBtn.style.visibility = "visible";
+
+        $$(".walkthrough-highlight").forEach((el) =>
+          el.classList.remove("walkthrough-highlight"),
+        );
+      }
+
+      /* -------------------------
+   Controls
+------------------------- */
+
+      $("#walkthrough-start").onclick = () => {
+        walkthroughIndex = 0;
+        showWalkthroughStep(walkthroughIndex);
+      };
+
+      nextBtn.onclick = () => {
+        const isLast = walkthroughIndex === walkthroughSteps.length - 1;
+
+        if (isLast) {
+          closeWalkthrough();
+          return;
+        }
+
+        walkthroughIndex++;
+        showWalkthroughStep(walkthroughIndex);
+      };
+
+      backBtn.onclick = () => {
+        walkthroughIndex = Math.max(0, walkthroughIndex - 1);
+        showWalkthroughStep(walkthroughIndex);
+      };
+
+      $("#walkthrough-exit").onclick = closeWalkthrough;
+      overlay.onclick = closeWalkthrough;
+
+      /* -------------------------
+   Keep tooltip anchored
+------------------------- */
+
+      window.addEventListener("scroll", () => {
+        if (!tooltip.hidden) positionTooltip();
+      });
+
+      window.addEventListener("resize", () => {
+        if (!tooltip.hidden) positionTooltip();
+      });
+
+      /* ============================================================
+   Init
+============================================================ */
+
+      initTheme();
+      $("#reset-services").click();
+      $("#reset-overheads").click();
+    </script>
+  </body>
+</html>
